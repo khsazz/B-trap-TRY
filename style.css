@@ -1,0 +1,34 @@
+.div-img {
+ 	background: url("dist/img/background.jpg") no-repeat center;
+ 	background-size: 100% 100%;
+ 	/*min-height: 500px;
+ 	min-width: 1000px;*/
+}
+
+.nav-custom{
+	margin-top: 10px;
+	min-height: 50px;
+	font-size: 40px;
+	text-align: left;
+}
+
+.panel-transparent {
+        background: none;
+        border: none;
+ }
+
+ .panel-transparent .panel-body{
+        background: rgba(46, 51, 56, 0.1)!important;
+ }
+
+
+
+
+/* or if you want no repeat just stretch 
+background:  url("pathtoimage/image.png") no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}*/
+
