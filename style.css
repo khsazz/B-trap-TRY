@@ -21,6 +21,15 @@
         background: rgba(46, 51, 56, 0.1)!important;
  }
 
+.maps{
+    width: 100%;
+    min-height: 300px;
+}
+
+#head1{
+	max-height: 30px;	
+	min-height: 30px;
+}
 
 
 
