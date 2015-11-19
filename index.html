@@ -19,7 +19,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- DatePicker CSS -->
-    <link rel="stylesheet" href="dist/plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="plugins/datepicker/datepicker3.css">
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -127,11 +128,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="row">&nbsp;</div>
                         <div class="form-group">
                           <!-- <label>Date range:</label> -->
-                          <div class="input-group date">
+                          <div class="input-group">
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" data-provide="datepicker">
+                            <input id="datepicker" type="text" class="form-control pull-right datepicker">
                           </div><!-- /.input group -->
                         </div>
                         <div class="row">&nbsp;</div>
@@ -318,7 +319,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="box box-widget widget-user-2">
                                       <!-- Add the bg color to the header using any of the bg-* classes -->
                                       <div class="widget-user-header bg-green">
-                                        Top Hospitals
+                                        <i class="fa fa-h-square"></i><strong> Top Hospitals</strong>
                                       </div>
                                       <div class="box-footer no-padding">
                                         <ul class="nav nav-stacked">
@@ -358,7 +359,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
+    <!-- Datepicker -->
     <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- Datepicker -->
     <script type="text/javascript">
         $(document).ready(function() {
           $(document).off('.datepicker.data-api');
@@ -377,4 +380,3 @@ scratch. This page gets rid of all links and provides the needed markup only.
          fixed layout. -->
   </body>
 </html>
-
