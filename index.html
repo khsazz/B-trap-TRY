@@ -360,10 +360,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="dist/js/app.min.js"></script>
     <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
     <script type="text/javascript">
-      $('.datepicker').datepicker({
-            format: 'mm/dd/yyyy',
-            startDate: '-3d'
-        })
+        $(document).ready(function() {
+          $(document).off('.datepicker.data-api');
+          $('#datepicker').datepicker({
+                    format: "dd/mm/yyyy",
+                    todayHighlight : true
+                                
+            });  
+          $('#datepicker').datepicker('update', new Date());
+        });
     </script>
 
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
