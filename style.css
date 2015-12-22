@@ -31,7 +31,21 @@
 	min-height: 30px;
 }
 
+.search-result-box:hover{
+	background-color: #0073B7;
+}
 
+.custom-margin-top-bottom{
+	margin: 5px 0 5px 0;
+}
+
+.vertical-align-top{
+	vertical-align: top;
+}
+
+.border-zero{
+	border: 0;
+}
 
 /* or if you want no repeat just stretch 
 background:  url("pathtoimage/image.png") no-repeat center center fixed; 
