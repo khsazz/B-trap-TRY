@@ -24,7 +24,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- DatePicker CSS -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
           th:href="@{resources/plugins/datepicker/datepicker3.css}"/>
-
+    <!--Autocomplete-->
+    <link rel="stylesheet" href="easy-autocomplete.min.css">
+    <link rel="stylesheet" href="easy-autocomplete.themes.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" th:href="@{/resources/style.css}"/>
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -64,13 +66,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row">&nbsp;</div>
 
         <!-- Main content -->
-        <section class="content">
+        <section class="content" style="padding: 0;">
 
             <!-- Your Page Content Here -->
 
             <div class="div-img">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" style="margin-top: 10%; margin-bottom: 12%;">
                         <div class="col-lg-6 col-sm-12">
                             <div class="row">&nbsp;</div>
                             <div class="panel panel-primary panel-transparent">
@@ -95,48 +97,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="dropdown">
                                     <select name="speciality" class="form-control select-custom1">
                                         <option value="one" selected disabled>Pick A Speciality</option>
-                                        <option th:each="speciality : ${specialityList}" th:text="${speciality.description}" th:value="${speciality.id}"
-                                                style="color: black; background-color: transparent;">One</option>
-                                    </select>
-                                </div>
-                                <div class="row">&nbsp;</div>
-                                <div class="dropdown">
-                                    <select class="form-control select-custom1">
-                                        <option value="one">Pick A Place</option>
-                                        <option value="one" style="color: black; background-color: transparent;">One
+                                        <option th:each="speciality : ${specialityList}"
+                                                th:text="${speciality.description}" th:value="${speciality.id}"
+                                                style="color: black; background-color: transparent;">One
                                         </option>
-                                        <option value="two">Two</option>
-                                        <option value="three">Three</option>
-                                        <option value="four">Four</option>
-                                        <option value="five">Five</option>
                                     </select>
                                 </div>
                                 <div class="row">&nbsp;</div>
-                                <div class="form-group">
-                                    <!-- <label>Date range:</label> -->
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input id="datepicker" name="date" type="text"
-                                               class="form-control pull-right datepicker"/>
-                                    </div><!-- /.input group -->
+                                <div class="form-group input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input id="datepicker" name="date" type="text"
+                                           class="form-control pull-right datepicker"/>
                                 </div>
-                                <div class="row">&nbsp;</div>
-                                <div class="input-group input-group">
-                                    <span class="input-group-addon" id="sizing-addon1">Your Name</span>
-                                    <input type="text" class="form-control" placeholder="Your Name"
-                                           aria-describedby="sizing-addon1"/>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon" id="sizing-addon1">Search near</span>
+                                    <input id="placesearch" class="form-control"
+                                           aria-describedby="sizing-addon1">
                                 </div>
-                                <div class="row">&nbsp;</div>
-                                <div class="input-group input-group">
-                                    <span class="input-group-addon" id="sizing-addon2">Mobile No.</span>
-                                    <input type="text" class="form-control" placeholder="Mobile No"
-                                           aria-describedby="sizing-addon1"/>
-                                </div>
-                                <div class="row">&nbsp;</div>
-
-
                                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                 <div class="row">&nbsp;</div>
                             </form>
@@ -145,199 +124,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
             </div>
         </section><!-- /.content -->
-
-        <section class="content">
-            <div class="row">
-                <div class="col-lg-8 col-sm-12">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="box box-widget widget-user-2">
-                                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                                            <div class="widget-user-header bg-black">
-                                                <div class="widget-user-image">
-                                                    <img class="img-circle" src="dist/img/noimage.jpg"
-                                                         th:src="@{resources/dist/img/noimage.jpg}" alt="User Avatar"/>
-                                                </div><!-- /.widget-user-image -->
-                                                <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                                <h5 class="widget-user-desc">Phychiatrist</h5>
-                                            </div>
-                                            <div class="box-footer no-padding">
-                                                <p>Blah balh bla blah bla bla</p>
-
-                                                <p>Blah balh bla blah bla bla again</p>
-                                                <!-- <ul class="nav nav-stacked">
-                                                  <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
-                                                  <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
-                                                  <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
-                                                  <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
-                                                </ul> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="box box-widget widget-user-2">
-                                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                                            <div class="widget-user-header bg-yellow">
-                                                <div class="widget-user-image">
-                                                    <img class="img-circle" src="dist/img/noimage.jpg"
-                                                         th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                         alt="User Avatar"/>
-                                                </div><!-- /.widget-user-image -->
-                                                <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                                <h5 class="widget-user-desc">Phychiatrist</h5>
-                                            </div>
-                                            <div class="box-footer no-padding">
-                                                <p>Blah balh bla blah bla bla</p>
-
-                                                <p>Blah balh bla blah bla bla again</p>
-                                                <!-- <ul class="nav nav-stacked">
-                                                  <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
-                                                  <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
-                                                  <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
-                                                  <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
-                                                </ul> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="box box-widget widget-user-2">
-                                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                                            <div class="widget-user-header bg-yellow">
-                                                <div class="widget-user-image">
-                                                    <img class="img-circle" src="dist/img/noimage.jpg"
-                                                         th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                         alt="User Avatar"/>
-                                                </div><!-- /.widget-user-image -->
-                                                <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                                <h5 class="widget-user-desc">Phychiatrist</h5>
-                                            </div>
-                                            <div class="box-footer no-padding">
-                                                <p>Blah balh bla blah bla bla</p>
-
-                                                <p>Blah balh bla blah bla bla again</p>
-                                                <!-- <ul class="nav nav-stacked">
-                                                  <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
-                                                  <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
-                                                  <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
-                                                  <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
-                                                </ul> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- <div class="carousel-caption">
-                                  First Slide
-                                </div> -->
-                            </div>
-                            <div class="item active">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="box box-widget widget-user-2">
-                                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                                            <div class="widget-user-header bg-red">
-                                                <div class="widget-user-image">
-                                                    <img class="img-circle" src="dist/img/user7-128x128.jpg"
-                                                         alt="User Avatar"/>
-                                                </div><!-- /.widget-user-image -->
-                                                <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                                <h5 class="widget-user-desc">Phychiatrist</h5>
-                                            </div>
-                                            <div class="box-footer no-padding">
-                                                <p>Blah balh bla blah bla bla</p>
-
-                                                <p>Blah balh bla blah bla bla again</p>
-                                                <!-- <ul class="nav nav-stacked">
-                                                  <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
-                                                  <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
-                                                  <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
-                                                  <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
-                                                </ul> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="box box-widget widget-user-2">
-                                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                                            <div class="widget-user-header bg-yellow">
-                                                <div class="widget-user-image">
-                                                    <img class="img-circle" src="dist/img/user7-128x128.jpg"
-                                                         alt="User Avatar"/>
-                                                </div><!-- /.widget-user-image -->
-                                                <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                                <h5 class="widget-user-desc">Phychiatrist</h5>
-                                            </div>
-                                            <div class="box-footer no-padding">
-                                                <p>Blah balh bla blah bla bla</p>
-
-                                                <p>Blah balh bla blah bla bla again</p>
-                                                <!-- <ul class="nav nav-stacked">
-                                                  <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
-                                                  <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
-                                                  <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
-                                                  <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
-                                                </ul> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <div class="box box-widget widget-user-2">
-                                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                                            <div class="widget-user-header bg-yellow">
-                                                <div class="widget-user-image">
-                                                    <img class="img-circle" src="dist/img/user7-128x128.jpg"
-                                                         alt="User Avatar"/>
-                                                </div><!-- /.widget-user-image -->
-                                                <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                                <h5 class="widget-user-desc">Phychiatrist</h5>
-                                            </div>
-                                            <div class="box-footer no-padding">
-                                                <p>Blah balh bla blah bla bla</p>
-
-                                                <p>Blah balh bla blah bla bla again</p>
-                                                <!-- <ul class="nav nav-stacked">
-                                                  <li><a href="#">Projects <span class="pull-right badge bg-blue">31</span></a></li>
-                                                  <li><a href="#">Tasks <span class="pull-right badge bg-aqua">5</span></a></li>
-                                                  <li><a href="#">Completed Projects <span class="pull-right badge bg-green">12</span></a></li>
-                                                  <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
-                                                </ul> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                          <span class="fa fa-angle-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                          <span class="fa fa-angle-right"></span>
-                        </a> -->
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="box box-widget widget-user-2">
-                        <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-green">
-                            <i class="fa fa-h-square"></i><strong> Top Hospitals</strong>
-                        </div>
-                        <div class="box-footer no-padding">
-                            <ul class="nav nav-stacked">
-                                <li><a href="#">ABC <span class="pull-right badge bg-blue">31</span></a></li>
-                                <li><a href="#">XYZ <span class="pull-right badge bg-aqua">5</span></a></li>
-                                <li><a href="#">NOOOOOO <span class="pull-right badge bg-green">12</span></a></li>
-                                <li><a href="#">YESSSS<span class="pull-right badge bg-red">842</span></a></li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </div><!-- /.content-wrapper -->
 
 
@@ -370,12 +156,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $(document).off('.datepicker.data-api');
         $('#datepicker').datepicker({
             format: "dd/mm/yyyy",
-            todayHighlight: true
-
+            todayHighlight: true,
+            autoclose: true
         });
         $('#datepicker').datepicker('update', new Date());
     });
 </script>
+<!--For auto complete place-->
+<script src="jquery.easy-autocomplete.min.js"></script>
+<script src="predefined_areas.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

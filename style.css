@@ -1,8 +1,13 @@
 .div-img {
  	background: url("dist/img/background.jpg") no-repeat center;
  	background-size: 100% 100%;
- 	/*min-height: 500px;
- 	min-width: 1000px;*/
+ 	height: auto;
+ 	/*min-width: 1000px;*/
+}
+
+.vertical-align-center {
+	display: flex;
+	align-items: center;
 }
 
 .nav-custom{
@@ -15,11 +20,11 @@
 .panel-transparent {
         background: none;
         border: none;
- }
+}
 
- .panel-transparent .panel-body{
+.panel-transparent .panel-body{
         background: rgba(46, 51, 56, 0.1)!important;
- }
+}
 
 .maps{
     width: 100%;
