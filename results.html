@@ -13,28 +13,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
-          th:href="@{/resources/bootstrap/css/bootstrap.min.css}">
+          th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css" th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
     <!-- DatePicker CSS -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
-          th:href="@{/resources/plugins/datepicker/datepicker3.css}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css" th:href="@{/resources/dist/css/AdminLTE.min.css}">
+          th:href="@{/resources/plugins/datepicker/datepicker3.css}"/>
     <!--Autocomplete-->
     <link rel="stylesheet" href="easy-autocomplete.min.css">
     <link rel="stylesheet" href="easy-autocomplete.themes.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css" th:href="@{/resources/style.css}">
+    <link rel="stylesheet" href="style.css" th:href="@{/resources/style.css}"/>
 
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
     <link rel="stylesheet" href="dist/css/skins/skin-purple.min.css"
-          th:href="@{/resources/dist/css/skins/skin-purple.min.css}">
+          th:href="@{/resources/dist/css/skins/skin-purple.min.css}"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -92,7 +92,7 @@ desired effect
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
             <div class="row">
-                <div class="col-lg-7 col-sm-12">
+                <div class="col-lg-8 col-md-8 col-sm-12">
                     <div class="box">
                         <div class="box-header bg-blue">
                             <h3 class="box-title "><i class="fa fa-fw fa-stethoscope"></i><strong> Pick Your
@@ -102,7 +102,9 @@ desired effect
                             <table id="datatable" class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <td></td>
+                                    <td data-sortable="true"></td>
+                                    <td class="hidden" data-field="date" data-sortable="true"
+                                        data-sort-name="_date_data" data-sorter="monthSorter"></td>
                                 </tr>
                                 </thead>
                                 <tbody th:remove="all-but-first">
@@ -118,19 +120,65 @@ desired effect
                                                                              alt="User Avatar"></span>
 
                                             <div class="info-box-content">
-                                                <span class="info-box-text"><a
-                                                        th:utext=" '<strong>'+${doctor.name}+'</strong>' "><strong>Doctor's
-                                                    Name</strong></a></span>
-                                                <span class="info-box-text"
-                                                      th:utext=" '<strong>Speciality : </strong>'+${doctor.specialityText} "><strong>Speciality
-                                                    : </strong>Neurology</span>
-                                                <span class="info-box-text" th:text="${doctor.degrees}">Degrees & Bla Blahs</span>
-                                                <span class="info-box-text"
-                                                      th:text="${doctor.hospitalName}">Hospital</span>
-                                            </div><!-- /.info-box-content -->
+                                                <!--<div class="row">-->
+                                                    <div class="col-md-9 col-lg-9">
+                                                        <span class="info-box-text" style="font-size: 16px;"><a
+                                                                th:utext=" '<strong>'+${doctor.name}+'</strong>' "><strong>Doctor's
+                                                            Name10</strong></a></span>
+                                                        <span class="info-box-text"
+                                                              th:utext=" '<strong>Speciality : </strong>'+${doctor.specialityText} "><strong>Speciality
+                                                            : </strong>Neurology</span>
+                                                                <span class="info-box-text" th:text="${doctor.degrees}">Degrees & Bla Blahs</span>
+                                                        <span class="info-box-text" style="font-size: 15px;"
+                                                              th:utext="'<strong>'+${doctor.hospitalName}+'<strong>'">
+                                                            <strong>Hospital</strong></span>
+                                                    </div>
+                                                    <div class="col-md-3 col-lg-3">
+                                                        <span class="star-icon full two">☆☆☆</span>
+                                                        <p>Distance ~ 3 km</p>
+                                                    </div>
+                                                <!--</div>-->
+                                            </div>
                                         </div>
                                         <!-- Search Results -->
                                     </td>
+                                    <td class="hidden" data-rating="10">aa</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="info-box">
+                                            <span class="info-box-icon"><img class="img" src="dist/img/noimage.jpg"
+                                                                             alt="User Avatar"></span>
+
+                                            <div class="info-box-content">
+                                                <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
+                                                    Name1</strong></a></span>
+                                                <span class="info-box-text"><strong>Speciality
+                                                    : </strong>Neurology</span>
+                                                <span class="info-box-text">Degrees & Bla Blahs</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="hidden" data-rating="1">aa</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <!-- Search Results -->
+                                        <div class="info-box">
+                                            <span class="info-box-icon"><img class="img" src="dist/img/noimage.jpg"
+                                                                             th:src="@{resources/dist/img/user7-128x128.jpg}"
+                                                                             alt="User Avatar"></span>
+
+                                            <div class="info-box-content">
+                                                <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
+                                                    Name</strong></a></span>
+                                                <span class="info-box-text"><strong>Speciality
+                                                    : </strong>Neurology</span>
+                                                <span class="info-box-text">Degrees & Bla Blahs</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="hidden" data-rating="1">aa</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -147,6 +195,7 @@ desired effect
                                             </div><!-- /.info-box-content -->
                                         </div>
                                     </td>
+                                    <td class="hidden" data-rating="1">aa</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -166,41 +215,7 @@ desired effect
                                         </div>
                                         <!-- Search Results -->
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="info-box">
-                                            <span class="info-box-icon"><img class="img" src="dist/img/noimage.jpg"
-                                                                             alt="User Avatar"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                    Name</strong></a></span>
-                                                <span class="info-box-text"><strong>Speciality
-                                                    : </strong>Neurology</span>
-                                                <span class="info-box-text">Degrees & Bla Blahs</span>
-                                            </div><!-- /.info-box-content -->
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- Search Results -->
-                                        <div class="info-box">
-                                            <span class="info-box-icon"><img class="img" src="dist/img/noimage.jpg"
-                                                                             th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                                             alt="User Avatar"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                    Name</strong></a></span>
-                                                <span class="info-box-text"><strong>Speciality
-                                                    : </strong>Neurology</span>
-                                                <span class="info-box-text">Degrees & Bla Blahs</span>
-                                            </div><!-- /.info-box-content -->
-                                        </div>
-                                        <!-- Search Results -->
-                                    </td>
+                                    <td class="hidden" data-rating="1">aa</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -218,6 +233,7 @@ desired effect
                                             </div><!-- /.info-box-content -->
                                         </div>
                                     </td>
+                                    <td class="hidden" data-rating="1">aa</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -238,6 +254,7 @@ desired effect
                                         </div>
                                         <!-- Search Results -->
                                     </td>
+                                    <td class="hidden" data-rating="1">aa</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -255,43 +272,7 @@ desired effect
                                             </div><!-- /.info-box-content -->
                                         </div>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <!-- Search Results -->
-                                        <div class="info-box">
-                                            <span class="info-box-icon"><img class="img"
-                                                                             src="dist/img/user7-128x128.jpg"
-                                                                             th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                                             alt="User Avatar"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                    Name</strong></a></span>
-                                                <span class="info-box-text"><strong>Speciality
-                                                    : </strong>Neurology</span>
-                                                <span class="info-box-text">Degrees & Bla Blahs</span>
-                                            </div><!-- /.info-box-content -->
-                                        </div>
-                                        <!-- Search Results -->
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="info-box">
-                                            <span class="info-box-icon"><img class="img"
-                                                                             src="dist/img/user7-128x128.jpg"
-                                                                             alt="User Avatar"></span>
-
-                                            <div class="info-box-content">
-                                                <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                    Name</strong></a></span>
-                                                <span class="info-box-text"><strong>Speciality
-                                                    : </strong>Neurology</span>
-                                                <span class="info-box-text">Degrees & Bla Blahs</span>
-                                            </div><!-- /.info-box-content -->
-                                        </div>
-                                    </td>
+                                    <td class="hidden" data-rating="1">aa</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -312,6 +293,7 @@ desired effect
                                         </div>
                                         <!-- Search Results -->
                                     </td>
+                                    <td class="hidden" data-rating="1">aa</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -329,13 +311,53 @@ desired effect
                                             </div><!-- /.info-box-content -->
                                         </div>
                                     </td>
+                                    <td class="hidden" data-rating="1">aa</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <!-- Search Results -->
+                                        <div class="info-box">
+                                            <span class="info-box-icon"><img class="img"
+                                                                             src="dist/img/user7-128x128.jpg"
+                                                                             th:src="@{resources/dist/img/user7-128x128.jpg}"
+                                                                             alt="User Avatar"></span>
+
+                                            <div class="info-box-content">
+                                                <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
+                                                    Name</strong></a></span>
+                                                <span class="info-box-text"><strong>Speciality
+                                                    : </strong>Neurology</span>
+                                                <span class="info-box-text">Degrees & Bla Blahs</span>
+                                            </div><!-- /.info-box-content -->
+                                        </div>
+                                        <!-- Search Results -->
+                                    </td>
+                                    <td class="hidden" data-rating="1">aa</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="info-box">
+                                            <span class="info-box-icon"><img class="img"
+                                                                             src="dist/img/user7-128x128.jpg"
+                                                                             alt="User Avatar"></span>
+
+                                            <div class="info-box-content">
+                                                <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
+                                                    Name</strong></a></span>
+                                                <span class="info-box-text"><strong>Speciality
+                                                    : </strong>Neurology</span>
+                                                <span class="info-box-text">Degrees & Bla Blahs</span>
+                                            </div><!-- /.info-box-content -->
+                                        </div>
+                                    </td>
+                                    <td class="hidden" data-rating="1">aa</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div><!-- /.box-body -->
                     </div>
                 </div>
-                <div class="col-lg-5 col-sm-12">
+                <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="box box-warning">
                         <div class="box-header with-border">
                             <h3 class="box-title">Nearest Doctors</h3>
@@ -349,10 +371,13 @@ desired effect
                     </div>
                     <form role="form" action="/searchdoctor" method="post">
                         <div class="dropdown">
-                            <select id="speciality" name="speciality" class="form-control select-custom1" th:attr="data-speciality=${selectedSpeciality}">
+                            <select id="speciality" name="speciality" class="form-control select-custom1"
+                                    th:attr="data-speciality=${selectedSpeciality}">
                                 <option value="one" selected disabled>Pick A Speciality</option>
-                                <option th:each="speciality : ${specialityList}" th:text="${speciality.description}" th:value="${speciality.id}"
-                                        style="color: black; background-color: transparent;">One</option>
+                                <option th:each="speciality : ${specialityList}" th:text="${speciality.description}"
+                                        th:value="${speciality.id}"
+                                        style="color: black; background-color: transparent;">One
+                                </option>
                             </select>
                         </div>
                         <div class="row">&nbsp;</div>
@@ -360,7 +385,7 @@ desired effect
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input id="datepicker" name="date" type="text"
+                            <input id="datepicker" name="date"
                                    class="form-control pull-right datepicker"/>
                         </div>
                         <div class="form-group input-group">
@@ -393,57 +418,60 @@ desired effect
 <script src="plugins/jQuery/jQuery-2.1.4.min.js" th:src="@{/resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="bootstrap/js/bootstrap.min.js" th:src="@{/resources/bootstrap/js/bootstrap.min.js}"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js" th:src="@{/resources/dist/js/app.min.js}"></script>
 <!-- DataTables -->
 <script src="plugins/datatables/jquery.dataTables.min.js"
         th:src="@{/resources/plugins/datatables/jquery.dataTables.min.js}"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"
         th:src="@{/resources/plugins/datatables/dataTables.bootstrap.min.js}"></script>
 <script type="text/javascript">
-
     $(document).ready(function () {
 
         $('#datatable').DataTable({
             searching: false,
             ordering: false,
             lengthChange: false,
-            dom: '<"#head1.row"<"col-sm-12"<"pull-right" p>>>t'
+            dom: 't<"#head1.row"<"col-sm-12"<"pull-right" p>>>'
         });
 
         $('#datatable').DataTable().page.len(5).draw();
 
     });
 </script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js" th:src="@{/resources/dist/js/app.min.js}"></script>
+<!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{/resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
-<!-- Datepicker -->
-<script type="text/javascript">
+<script>
     $(document).ready(function () {
         $(document).off('.datepicker.data-api');
         $('#datepicker').datepicker({
             format: "dd/mm/yyyy",
             todayHighlight: true,
-            autoclose : true
+            autoclose: true,
+            startDate : new Date()
         });
-        $('#datepicker').datepicker('update', new Date());
+        $('#datepicker').datepicker('setDate', new Date(2016, 02, 02));
     });
 </script>
 <!--Search Results Click Function-->
 <script type="text/javascript">
     $(document).ready(function () {
-        $(document).on('click','tr',function() {
-            var href = $(this).children("td.border-zero").data("href");
-            var user = $(this).children("td.border-zero").data("user");
-            var profileUrl = href + '' + user;
-            console.log(profileUrl);
-            window.location.href = profileUrl;
+        $(document).on('click', 'tr', function () {
+            if($(this).children("td.border-zero").data("user")){
+                console.log('user found');
+                var href = $(this).children("td.border-zero").data("href");
+                var user = $(this).children("td.border-zero").data("user");
+                var profileUrl = href + '' + user;
+                console.log(profileUrl);
+                window.location.href = profileUrl;
+            }
         });
     });
 </script>
 <!--Select the correct value for dropdown -->
 <script>
-    $(document).ready(function (){
+    $(document).ready(function () {
         $("#speciality").val($("#speciality").data("speciality"));
     });
 </script>
@@ -452,7 +480,7 @@ desired effect
 <script src="jquery.easy-autocomplete.min.js"></script>
 <script src="predefined_areas.js"></script>
 <script>
-    $(document).ready(function (){
+    $(document).ready(function () {
         $("#placesearch").val('javascript');
     });
 </script>
@@ -464,18 +492,25 @@ desired effect
 <!-- geocode try -->
 <script type="text/javascript" th:inline="javascript">
 
-    function placeDoctors(){
+    function placeDoctors() {
         console.log('in place doctor');
         var docList = [[${doctorList}]];
-        if(geoCoderInitialized){
+        if (geoCoderInitialized) {
             console.log('geocoder initialized');
-            for(var a=0; a<docList.length; a++){
+            for (var a = 0; a < docList.length; a++) {
                 geoCode(docList[a], true);
             }
         }
     }
 </script>
-
+<script>
+    function monthSorter(a, b) {
+        console.log('method called');
+        if (a.rating < b.rating) return -1;
+        if (a.rating > b.rating) return 1;
+        return 0;
+    }
+</script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

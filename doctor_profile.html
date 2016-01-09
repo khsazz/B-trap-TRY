@@ -88,10 +88,12 @@ desired effect
     <div class="content-wrapper">
         <!-- Main content -->
         <section class="content">
-
             <!-- Your Page Content Here -->
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
+            <!-- Button trigger modal -->
+
+
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
                     <div class="box box-primary">
@@ -217,11 +219,11 @@ desired effect
                             </form>
                         </div>
                     </div><!-- /.box-body -->
-                    <div class="box box-solid bg-aqua-gradient">
-                        <div class="box-body">
-                            <div id="calendar"></div>
-                        </div>
-                    </div>
+                    <!--<div class="box box-solid bg-aqua-gradient">-->
+                        <!--<div class="box-body">-->
+                            <!--<div id="calendar"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <div class="box box-warning">
                         <div class="box-header with-border">
                             <h3 class="box-title">Location</h3>
@@ -269,7 +271,7 @@ desired effect
 <!-- Calender  -->
 <script type="text/javascript">
     $(document).ready(function () {
-
+        $('#myModal').appendTo("body");
         // page is now ready, initialize the calendar...
 
         $('#calendar').fullCalendar({
@@ -308,5 +310,35 @@ desired effect
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="modshow()">
+    Launch demo modal
+</button>
+<script>
+    function modshow(){
+        console.log('log');
+        $('#myModal').toggle();
+    }
+
+</script>
 </body>
 </html>

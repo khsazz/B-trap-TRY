@@ -52,6 +52,47 @@
 	border: 0;
 }
 
+/*star icon*/
+.star-icon {
+	color: #ddd;
+	font-size: 2em;
+	position: relative;
+}
+/*.star-icon.full:before {*/
+	/*text-shadow: 0 0 2px rgba(0,0,0,0.7);*/
+	/*color: #FDE16D;*/
+	/*content: '\2605'; !* Full star in UTF-8 *!*/
+	/*position: absolute;*/
+	/*left: 0;*/
+/*}*/
+.star-icon.full:before {
+	text-shadow: 0 0 2px rgba(0,0,0,0.7);
+	color: #FDE16D;
+	position: absolute;
+	left: 0;
+}
+.star-icon.two:before {
+	content: '\2605\2605'; /* Full star in UTF-8 */
+}
+.star-icon.three:before {
+	content: '\2605\2605\2605'; /* Full star in UTF-8 */
+}
+.star-icon.half:before {
+	text-shadow: 0 0 2px rgba(0,0,0,0.7);
+	color: #FDE16D;
+	content: '\2605'; /* Full star in UTF-8 */
+	position: absolute;
+	left: 0;
+	width: 50%;
+	overflow: hidden;
+}
+@-moz-document url-prefix() { /* Firefox Hack :( */
+	.star-icon {
+		font-size: 50px;
+		line-height: 34px;
+	}
+}
+
 /* or if you want no repeat just stretch 
 background:  url("pathtoimage/image.png") no-repeat center center fixed; 
 -webkit-background-size: cover;

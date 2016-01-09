@@ -157,7 +157,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $('#datepicker').datepicker({
             format: "dd/mm/yyyy",
             todayHighlight: true,
-            autoclose: true
+            autoclose: true,
+            startDate : new Date()
         });
         $('#datepicker').datepicker('update', new Date());
     });
