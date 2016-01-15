@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Doctor - ABCXYZ</title>
+    <title th:text="${doctor.name}">Doctor - ABCXYZ</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
           th:href="@{/resources/bootstrap/css/bootstrap.min.css}">
+    <!--Font Family-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css" th:href="@{/resources/style.css}">
+    <link rel="stylesheet" href="custom/style.css"
+          th:href="@{/resources/custom/style.css}">
     <!-- Full Calender -->
     <link rel='stylesheet' href="plugins/fullcalendar/fullcalendar.css"
           th:href="@{/resources/plugins/fullcalendar/fullcalendar.css}"/>
@@ -32,10 +31,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css" th:href="@{/resources/dist/css/AdminLTE.min.css}">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
     <link rel="stylesheet" href="dist/css/skins/skin-red.min.css"
           th:href="@{/resources/dist/css/skins/skin-red.min.css}">
 
@@ -75,8 +70,7 @@ desired effect
         <nav class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="#" class="navbar-brand  nav-custom"><b>Doctor Koi</b>
-                        <!-- <img src="dist/img/soft.png" height="40" width="140" alt=""></img> -->
+                    <a href="/home" class="navbar-brand  nav-custom"><b>Doctor Koi</b>
                     </a>
                 </div>
             </div>
@@ -91,8 +85,6 @@ desired effect
             <!-- Your Page Content Here -->
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
-            <!-- Button trigger modal -->
-
 
             <div class="row">
                 <div class="col-lg-6 col-sm-12">
@@ -101,82 +93,110 @@ desired effect
                             <img class="profile-user-img img-responsive img-circle" src="dist/img/noimage.jpg"
                                  th:src="@{/resources/dist/img/noimage.jpg}" alt="User profile picture">
 
-                            <h3 class="profile-username text-center" th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
-                                <strong>My name is KHAN</strong></h3>
+                            <h3 class="profile-username text-center"
+                                th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
+                                <strong>My name is KHAN</strong>
+                            </h3>
 
-                            <p class="text-muted text-center" th:text="${doctor.degrees}">I have a lot of degrees</p>
+                            <p class="text-muted text-center"
+                               th:text="${doctor.degrees}">
+                                I have a lot of degrees
+                            </p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
-                                    <b>SPECIALITY</b> <a class="pull-right" th:text="${speciality.description}">text or
-                                    number</a>
+                                    <b>SPECIALITY</b>
+                                    <a class="pull-right" th:text="${speciality.description}">
+                                        text or number
+                                    </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>HOSPITAL</b> <a class="pull-right" th:text="${hospital.name}">text or number</a>
+                                    <b>HOSPITAL</b>
+                                    <a class="pull-right" th:text="${hospital.name}">
+                                        text or number
+                                    </a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>LOCATION</b> <a class="pull-right" th:text="${hospital.location}">text or
-                                    number</a>
+                                    <b>LOCATION</b>
+                                    <a class="pull-right" th:text="${hospital.location}">
+                                        text or number
+                                    </a>
                                 </li>
                             </ul>
-
-                            <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
-                        </div><!-- /.box-body -->
+                        </div>
                     </div>
                     <div class="box box-info box-solid">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><i class="glyphicon glyphicon-time"></i><strong> Time
-                                Schedule</strong></h3>
-                            <!-- <div class="box-tools pull-right">
-                              <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                            </div> --><!-- /.box-tools -->
-                        </div><!-- /.box-header -->
+                            <h3 class="box-title">
+                                <i class="glyphicon glyphicon-time"></i>
+                                <strong> Time Schedule</strong>
+                            </h3>
+                        </div>
                         <div class="box-body">
                             <ul class="list-group">
                                 <li class="list-group-item">
                                     <h4 class="text-light-blue"><strong>Saturday </strong>
-                                        <span class="label label-success pull-right">10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM</span>
+                                        <span class="label label-success pull-right">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
                                     </h4>
                                 </li>
                                 <li class="list-group-item">
                                     <h4 class="text-light-blue"><strong>Sunday </strong>
-                                        <span class="label label-success pull-right">10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM</span>
+                                        <span class="label label-success pull-right">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
                                     </h4>
                                 </li>
                                 <li class="list-group-item">
                                     <h4 class="text-light-blue"><strong>Monday </strong>
-                                        <span class="label label-danger pull-right">Not Available</span></h4>
+                                        <span class="label label-danger pull-right">
+                                            Not Available
+                                        </span>
+                                    </h4>
                                 </li>
                                 <li class="list-group-item">
                                     <h4 class="text-light-blue"><strong>Tuesday </strong>
-                                        <span class="label label-success pull-right">10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM</span>
+                                        <span class="label label-success pull-right">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
                                     </h4>
                                 </li>
                                 <li class="list-group-item">
                                     <h4 class="text-light-blue"><strong>Wednesday </strong>
-                                        <span class="label label-success pull-right">10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM</span>
+                                        <span class="label label-success pull-right">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
                                     </h4>
                                 </li>
                                 <li class="list-group-item">
                                     <h4 class="text-light-blue"><strong>Thursday </strong>
-                                        <span class="label label-success pull-right">10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM</span>
+                                        <span class="label label-success pull-right">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
                                     </h4>
                                 </li>
                                 <li class="list-group-item">
                                     <h4 class="text-light-blue"><strong>Monday </strong>
-                                        <span class="label label-danger pull-right">Not Available</span></h4>
+                                        <span class="label label-danger pull-right">
+                                            Not Available
+                                        </span>
+                                    </h4>
                                 </li>
                             </ul>
-                        </div><!-- /.box-body -->
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6 col-sm-12">
                     <div class="box box-info box-solid">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><i class="glyphicon glyphicon-hand-right"></i><strong> Make Your
-                                Appoinment</strong></h3>
-                        </div><!-- /.box-header -->
+                            <h3 class="box-title">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                                <strong> Make Your Appoinment</strong>
+                            </h3>
+                        </div>
+
                         <div class="box-body">
                             <form action="">
                                 <div class="row">
@@ -250,14 +270,16 @@ desired effect
 </div><!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-
-<!-- Bootstrap 3.3.5 -->
-<script src="bootstrap/js/bootstrap.min.js" th:src="@{/resources/bootstrap/js/bootstrap.min.js}"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js" th:src="@{/resources/dist/js/app.min.js}"></script>
-
 <!-- jQuery 2.1.4 -->
-<script src="plugins/jQuery/jQuery-2.1.4.min.js" th:src="@{/resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"
+        th:src="@{/resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bootstrap/js/bootstrap.min.js"
+        th:src="@{/resources/bootstrap/js/bootstrap.min.js}"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"
+        th:src="@{/resources/dist/js/app.min.js}"></script>
+
 <script src="plugins/daterangepicker/moment.min.js"
         th:src="@{/resources/plugins/daterangepicker/moment.min.js}"></script>
 <script src="plugins/fullcalendar/fullcalendar.js"
@@ -271,7 +293,7 @@ desired effect
 <!-- Calender  -->
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#myModal').appendTo("body");
+//        $('#myModal').appendTo("body");
         // page is now ready, initialize the calendar...
 
         $('#calendar').fullCalendar({
@@ -300,11 +322,18 @@ desired effect
     });
 </script>
 <!-- Custom Google Map -->
-<script src="mymap.js"
-        th:src="@{/resources/mymap.js}"></script>
-<!-- Google Maps -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
-<!-- Google Maps -->
+<script src="custom/mymap.js"
+        th:src="@{/resources/custom/mymap.js}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initProfileMap"></script>
+<!-- geocode try -->
+<script type="text/javascript" th:inline="javascript">
+
+    function placeHospitals() {
+        var foundHospital = [[${hospital}]];
+        placeMarkerAtHospital(foundHospital);
+        fitAllMarkers();
+    }
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
@@ -314,7 +343,9 @@ desired effect
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
@@ -330,9 +361,9 @@ desired effect
 
 <!-- Modal -->
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="modshow()">
-    Launch demo modal
-</button>
+<!--<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="modshow()">-->
+    <!--Launch demo modal-->
+<!--</button>-->
 <script>
     function modshow(){
         console.log('log');
