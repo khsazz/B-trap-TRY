@@ -1,7 +1,11 @@
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
 .div-img {
- 	background: url("../dist/img/background.jpg") no-repeat center;
+ 	background: url("dist/img/background.jpg") no-repeat center;
  	background-size: 100% 100%;
- 	height: auto;
+ 	height: 100%;
  	/*min-width: 1000px;*/
 }
 
@@ -71,11 +75,14 @@
 	position: absolute;
 	left: 0;
 }
-.star-icon.two:before {
-	content: '\2605\2605'; /* Full star in UTF-8 */
-}
 .star-icon.three:before {
 	content: '\2605\2605\2605'; /* Full star in UTF-8 */
+}
+.star-icon.four:before {
+	content: '\2605\2605\2605\2605'; /* Full star in UTF-8 */
+}
+.star-icon.five:before {
+	content: '\2605\2605\2605\2605\2605'; /* Full star in UTF-8 */
 }
 .star-icon.half:before {
 	text-shadow: 0 0 2px rgba(0,0,0,0.7);
