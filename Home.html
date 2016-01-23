@@ -32,15 +32,15 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="custom/style.css"
           th:href="@{/resources/custom/style.css}"/>
-    <link rel="stylesheet" href="dist/css/skins/skin-green.min.css"
-          th:href="@{resources/dist/css/skins/skin-green.min.css}"/>
+    <link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css"
+          th:href="@{/resources/dist/css/skins/skin-blue-light.min.css}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 </head>
 
-<body class="skin-green layout-top-nav">
+<body class="skin-blue-light layout-top-nav">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -49,7 +49,7 @@
         <nav class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/home" class="navbar-brand  nav-custom"><b> Doctor Koi</b>
+                    <a href="/home" class="navbar-brand  nav-custom"><b>DoctorKoi</b>
                     </a>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                             <form role="form" action="/searchdoctor" method="post">
                                 <div class="dropdown">
                                     <select name="speciality" class="form-control select-custom1">
-                                        <option value="0" selected disabled>Pick A Speciality</option>
+                                        <option value="0" disabled>Pick A Speciality</option>
                                         <option th:each="speciality : ${specialityList}"
                                                 th:text="${speciality.description}" th:value="${speciality.id}"
                                                 style="color: black; background-color: transparent;">One

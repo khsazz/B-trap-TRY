@@ -19,9 +19,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="custom/style.css"
           th:href="@{/resources/custom/style.css}">
-    <!-- Full Calender -->
-    <link rel='stylesheet' href="plugins/fullcalendar/fullcalendar.css"
-          th:href="@{/resources/plugins/fullcalendar/fullcalendar.css}"/>
     <!-- DatePicker CSS -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
           th:href="@{/resources/plugins/datepicker/datepicker3.css}">
@@ -310,31 +307,12 @@
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"
         th:src="@{/resources/dist/js/app.min.js}"></script>
-
-<script src="plugins/daterangepicker/moment.min.js"
-        th:src="@{/resources/plugins/daterangepicker/moment.min.js}"></script>
-<script src="plugins/fullcalendar/fullcalendar.js"
-        th:src="@{/resources/plugins/fullcalendar/fullcalendar.js}"></script>
+<!-- TimePicker -->
 <script src="plugins/timepicker/bootstrap-timepicker.min.js"
         th:src="@{/resources/plugins/timepicker/bootstrap-timepicker.min.js}"></script>
 <!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{/resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
-
-<!-- Calender  -->
-<script type="text/javascript">
-    $(document).ready(function () {
-//        $('#myModal').appendTo("body");
-        // page is now ready, initialize the calendar...
-
-        $('#calendar').fullCalendar({
-            // put your options and callbacks here
-            height: 300
-            // contentHeight: 60
-        })
-
-    });
-</script>
 
 <!-- timpicker -->
 <script type="text/javascript">
