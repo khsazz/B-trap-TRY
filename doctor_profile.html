@@ -44,7 +44,7 @@
         <nav class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/home" class="navbar-brand  nav-custom"><b>Doctor Koi</b>
+                    <a href="/home" class="navbar-brand  nav-custom"><b>DoctorKoi</b>
                     </a>
                 </div>
             </div>
@@ -72,8 +72,11 @@
                                 <strong>My name is KHAN</strong>
                             </h3>
 
-                            <p class="text-muted text-center"
-                               th:text="${doctor.degrees}">
+                            <p class="text-muted text-center" th:text="${doctor.degrees}">
+                                I have a lot of degrees
+                            </p>
+
+                            <p class="text-muted text-center font-16" th:text="${doctor.designation}">
                                 I have a lot of degrees
                             </p>
 
@@ -96,6 +99,12 @@
                                         text or number
                                     </a>
                                 </li>
+                                <li class="list-group-item">
+                                    <b>VISITING COST</b>
+                                    <a class="pull-right" th:text="'BDT '+${doctor.cost}">
+                                        text or number
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -114,51 +123,79 @@
                         <div class="box-body">
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    <h4 class="text-light-blue"><strong>Saturday </strong>
-                                        <span class="label label-success pull-right">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue"><strong>Sunday </strong>
-                                        <span class="label label-success pull-right">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue"><strong>Monday </strong>
-                                        <span class="label label-danger pull-right">
+                                    <h4 class="text-light-blue">
+                                        <strong>Saturday </strong>
+                                        <span th:unless="${availability.sat}" class="label label-danger pull-right">
                                             Not Available
                                         </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue"><strong>Tuesday </strong>
-                                        <span class="label label-success pull-right">
+                                        <span th:if="${availability.sat}" class="label label-success pull-right" th:text="${availability.start_end}">
                                             10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
                                         </span>
                                     </h4>
                                 </li>
                                 <li class="list-group-item">
-                                    <h4 class="text-light-blue"><strong>Wednesday </strong>
-                                        <span class="label label-success pull-right">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue"><strong>Thursday </strong>
-                                        <span class="label label-success pull-right">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue"><strong>Monday </strong>
-                                        <span class="label label-danger pull-right">
+                                    <h4 class="text-light-blue">
+                                        <strong>Sunday </strong>
+                                        <span th:unless="${availability.sun}" class="label label-danger pull-right">
                                             Not Available
+                                        </span>
+                                        <span th:if="${availability.sun}" class="label label-success pull-right" th:text="${availability.start_end}">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
+                                    </h4>
+                                </li>
+                                <li class="list-group-item">
+                                    <h4 class="text-light-blue">
+                                        <strong>Monday </strong>
+                                        <span th:unless="${availability.mon}" class="label label-danger pull-right">
+                                            Not Available
+                                        </span>
+                                        <span th:if="${availability.mon}" class="label label-success pull-right" th:text="${availability.start_end}">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
+                                    </h4>
+                                </li>
+                                <li class="list-group-item">
+                                    <h4 class="text-light-blue">
+                                        <strong>Tuesday </strong>
+                                        <span th:unless="${availability.tue}" class="label label-danger pull-right">
+                                            Not Available
+                                        </span>
+                                        <span th:if="${availability.tue}" class="label label-success pull-right" th:text="${availability.start_end}">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
+                                    </h4>
+                                </li>
+                                <li class="list-group-item">
+                                    <h4 class="text-light-blue">
+                                        <strong>Wednesday </strong>
+                                        <span th:unless="${availability.wed}" class="label label-danger pull-right">
+                                            Not Available
+                                        </span>
+                                        <span th:if="${availability.wed}" class="label label-success pull-right" th:text="${availability.start_end}">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
+                                    </h4>
+                                </li>
+                                <li class="list-group-item">
+                                    <h4 class="text-light-blue">
+                                        <strong>Thursday </strong>
+                                        <span th:unless="${availability.thu}" class="label label-danger pull-right">
+                                            Not Available
+                                        </span>
+                                        <span th:if="${availability.thu}" class="label label-success pull-right" th:text="${availability.start_end}">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
+                                        </span>
+                                    </h4>
+                                </li>
+                                <li class="list-group-item">
+                                    <h4 class="text-light-blue">
+                                        <strong>Friday </strong>
+                                        <span th:unless="${availability.fri}" class="label label-danger pull-right">
+                                            Not Available
+                                        </span>
+                                        <span th:if="${availability.fri}" class="label label-success pull-right" th:text="${availability.start_end}">
+                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
                                         </span>
                                     </h4>
                                 </li>
@@ -195,18 +232,18 @@
                         </div>
 
                         <div class="box-body">
-                            <form action="">
+                            <form action="/createbooking" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group input-group">
                                             <span class="input-group-addon" id="sizing-addon1">Booking Name</span>
                                             <input type="text" class="form-control" placeholder="Enter your name"
-                                                   aria-describedby="sizing-addon1" required/>
+                                                   aria-describedby="sizing-addon1" name="patient_name" required/>
                                         </div>
                                         <div class="form-group input-group">
                                             <span class="input-group-addon" id="sizing-addon2">Mobile Number</span>
                                             <input type="number" class="form-control" placeholder="Mobile No"
-                                                   aria-describedby="sizing-addon2" required/>
+                                                   aria-describedby="sizing-addon2" name="patient_mobile" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -215,7 +252,7 @@
                                         <div class="form-group">
                                             <div class="input-group" style="z-index: 100000 !important;">
                                                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                <input id="datepicker" type="text"
+                                                <input id="datepicker" type="text" name="date"
                                                        class="form-control pull-right datepicker">
                                             </div>
                                         </div>
@@ -223,9 +260,9 @@
 
                                     <div class="col-sm-6">
                                         <div class="input-group bootstrap-timepicker timepicker">
-                                            <span class="input-group-addon"><i
-                                                    class="glyphicon glyphicon-time"></i></span>
-                                            <input id="timepicker1" type="text" class="form-control input-small">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-time"></i></span>
+                                            <input id="timepicker1" name="time" type="text" class="form-control input-small">
                                         </div>
                                     </div>
                                 </div>
@@ -235,6 +272,9 @@
                                         <i class="glyphicon glyphicon-upload"></i> Book an Appoinment</button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
+                                <input id="doctor" name="doctor" value="" th:value="${doctor.id}" hidden>
+                                <input id="userLat" name="userLat" value="" hidden>
+                                <input id="userLng" name="userLng" value="" hidden>
                             </form>
                         </div>
                     </div>
@@ -324,6 +364,10 @@
         var foundHospital = [[${hospital}]];
         placeMarkerAtHospital(foundHospital);
         fitAllMarkers();
+    }
+    function setUserLocation(lat, lng){
+        $("#userLat").val(lat);
+        $("#userLng").val(lng);
     }
 </script>
 

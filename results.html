@@ -31,8 +31,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="custom/style.css"
           th:href="@{/resources/custom/style.css}"/>
-    <link rel="stylesheet" href="dist/css/skins/skin-purple.min.css"
-          th:href="@{/resources/dist/css/skins/skin-purple.min.css}"/>
+    <link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css"
+          th:href="@{/resources/dist/css/skins/skin-blue-light.min.css}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,7 +61,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="skin-purple layout-top-nav">
+<body class="skin-blue-light layout-top-nav">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -70,17 +70,16 @@ desired effect
         <nav class="navbar navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/home" class="navbar-brand  nav-custom"><b>Doctor Koi</b>
+                    <a href="/home" class="navbar-brand  nav-custom"><b>DoctorKoi</b>
                     </a>
                 </div>
             </div>
         </nav>
     </header>
-    <!-- Left side column. contains the logo and sidebar -->
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Main content -->
+
         <section class="content">
             <!-- Your Page Content Here -->
             <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
@@ -88,27 +87,32 @@ desired effect
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
+
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12">
                     <div class="box">
                         <div class="box-header bg-blue">
                             <h3 class="box-title "><i class="fa fa-fw fa-stethoscope"></i><strong> Pick Your
                                 Doctor</strong></h3>
-                        </div><!-- /.box-header -->
+                        </div>
+
                         <div class="box-body table-responsive no-padding">
+
                             <table id="datatable" class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <td data-sortable="true"></td>
-                                        <td class="hidden" data-field="date" data-sortable="true"
-                                            data-sort-name="_date_data" data-sorter="monthSorter"></td>
+                                        <td></td>
+                                        <!--<td class="hidden" data-field="date" data-sortable="true"-->
+                                            <!--data-sort-name="_date_data" data-sorter="monthSorter"></td>-->
                                     </tr>
                                 </thead>
+
                                 <tbody th:remove="all-but-first">
+
                                     <tr class="clickable-row" th:each="doctor : ${doctorList}">
                                         <td class="search-result-box border-zero" data-href="/doctorprofile/"
                                             th:attr="data-user=${doctor.id}">
-                                            <!-- Search Results -->
+
                                             <div class="info-box custom-margin-top-bottom">
                                                 <span class="info-box-icon">
                                                     <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
@@ -136,7 +140,7 @@ desired effect
                                                         </span>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3">
-                                                        <th:block th:switch="${star}">
+                                                        <th:block th:switch="${doctor.rankValue}">
                                                             <div th:case="3">
                                                                 <span class="star-icon full three">☆☆☆☆☆</span>
                                                             </div>
@@ -153,223 +157,11 @@ desired effect
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- Search Results -->
                                         </td>
-                                        <td class="hidden" data-rating="10">aa</td>
                                     </tr>
-                                    <!--MockUp Start-->
-                                    <tr>
-                                        <td>
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img" src="dist/img/noimage.jpg"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name1</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <!-- Search Results -->
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img" src="dist/img/noimage.jpg"
-                                                                                 th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img" src="dist/img/noimage.jpg"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <!-- Search Results -->
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img" src="dist/img/noimage.jpg"
-                                                                                 th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                            <!-- Search Results -->
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img"
-                                                                                 src="dist/img/user7-128x128.jpg"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <!-- Search Results -->
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img"
-                                                                                 src="dist/img/user7-128x128.jpg"
-                                                                                 th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                            <!-- Search Results -->
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img"
-                                                                                 src="dist/img/user7-128x128.jpg"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <!-- Search Results -->
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img"
-                                                                                 src="dist/img/user7-128x128.jpg"
-                                                                                 th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                            <!-- Search Results -->
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img"
-                                                                                 src="dist/img/user7-128x128.jpg"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <!-- Search Results -->
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img"
-                                                                                 src="dist/img/user7-128x128.jpg"
-                                                                                 th:src="@{resources/dist/img/user7-128x128.jpg}"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                            <!-- Search Results -->
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="info-box">
-                                                <span class="info-box-icon"><img class="img"
-                                                                                 src="dist/img/user7-128x128.jpg"
-                                                                                 alt="User Avatar"></span>
-
-                                                <div class="info-box-content">
-                                                    <span class="info-box-text"><a href="http://www.google.com"><strong>Doctor's
-                                                        Name</strong></a></span>
-                                                    <span class="info-box-text"><strong>Speciality
-                                                        : </strong>Neurology</span>
-                                                    <span class="info-box-text">Degrees & Bla Blahs</span>
-                                                </div><!-- /.info-box-content -->
-                                            </div>
-                                        </td>
-                                        <td class="hidden" data-rating="1">aa</td>
-                                    </tr>
-                                    <!--MockUp End-->
                                 </tbody>
                             </table>
-                        </div><!-- /.box-body -->
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
