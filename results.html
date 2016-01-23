@@ -102,8 +102,6 @@ desired effect
                                 <thead>
                                     <tr>
                                         <td></td>
-                                        <!--<td class="hidden" data-field="date" data-sortable="true"-->
-                                            <!--data-sort-name="_date_data" data-sorter="monthSorter"></td>-->
                                     </tr>
                                 </thead>
 
@@ -297,7 +295,6 @@ desired effect
                 var href = $(this).children("td.border-zero").data("href");
                 var user = $(this).children("td.border-zero").data("user");
                 var profileUrl = href + '' + user;
-                console.log(profileUrl);
                 window.location.href = profileUrl;
             }
         });
@@ -361,13 +358,13 @@ desired effect
         $("#userLng").val(lng);
     }
 </script>
-<script>
-    function monthSorter(a, b) {
-        console.log('method called');
-        if (a.rating < b.rating) return -1;
-        if (a.rating > b.rating) return 1;
-        return 0;
-    }
-</script>
+<!--<script>-->
+    <!--function monthSorter(a, b) {-->
+        <!--console.log('method called');-->
+        <!--if (a.rating < b.rating) return -1;-->
+        <!--if (a.rating > b.rating) return 1;-->
+        <!--return 0;-->
+    <!--}-->
+<!--</script>-->
 </body>
 </html>

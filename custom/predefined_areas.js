@@ -3,10 +3,7 @@
  */
 
 var options = {
-    data: ["Banani", "Dhanmondi", "Gulshan", "Lalbag", "Mohammadpur","Mohakhali",
-        "Uttara", "Motijheel", "Farmgate", "Jatrabari", "Mirpur", "Basundhara", "Baridhara", "Badda", "Khilgaon",
-        "Kakrail", "Gulistan", "Sonargaon",
-        "Nilkhet", "Kataban", "Shahbag", "Old Dhaka", "Paltan", "Panthapath", "Malibag", "Rajuk", "Shantinagar"],
+    data: ["Mirpur", "Dhanmondi", "Gulshan", "Green Road"],
     theme: "blue-light",
     list: {
         match: {

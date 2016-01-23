@@ -54,7 +54,7 @@ function initProfileMap() {
         browserSupportFlag = true;
         navigator.geolocation.getCurrentPosition(function (position) {
             initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            //setUserLocation(position.coords.latitude, position.coords.longitude);
+            setUserLocation(position.coords.latitude, position.coords.longitude);
             //map.setCenter(initialLocation);
             setCurrentPlaceMarker(initialLocation, "You are here!");
             //initGeocoder();
