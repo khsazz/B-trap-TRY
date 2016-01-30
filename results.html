@@ -20,9 +20,14 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css"
           th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
+    <!--BootStrap Select-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css">
     <!-- DatePicker CSS -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
           th:href="@{/resources/plugins/datepicker/datepicker3.css}"/>
+    <link rel='stylesheet' href="plugins/timepicker/bootstrap-timepicker.min.css"
+          th:href="@{/resources/plugins/timepicker/bootstrap-timepicker.min.css}"/>
     <!--Autocomplete-->
     <link rel="stylesheet" href="custom/easy-autocomplete.min.css"
           th:href="@{/resources/custom/easy-autocomplete.min.css}"/>
@@ -89,8 +94,69 @@ desired effect
             <div class="row">&nbsp;</div>
 
             <div class="row">
+                <div class="col-lg-12 hidden-md hidden-sm hidden-xs">
+                    <form role="form" action="/searchdoctor" method="post">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <select id="speciality" name="speciality" class="form-control select-custom1"
+                                    title="Choose a Speciality" th:attr="data-speciality=${selectedSpeciality}">
+                                <optgroup label="Popular Speciality">
+                                    <option value="1">Cardiology</option>
+                                    <option value="3">Dentistry</option>
+                                    <option value="4">Dermatology (e.g. Skin)</option>
+                                    <option value="9">Gastroenterology</option>
+                                    <option value="10">Gynecology & Obstetrics</option>
+                                    <option value="19">Orthopaedics (e.g. Fractures, Bones etc.)</option>
+                                    <option value="14">Medicine</option>
+                                    <option value="7">E.N.T</option>
+                                    <option value="8">Eye</option>
+                                    <option value="20">Paediatrics (Child)</option>
+                                </optgroup>
+                                <optgroup label="All Speciality">
+                                    <option th:each="speciality : ${specialityList}"
+                                            th:text="${speciality.description}" th:value="${speciality.id}">
+                                    </option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="form-group input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input id="datepicker" name="date" class="form-control pull-right datepicker"
+                                       th:attr="data-day=${selectedDay},
+                                   data-month=${selectedMonth}, data-year=${selectedYear}"/>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon" id="sizing-addon">Search near</span>
+                                <input id="placesearch" name="place" class="form-control" aria-describedby="sizing-addon1"
+                                       th:attr="data-place=${selectedPlace}"/>
+                            </div>
+                        </div>
+                        <div id="hospitalList" class="col-lg-3 col-md-3 col-sm-3 dropdown">
+                            <select id="hospital" name="hospital" class="form-control select-custom1"
+                                    th:attr="data-hospital=${selectedHospital}">
+                                <option value="0" selected disabled>Pick A Hospital</option>
+                                <option th:each="hospital : ${hospitalList}"
+                                        th:text="${hospital.name}" th:value="${hospital.id}"
+                                        style="color: black; background-color: transparent;">One
+                                </option>
+                            </select>
+                        </div>
+                        <input id="userLat" name="userLat" value="" hidden>
+                        <input id="userLng" name="userLng" value="" hidden>
+                        <div class="col-lg-2 col-lg-offset-5">
+                            <button type="submit" class="btn btn-primary btn-block">Search Again</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12">
-                    <div class="box">
+                    <div class="box box-primary">
                         <div class="box-header bg-blue">
                             <h3 class="box-title "><i class="fa fa-fw fa-stethoscope"></i><strong> Pick Your
                                 Doctor</strong></h3>
@@ -100,70 +166,72 @@ desired effect
 
                             <table id="datatable" class="table table-hover">
                                 <thead>
-                                    <tr>
-                                        <td></td>
-                                    </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
                                 </thead>
 
                                 <tbody th:remove="all-but-first">
 
-                                    <tr class="clickable-row" th:each="doctor : ${doctorList}">
-                                        <td class="search-result-box border-zero" data-href="/doctorprofile/"
-                                            th:attr="data-user=${doctor.id}">
+                                <tr class="clickable-row" th:each="doctor : ${doctorList}">
+                                    <td class="search-result-box border-zero" data-href="/doctorprofile/"
+                                        th:attr="data-user=${doctor.id}">
 
-                                            <div class="info-box custom-margin-top-bottom">
+                                        <div class="info-box  box-shadow-zero custom-margin-top-bottom">
                                                 <span class="info-box-icon">
                                                     <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
                                                          th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
                                                 </span>
 
-                                                <div class="info-box-content">
-                                                    <div class="col-lg-9 col-md-9">
+                                            <div class="info-box-content">
+                                                <div class="col-lg-9 col-md-9">
                                                         <span class="info-box-text" style="font-size: 16px;">
                                                             <a th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
                                                                 <strong>Doctor's Name10</strong>
                                                             </a>
                                                         </span>
-                                                        <span class="info-box-text"
-                                                              th:utext=" '<strong>Speciality : </strong>'+${doctor.specialityText}">
+                                                        <span class="info-box-text" style="font-size: 12px;" th:utext="${doctor.specialityText}">
                                                             <strong>Speciality : </strong>Neurology
                                                         </span>
-                                                        <span class="info-box-text"
-                                                              th:text="${doctor.degrees}">
+                                                        <span th:text="${doctor.designation}">
                                                             Degrees & Bla Blahs
                                                         </span>
                                                         <span class="info-box-text text-info" style="font-size: 15px;"
                                                               th:utext="'<strong>'+${doctor.hospitalName}+'<strong>'">
                                                             <strong>Hospital</strong>
                                                         </span>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-3">
-                                                        <th:block th:switch="${doctor.rankValue}">
-                                                            <div th:case="3">
-                                                                <span class="star-icon full three">☆☆☆☆☆</span>
-                                                            </div>
-                                                            <div th:case="4">
-                                                                <span class="star-icon full four">☆☆☆☆☆</span>
-                                                            </div>
-                                                            <div th:case="5">
-                                                                <span class="star-icon full five">☆☆☆☆☆</span>
-                                                            </div>
-                                                        </th:block>
-                                                        <p class="text-success"
-                                                           th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">
-                                                        </p>
-                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3">
+                                                    <th:block th:switch="${doctor.rankValue}">
+                                                        <div th:case="3">
+                                                            <span class="star-icon full three">☆☆☆☆☆</span>
+                                                        </div>
+                                                        <div th:case="4">
+                                                            <span class="star-icon full four">☆☆☆☆☆</span>
+                                                        </div>
+                                                        <div th:case="5">
+                                                            <span class="star-icon full five">☆☆☆☆☆</span>
+                                                        </div>
+                                                    </th:block>
+                                                    <p class="text-success"
+                                                       th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">
+                                                    </p>
+                                                    <button type="button" class="btn btn-success btn-sm modal-button"
+                                                            data-toggle="modal" data-target="#bookModal" th:attr="data-doctor=${doctor.id}, data-availability=${doctor.start_end}">
+                                                        <strong> Book Online</strong>
+                                                    </button>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="box box-warning">
+                    <div class="box box-primary">
                         <div class="box-header with-border">
                             <h3 class="box-title">Nearest Doctors</h3>
                         </div>
@@ -171,61 +239,77 @@ desired effect
                             <div class="maps" id="map-container"></div>
                         </div>
                     </div>
-                    <div class="alert alert-success">
-                        <h4><i class="glyphicon glyphicon-search"></i> Search Again</h4>
-                    </div>
-                    <form role="form" action="/searchdoctor" method="post">
-                        <div class="dropdown">
-                            <select id="speciality" name="speciality" class="form-control select-custom1"
-                                    th:attr="data-speciality=${selectedSpeciality}">
-                                <option value="0" selected disabled>Pick A Speciality</option>
-                                <option th:each="speciality : ${specialityList}" th:text="${speciality.description}"
-                                        th:value="${speciality.id}"
-                                        style="color: black; background-color: transparent;">One
-                                </option>
-                            </select>
-                        </div>
-                        <div class="row">&nbsp;</div>
-                        <div class="form-group input-group">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input id="datepicker" name="date" class="form-control pull-right datepicker"
-                                   th:attr="data-day=${selectedDay},
-                                   data-month=${selectedMonth}, data-year=${selectedYear}"/>
-                        </div>
-                        <div class="form-group input-group">
-                            <span class="input-group-addon" id="sizing-addon1">Search near</span>
-                            <input id="placesearch" name="place" class="form-control" aria-describedby="sizing-addon1"
-                                   th:attr="data-place=${selectedPlace}"/>
-                        </div>
-                        <div id="show_advanced">
-                            <a onclick="showAdvancedOptions()">Show Advanced options ...</a></div>
-                        <div id="hide_advanced" class="hidden">
-                            <a onclick="hideAdvancedOptions()">Hide Advanced options ...</a></div>
-                        <br>
-
-                        <div id="hospitalList" class="dropdown hidden">
-                            <select id="hospital" name="hospital" class="form-control select-custom1"
-                                    th:attr="data-hospital=${selectedHospital}">
-                                <option value="0" selected disabled>Pick A Hospital</option>
-                                <option th:each="hospital : ${hospitalList}"
-                                        th:text="${hospital.name}" th:value="${hospital.id}"
-                                        style="color: black; background-color: transparent;">One
-                                </option>
-                            </select>
-                            <br>
-                        </div>
-                        <input id="userLat" name="userLat" value="" hidden>
-                        <input id="userLng" name="userLng" value="" hidden>
-                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                    </form>
                     <div class="row">&nbsp;</div>
                 </div>
             </div>
             <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="padding: 0">
+                    <div class="box box-info box-solid" style="border: 0">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                                <strong> Make Your Appoinment</strong>
+                            </h3>
+                        </div>
+
+                        <div class="box-body">
+                            <form action="/createbooking" method="post">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon" id="sizing-addon1">Booking Name</span>
+                                            <input type="text" class="form-control" placeholder="Enter your name"
+                                                   aria-describedby="sizing-addon1" name="patient_name" required/>
+                                        </div>
+                                        <div class="form-group input-group">
+                                            <span class="input-group-addon" id="sizing-addon2">Mobile Number</span>
+                                            <input type="number" class="form-control" placeholder="Mobile No"
+                                                   aria-describedby="sizing-addon2" name="patient_mobile" required/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="input-group" style="z-index: 100000 !important;">
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                <input id="datepickerInModal" type="text" name="date"
+                                                       class="form-control pull-right datepicker">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="input-group bootstrap-timepicker timepicker">
+                                            <span class="input-group-addon">
+                                                <i class="glyphicon glyphicon-time"></i></span>
+                                            <input id="timepicker1" name="time" type="text" class="form-control input-small">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">&nbsp;</div>
+                                <div class="row" align="center">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="glyphicon glyphicon-upload"></i> Book an Appoinment</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                                <input id="doctor" name="doctor" value="" hidden>
+                                <input id="userLatInModal" name="userLat" value="" hidden>
+                                <input id="userLngInModal" name="userLng" value="" hidden>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Main Footer -->
     <footer class="main-footer">
@@ -248,6 +332,9 @@ desired effect
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"
         th:src="@{/resources/dist/js/app.min.js}"></script>
+<!--Bootstrap select-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"></script>
+
 <!-- DataTables -->
 <script src="plugins/datatables/jquery.dataTables.min.js"
         th:src="@{/resources/plugins/datatables/jquery.dataTables.min.js}"></script>
@@ -267,9 +354,12 @@ desired effect
 
     });
 </script>
+
 <!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{/resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
+<script src="plugins/timepicker/bootstrap-timepicker.min.js"
+        th:src="@{/resources/plugins/timepicker/bootstrap-timepicker.min.js}"></script>
 <script>
     $(document).ready(function () {
         $(document).off('.datepicker.data-api');
@@ -279,14 +369,25 @@ desired effect
             autoclose: true,
             startDate: new Date()
         });
+        $('#datepickerInModal').datepicker({
+            format: "dd/mm/yyyy",
+            todayHighlight: true,
+            autoclose: true,
+            startDate: new Date()
+        });
         if ($("#datepicker").data("day")) {
             $('#datepicker').datepicker('setDate', new Date($("#datepicker").data("year"),
                     $("#datepicker").data("month"), $("#datepicker").data("day")));
+            $('#datepickerInModal').datepicker('setDate', new Date($("#datepicker").data("year"),
+                    $("#datepicker").data("month"), $("#datepicker").data("day")));
         } else {
             $('#datepicker').datepicker('update', new Date());
+            $('#datepickerInModal').datepicker('update', new Date());
         }
+        $('#timepicker1').timepicker();
     });
 </script>
+
 <!--Search Results Click Function-->
 <script type="text/javascript">
     $(document).ready(function () {
@@ -298,8 +399,25 @@ desired effect
                 window.location.href = profileUrl;
             }
         });
+        $(document).on('click', '.modal-button', function (e) {
+            e.stopPropagation();
+        });
     });
 </script>
+
+<!--For Modal Show Activity-->
+<script>
+    $('#bookModal').on('show.bs.modal', function(e) {
+//        datepicker also fires this event
+        if($(e.relatedTarget).data('doctor')){
+            var doctorId = $(e.relatedTarget).data('doctor');
+            var doctorAvailability = $(e.relatedTarget).data('availability');
+            //populate the textbox
+            $(e.currentTarget).find('input[name="doctor"]').val(doctorId);
+        }
+    });
+</script>
+
 <!--Select the correct value for dropdown -->
 <script>
     $(document).ready(function () {
@@ -315,35 +433,14 @@ desired effect
 <script>
     $(document).ready(function () {
         $("#placesearch").val($("#placesearch").data("place"));
+        $("#hospital").val($("#hospital").data("hospital"));
     });
 </script>
-<!--Show advanced search options-->
-<script>
-    $(document).ready(function () {
-        if ($("#hospital").data("hospital")) {
-            $("#hospital").val($("#hospital").data("hospital"));
-            $('#hospitalList').toggleClass('hidden show');
-            $('#show_advanced').toggleClass('hidden show');
-            $('#hide_advanced').toggleClass('hidden show');
-        }
-    });
-    function showAdvancedOptions() {
-        $('#hospitalList').toggleClass('hidden show');
-        $('#show_advanced').toggleClass('hidden show');
-        $('#hide_advanced').toggleClass('hidden show');
-    }
-    function hideAdvancedOptions() {
-        $('#hospitalList').toggleClass('hidden show');
-        $('#show_advanced').toggleClass('hidden show');
-        $('#hide_advanced').toggleClass('hidden show');
-    }
-</script>
+
 <!-- Google Maps -->
 <script src="custom/mymap.js"
         th:src="@{/resources/custom/mymap.js}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
-
-<!-- geocode try -->
 <script type="text/javascript" th:inline="javascript">
 
     function placeHospitals() {
@@ -355,16 +452,11 @@ desired effect
     }
     function setUserLocation(lat, lng){
         $("#userLat").val(lat);
+        $("#userLatInModal").val(lat);
         $("#userLng").val(lng);
+        $("#userLngInModal").val(lng);
     }
 </script>
-<!--<script>-->
-    <!--function monthSorter(a, b) {-->
-        <!--console.log('method called');-->
-        <!--if (a.rating < b.rating) return -1;-->
-        <!--if (a.rating > b.rating) return 1;-->
-        <!--return 0;-->
-    <!--}-->
-<!--</script>-->
+
 </body>
 </html>

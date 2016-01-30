@@ -76,6 +76,21 @@
                             <p class="text-muted text-center font-16" th:text="${doctor.designation}">
                                 I have a lot of degrees
                             </p>
+                            <p class="text-muted text-center font-16">
+                                <div style="text-align: center">
+                                    <th:block th:switch="${doctor.rankValue}">
+                                        <div th:case="3">
+                                            <span class="star-icon full three" style="font-size: 30px;">☆☆☆☆☆</span>
+                                        </div>
+                                        <div th:case="4">
+                                            <span class="star-icon full four" style="font-size: 30px;">☆☆☆☆☆</span>
+                                        </div>
+                                        <div th:case="5">
+                                            <span class="star-icon full five" style="font-size: 30px;">☆☆☆☆☆</span>
+                                        </div>
+                                    </th:block>
+                                </div>
+                            </p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
@@ -105,7 +120,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="box box-info box-solid">
+                    <div class="box box-primary box-solid">
                         <div class="box-header with-border">
                             <h3 class="box-title">
                                 <i class="glyphicon glyphicon-time"></i>
