@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Doctor Koi</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
+          th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
+    <!--Font Family-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css"
+          th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
+    <!-- DatePicker CSS -->
+    <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
+          th:href="@{/resources/plugins/datepicker/datepicker3.css}"/>
+    <!--Autocomplete-->
+    <link rel="stylesheet" href="custom/easy-autocomplete.min.css"
+          th:href="@{/resources/custom/easy-autocomplete.min.css}"/>
+    <link rel="stylesheet" href="custom/easy-autocomplete.themes.min.css"
+          th:href="@{/resources/custom/easy-autocomplete.themes.min.css}">
+    <!--BootStrap Select-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="custom/style.css"
+          th:href="@{/resources/custom/style.css}"/>
+    <link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css"
+          th:href="@{/resources/dist/css/skins/skin-blue-light.min.css}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+</head>
+
+<body class="skin-blue-light layout-top-nav">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/home" class="navbar-brand  nav-custom"><b>DoctorKoi</b>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+
+        <!-- Main content -->
+        <section class="content" style="padding: 0;">
+
+            <!-- Your Page Content Here -->
+
+            <div class="div-img">
+                <div class="container">
+                    <div class="row" style="margin-top: 10%; margin-bottom: 14%;">
+
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row">&nbsp;</div>
+                            <div class="panel panel-primary panel-transparent">
+                                <div class="panel-heading text-center"><h2> Get Updates</h2></div>
+                                <div class="panel-body text-center">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit. Duis pharetra varius quam sit amet vulputate.
+                                    Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean
+                                    sit amet felis
+                                    dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum
+                                    auctor accumsan.
+                                    Aliquam in felis si.
+                                    <div class="row">&nbsp;</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="row">&nbsp;</div>
+                            <form role="form" action="/searchdoctor" method="post">
+                                <select name="speciality" class="form-control selectpicker show-tick"
+                                        title="Choose a Speciality" data-style="btn-primary">
+                                    <optgroup label="Popular Speciality">
+                                        <option value="14">Medicine</option>
+                                        <option value="7">E.N.T</option>
+                                        <option value="8">Eye</option>
+                                        <option value="20">Paediatrics (Child)</option>
+                                    </optgroup>
+                                    <optgroup label="All Speciality">
+                                        <option th:each="speciality : ${specialityList}"
+                                                th:text="${speciality.description}" th:value="${speciality.id}">
+                                        </option>
+                                    </optgroup>
+                                </select>
+                                <!--<div class="dropdown">-->
+                                    <!--<select name="speciality" class="form-control select-custom1">-->
+                                        <!--<option value="0" selected disabled>Pick A Specialty</option>-->
+                                        <!--<option th:each="speciality : ${specialityList}"-->
+                                                <!--th:text="${speciality.description}" th:value="${speciality.id}"-->
+                                                <!--style="color: black; background-color: transparent;">One-->
+                                        <!--</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <div class="row">&nbsp;</div>
+                                <div class="form-group input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input id="datepicker" name="date" type="text"
+                                           class="form-control pull-right datepicker"/>
+                                </div>
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon" id="sizing-addon1">Search near</span>
+                                    <input id="placesearch" class="form-control" name="place"
+                                           aria-describedby="sizing-addon1">
+                                </div>
+                                <div id="show_advanced">
+                                    <a onclick="showAdvancedOptions()">Show Advanced options ...</a></div>
+                                <div id="hide_advanced" class="hidden">
+                                    <a onclick="hideAdvancedOptions()">Hide Advanced options ...</a></div>
+                                <br>
+                                <div id="hospitalList" class="dropdown hidden">
+                                    <select name="hospital" class="form-control select-custom1">
+                                        <option value="0" selected disabled>Pick A Hospital</option>
+                                        <option th:each="hospital : ${hospitalList}"
+                                                th:text="${hospital.name}" th:value="${hospital.id}"
+                                                style="color: black; background-color: transparent;">One
+                                        </option>
+                                    </select>
+                                    <br>
+                                </div>
+                                <input id="userLat" name="userLat" value="" hidden>
+                                <input id="userLng" name="userLng" value="" hidden>
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                <div class="row">&nbsp;</div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+    </footer>
+
+</div><!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 2.1.4 -->
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"
+        th:src="@{resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bootstrap/js/bootstrap.min.js"
+        th:src="@{resources/bootstrap/js/bootstrap.min.js}"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"
+        th:src="@{resources/dist/js/app.min.js}"></script>
+<!--Bootstrap select-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"></script>
+<!-- Datepicker -->
+<script src="plugins/datepicker/bootstrap-datepicker.js"
+        th:src="@{resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
+<!-- Datepicker -->
+<script>
+    $(document).ready(function () {
+        $(document).off('.datepicker.data-api');
+        $('#datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            todayHighlight: true,
+            autoclose: true,
+            startDate : new Date()
+        });
+        $('#datepicker').datepicker('update', new Date());
+    });
+</script>
+<!--For auto complete place-->
+<script src="custom/jquery.easy-autocomplete.min.js"
+        th:src="@{resources/custom/jquery.easy-autocomplete.min.js}"></script>
+<script src="custom/predefined_areas.js"
+        th:src="@{resources/custom/predefined_areas.js}"></script>
+<!--Show advanced search options-->
+<script>
+    function showAdvancedOptions(){
+        $('#hospitalList').toggleClass('hidden show');
+        $('#show_advanced').toggleClass('hidden show');
+        $('#hide_advanced').toggleClass('hidden show');
+    }
+    function hideAdvancedOptions(){
+        $('#hospitalList').toggleClass('hidden show');
+        $('#show_advanced').toggleClass('hidden show');
+        $('#hide_advanced').toggleClass('hidden show');
+    }
+</script>
+<!-- Google Maps -->
+<script src="custom/mymap.js"
+        th:src="@{/resources/custom/mymap.js}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=getUserLocation"></script>
+<script>
+    function setUserLocation(lat, lng){
+        $("#userLat").val(lat);
+        $("#userLng").val(lng);
+    }
+</script>
+</body>
+</html>
