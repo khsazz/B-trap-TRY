@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Doctor Koi</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
+          th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
+    <!--Font Family-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css"
+          th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="custom/style.css"
+          th:href="@{/resources/custom/style.css}"/>
+    <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"
+          th:href="@{/resources/dist/css/skins/skin-blue.min.css}"/>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+</head>
+
+<body class="skin-blue layout-top-nav">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/admin/dashboard" class="navbar-brand  nav-custom"><b> Doctor Koi</b>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+
+        <!-- Main content -->
+        <section class="content" style="padding: 0;">
+
+            <!-- Your Page Content Here -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="box box-primary">
+                        <div class="box-header bg-blue">
+                            <h3 class="box-title ">
+                                <i class="fa fa-bookmark">
+                                    <span th:utext=" '<strong> Appointment ID : ' +${appointment.id}+'</strong>' ">
+                                        <strong> Appointment ID : 0000000</strong>
+                                    </span>
+                                </i>
+                            </h3>
+                        </div>
+                        <div class="box-body table-responsive no-padding">
+                            <table id="datatable" class="table table-bordered table-condensed">
+                                <tbody>
+                                <tr>
+                                    <td>Patient Name</td>
+                                    <td th:text="${appointment.patientName}">ABC</td>
+                                </tr>
+                                <tr>
+                                    <td>Patient Mobile</td>
+                                    <td th:text="${appointment.patientMobile}">01680121212</td>
+                                </tr>
+                                <tr>
+                                    <td>Patient Location</td>
+                                    <td th:utext="${appointment.requestPlaceLat}+' - '+${appointment.requestPlaceLng}">
+                                        1.000000, 1.222222</td>
+                                </tr>
+                                <tr>
+                                    <td>SMS-1</td>
+                                    <td th:text="${appointment.sms1}">Sent</td>
+                                </tr>
+                                <tr>
+                                    <td>Request Time</td>
+                                    <td th:text="${appointment.requestTime}">22 Jan, 2016 4.00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Appointment Time</td>
+                                    <td th:utext="${appointment.appoinmentDate}+' - '+${appointment.appoinmentTime}">
+                                        22 Jan, 2016 4.00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td th:text="${appointment.status}">Status</td>
+                                    <td>Pending</td>
+                                </tr>
+                                <tr>
+                                    <td>Doctor</td>
+                                    <td th:utext="${doctor.id}+' - '+${doctor.name}">Dr. ABC XYZ [2]</td>
+                                </tr>
+                                <tr>
+                                    <td>Hospital & Location</td>
+                                    <td th:utext="${hospital.name}">United Hospital</td>
+                                </tr>
+                                <tr>
+                                    <td>Doctor Contact</td>
+                                    <td>Pending</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${pending}" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="box box-primary">
+                        <div class="box-header bg-blue">
+                            <h3 class="box-title">
+                                <i class="fa fa-bookmark"></i><strong> Confirm Appointment</strong></h3>
+                        </div>
+                        <div class="box-body no-padding">
+                        </div>
+                    </div>
+                    <form role="form" action="/admin/confirmAppointment" method="post">
+                        <div class="form-group input-group">
+                            <span class="input-group-addon" id="sizing-addon1">Agent Name</span>
+                            <input type="text" class="form-control"
+                                   aria-describedby="sizing-addon1" name="agent_name" th:text="${appointment.agent}"/>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon" id="sizing-addon2">Message Body</span>
+                            <textarea class="form-control" aria-describedby="sizing-addon2"
+                                      rows="6" id="mgs_body" name="msg_body" required>
+                            </textarea>
+                        </div>
+                        <div class="form-group input-group radio-inline">
+                            <span>Send SMS  </span>
+                            <label class="radio-inline"><input type="radio" name="sms">Yes</label>
+                            <label class="radio-inline"><input type="radio" name="sms" checked>No</label>
+                        </div>
+                        <br>
+                        <input type="text" name="appointmentID" value="" th:value="${appointment.id}" hidden>
+                        <button type="submit" class="btn btn-primary">Confirm</button>
+                    </form>
+                </div>
+            </div>
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+    </footer>
+
+</div><!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 2.1.4 -->
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"
+        th:src="@{resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bootstrap/js/bootstrap.min.js"
+        th:src="@{resources/bootstrap/js/bootstrap.min.js}"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"
+        th:src="@{resources/dist/js/app.min.js}"></script>
+</body>
+</html>

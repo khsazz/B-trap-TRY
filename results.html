@@ -135,19 +135,19 @@ desired effect
                                        th:attr="data-place=${selectedPlace}"/>
                             </div>
                         </div>
-                        <div id="hospitalList" class="col-lg-3 col-md-3 col-sm-3 dropdown">
-                            <select id="hospital" name="hospital" class="form-control select-custom1"
-                                    th:attr="data-hospital=${selectedHospital}">
-                                <option value="0" selected disabled>Pick A Hospital</option>
-                                <option th:each="hospital : ${hospitalList}"
-                                        th:text="${hospital.name}" th:value="${hospital.id}"
-                                        style="color: black; background-color: transparent;">One
-                                </option>
-                            </select>
-                        </div>
+                        <!--<div id="hospitalList" class="col-lg-3 col-md-3 col-sm-3 dropdown">-->
+                            <!--<select id="hospital" name="hospital" class="form-control select-custom1"-->
+                                    <!--th:attr="data-hospital=${selectedHospital}">-->
+                                <!--<option value="0" selected disabled>Pick A Hospital</option>-->
+                                <!--<option th:each="hospital : ${hospitalList}"-->
+                                        <!--th:text="${hospital.name}" th:value="${hospital.id}"-->
+                                        <!--style="color: black; background-color: transparent;">One-->
+                                <!--</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
                         <input id="userLat" name="userLat" value="" hidden>
                         <input id="userLng" name="userLng" value="" hidden>
-                        <div class="col-lg-2 col-lg-offset-5">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <button type="submit" class="btn btn-primary btn-block">Search Again</button>
                         </div>
                     </form>
@@ -433,7 +433,7 @@ desired effect
 <script>
     $(document).ready(function () {
         $("#placesearch").val($("#placesearch").data("place"));
-        $("#hospital").val($("#hospital").data("hospital"));
+//        $("#hospital").val($("#hospital").data("hospital"));
     });
 </script>
 

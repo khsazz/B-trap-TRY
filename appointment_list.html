@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Doctor Koi</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
+          th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
+    <!--Font Family-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css"
+          th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="custom/style.css"
+          th:href="@{/resources/custom/style.css}"/>
+    <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"
+          th:href="@{/resources/dist/css/skins/skin-blue.min.css}"/>
+
+    <!--datatables-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+</head>
+
+<body class="skin-blue layout-top-nav">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/admin/dashboard" class="navbar-brand  nav-custom"><b> Doctor Koi</b>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+
+        <!-- Main content -->
+        <section class="content" style="padding: 0;">
+
+            <!-- Your Page Content Here -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box box-primary">
+                        <div class="box-header bg-blue">
+                            <h3 class="box-title "><i class="fa fa-bookmark"></i><strong> Appointment List</strong></h3>
+                        </div>
+                        <div class="box-body table-responsive no-padding">
+                            <table id="datatable" class="table table-hover stripe cell-border" width="100%">
+                                <thead>
+                                <tr>
+                                    <td><strong>Appointment ID</strong></td>
+                                    <td><strong>Appointment Time</strong></td>
+                                    <td><strong>Doctor ID</strong></td>
+                                    <td><strong>Patient Name</strong></td>
+                                    <td><strong>Patient Mobile</strong></td>
+                                    <td><strong>SMS-1</strong></td>
+                                    <td><strong>Agent</strong></td>
+                                    <td><strong>Status</strong></td>
+                                    <!--<td><strong>Remarks</strong></td>-->
+                                    <td><strong>Details</strong></td>
+                                </tr>
+                                </thead>
+                                <tbody th:remove="all-but-first">
+                                <tr th:each="appointment : ${appointments}">
+                                    <td th:text="${appointment.id}">App00000000</td>
+                                    <td th:utext="${appointment.appoinmentDate}+' - '+${appointment.appoinmentTime}">
+                                        Appointment Time</td>
+                                    <td th:text="${appointment.doctorId}">Doctor ID</td>
+                                    <td th:text="${appointment.patientName}">Patient Name</td>
+                                    <td th:text="${appointment.patientMobile}">Patient Mobile</td>
+                                    <td th:text="${appointment.sms1}">SMS-1</td>
+                                    <td th:text="${appointment.agent}">Agent</td>
+                                    <td th:text="${appointment.status}">Status</td>
+                                    <!--<td th:text="${appointment.remarks}">Remarks</td>-->
+                                    <td><a th:href="@{/admin/appointment/{id}(id=${appointment.id})}" class="btn btn-sm btn-warning" role="button">Open</a></td>
+                                </tr>
+                                <tr>
+                                    <td>App00000000</td>
+                                    <td>Appointment Time</td>
+                                    <td>Doctor ID</td>
+                                    <td>Patient Name</td>
+                                    <td>Patient Mobile</td>
+                                    <td>SMS-1</td>
+                                    <td>Agent</td>
+                                    <td>Status</td>
+                                    <td>Remarks</td>
+                                    <td><button class="btn-default">Open</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+    </footer>
+
+</div><!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 2.1.4 -->
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"
+        th:src="@{resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bootstrap/js/bootstrap.min.js"
+        th:src="@{resources/bootstrap/js/bootstrap.min.js}"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"
+        th:src="@{resources/dist/js/app.min.js}"></script>
+
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"
+        th:src="@{/resources/plugins/datatables/jquery.dataTables.min.js}"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"
+        th:src="@{/resources/plugins/datatables/dataTables.bootstrap.min.js}"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#datatable').DataTable({
+            searching: false,
+            ordering: false,
+            lengthChange: false,
+            dom: 't<"#head1.row"<"col-sm-12"<"pull-right" p>>>'
+        });
+
+        $('#datatable').DataTable().page.len(5).draw();
+
+    });
+</script>
+</body>
+</html>
