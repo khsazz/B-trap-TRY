@@ -24,15 +24,15 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="custom/style.css"
           th:href="@{/resources/custom/style.css}"/>
-    <link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css"
-          th:href="@{resources/dist/css/skins/skin-green.min.css}"/>
+    <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"
+          th:href="@{/resources/dist/css/skins/skin-blue.min.css}"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 </head>
 
-<body class="skin-blue-light layout-top-nav">
+<body class="skin-blue layout-top-nav">
 <div class="wrapper">
 
     <!-- Main Header -->
@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="navbar-header">
                     <!--todo: change the url-->
-                    <a href="/home" class="navbar-brand  nav-custom"><b> Doctor Koi</b>
+                    <a href="/admin/dashboard" class="navbar-brand  nav-custom"><b> Doctor Koi</b>
                     </a>
                 </div>
             </div>
@@ -74,41 +74,41 @@
                             <div class="box-body">
                                 <div class="col-xs-1"></div>
                                 <div class="col-xs-10">
-                                    <a href="www.google.com">
+                                    <a href="/admin/appointments/pending">
                                         <button class="btn btn-block bg-maroon-gradient">
                                             <i class="fa fa-list-alt"></i> Pending Bookings
                                         </button>
                                     </a>
                                     <br>
-                                    <a href="www.google.com">
+                                    <a href="/admin/appointments/confirmed">
                                         <button class="btn btn-block bg-maroon-gradient">
                                             <i class="fa fa-list-alt"></i> Closed Bookings
                                         </button>
                                     </a>
                                     <br>
-                                    <a href="www.google.com">
+                                    <a href="/admin/appointments/all">
                                         <button class="btn btn-block bg-maroon-gradient">
                                             <i class="fa fa-list-alt"></i> All Bookings
                                         </button>
                                     </a>
                                     <br>
-                                    <a href="www.google.com">
+                                    <a href="#">
                                         <button class="btn btn-block bg-purple-gradient">
                                             <i class="fa fa-search"></i> Search Log</button>
                                     </a>
                                     <br>
-                                    <a href="www.google.com">
+                                    <a href="#">
                                         <button class="btn btn-block bg-purple-gradient">
                                             <i class="fa fa-cog"></i> System Log
                                         </button>
                                     </a>
                                     <br>
-                                    <a href="www.google.com">
+                                    <a href="#">
                                         <button class="btn btn-block bg-purple-gradient">
                                             <i class="fa fa-mobile"></i> SMS Log</button>
                                     </a>
                                     <br>
-                                    <a href="www.google.com">
+                                    <a href="#">
                                         <button class="btn btn-block bg-navy-active" style="font-size: 16px;">
                                             <i class="fa fa-wrench"> System Settings</i>
                                         </button>

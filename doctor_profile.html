@@ -76,6 +76,21 @@
                             <p class="text-muted text-center font-16" th:text="${doctor.designation}">
                                 I have a lot of degrees
                             </p>
+                            <p class="text-muted text-center font-16">
+                                <div style="text-align: center">
+                                    <th:block th:switch="${doctor.rankValue}">
+                                        <div th:case="3">
+                                            <span class="star-icon full three" style="font-size: 30px;">☆☆☆☆☆</span>
+                                        </div>
+                                        <div th:case="4">
+                                            <span class="star-icon full four" style="font-size: 30px;">☆☆☆☆☆</span>
+                                        </div>
+                                        <div th:case="5">
+                                            <span class="star-icon full five" style="font-size: 30px;">☆☆☆☆☆</span>
+                                        </div>
+                                    </th:block>
+                                </div>
+                            </p>
 
                             <ul class="list-group list-group-unbordered">
                                 <li class="list-group-item">
@@ -105,7 +120,11 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="box box-info box-solid">
+                </div>
+
+                <div class="col-lg-6 col-sm-12">
+                    <br>
+                    <div class="box box-primary box-solid">
                         <div class="box-header with-border">
                             <h3 class="box-title">
                                 <i class="glyphicon glyphicon-time"></i>
@@ -199,17 +218,14 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-6 col-sm-12">
-                    <div class="box box-warning">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Location</h3>
-                        </div>
-                        <div class="box-body">
-                            <div class="maps" id="map-container"></div>
-                        </div>
-                    </div>
+                    <!--<div class="box box-warning">-->
+                        <!--<div class="box-header with-border">-->
+                            <!--<h3 class="box-title">Location</h3>-->
+                        <!--</div>-->
+                        <!--<div class="box-body">-->
+                            <!--<div class="maps" id="map-container"></div>-->
+                        <!--</div>-->
+                    <!--</div>-->
                 </div>
             </div>
         </section><!-- /.content -->
@@ -229,6 +245,9 @@
                         </div>
 
                         <div class="box-body">
+                            <h2 align="center" th:text="${doctor.name}"></h2>
+                            <h3 align="center" th:text="${hospital.name}"></h3>
+                            <h4 align="center" th:text="${availability.start_end}"></h4>
                             <form action="/createbooking" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -334,7 +353,7 @@
 <!-- Custom Google Map -->
 <script src="custom/mymap.js"
         th:src="@{/resources/custom/mymap.js}"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initProfileMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=getUserLocation"></script>
 <!-- geocode try -->
 <script type="text/javascript" th:inline="javascript">
 

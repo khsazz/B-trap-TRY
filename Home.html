@@ -29,6 +29,9 @@
           th:href="@{/resources/custom/easy-autocomplete.min.css}"/>
     <link rel="stylesheet" href="custom/easy-autocomplete.themes.min.css"
           th:href="@{/resources/custom/easy-autocomplete.themes.min.css}">
+    <!--BootStrap Select-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="custom/style.css"
           th:href="@{/resources/custom/style.css}"/>
@@ -84,9 +87,6 @@
                                     auctor accumsan.
                                     Aliquam in felis si.
                                     <div class="row">&nbsp;</div>
-                                    <button type="button" class="btn btn-block bg-olive" th:text="${object1}">Register
-                                        Here
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -94,15 +94,35 @@
                         <div class="col-lg-6 col-sm-12">
                             <div class="row">&nbsp;</div>
                             <form role="form" action="/searchdoctor" method="post">
-                                <div class="dropdown">
-                                    <select name="speciality" class="form-control select-custom1">
-                                        <option value="0" disabled>Pick A Speciality</option>
+                                <select name="speciality" class="form-control selectpicker show-tick"
+                                        title="Choose a Speciality" data-style="btn-primary">
+                                    <optgroup label="Popular Speciality">
+                                        <option value="1">Cardiology</option>
+                                        <option value="3">Dentistry</option>
+                                        <option value="4">Dermatology (e.g. Skin)</option>
+                                        <option value="9">Gastroenterology</option>
+                                        <option value="10">Gynecology & Obstetrics</option>
+                                        <option value="19">Orthopaedics (e.g. Fractures, Bones etc.)</option>
+                                        <option value="14">Medicine</option>
+                                        <option value="7">E.N.T</option>
+                                        <option value="8">Eye</option>
+                                        <option value="20">Paediatrics (Child)</option>
+                                    </optgroup>
+                                    <optgroup label="All Speciality">
                                         <option th:each="speciality : ${specialityList}"
-                                                th:text="${speciality.description}" th:value="${speciality.id}"
-                                                style="color: black; background-color: transparent;">One
+                                                th:text="${speciality.description}" th:value="${speciality.id}">
                                         </option>
-                                    </select>
-                                </div>
+                                    </optgroup>
+                                </select>
+                                <!--<div class="dropdown">-->
+                                    <!--<select name="speciality" class="form-control select-custom1">-->
+                                        <!--<option value="0" selected disabled>Pick A Specialty</option>-->
+                                        <!--<option th:each="speciality : ${specialityList}"-->
+                                                <!--th:text="${speciality.description}" th:value="${speciality.id}"-->
+                                                <!--style="color: black; background-color: transparent;">One-->
+                                        <!--</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
                                 <div class="row">&nbsp;</div>
                                 <div class="form-group input-group">
                                     <div class="input-group-addon">
@@ -168,6 +188,8 @@
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"
         th:src="@{resources/dist/js/app.min.js}"></script>
+<!--Bootstrap select-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"></script>
 <!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{resources/plugins/datepicker/bootstrap-datepicker.js}"></script>

@@ -21,6 +21,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css"
         th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
+  <!--BootStrap Select-->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css">
   <!-- DatePicker CSS -->
   <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
         th:href="@{/resources/plugins/datepicker/datepicker3.css}"/>
@@ -46,11 +49,19 @@
   <!-- Main Header -->
   <header class="main-header">
     <!-- Header Navbar -->
-    <nav class="navbar navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top navbarshadow" style="background-color: #ffffff">
       <div class="container">
         <div class="navbar-header">
-          <a href="/home" class="navbar-brand  nav-custom"><b> Doctor Koi</b>
+          <a href="/home" class="navbar-brand"><img src="custom/logo.png" width="200px" height="80px">
           </a>
+        </div>
+        <div class="navbar-custom-menu" style="text-align: right">
+          <p style="color: #43a260">
+            <i class="fa fa-phone"></i>
+            01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>
+          <p style="color: #a7a8a7">
+            Are you a doctor? List your practice here
+            <button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>
         </div>
       </div>
     </nav>
@@ -59,83 +70,96 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="row">&nbsp;</div>
-    <div class="row">&nbsp;</div>
-    <div class="row">&nbsp;</div>
+    <!--<div class="row">&nbsp;</div>-->
+    <!--<div class="row">&nbsp;</div>-->
+    <!--<div class="row">&nbsp;</div>-->
 
     <!-- Main content -->
     <section class="content" style="padding: 0;">
 
       <!-- Your Page Content Here -->
-
-      <div class="div-img">
+      <div class="div-green">
         <div class="container">
-          <div class="row" style="margin-top: 10%; margin-bottom: 14%;">
-
-            <div class="col-lg-6 col-sm-12">
-              <div class="row">&nbsp;</div>
-              <div class="panel panel-primary panel-transparent">
-                <div class="panel-heading text-center"><h2> Get Updates</h2></div>
-                <div class="panel-body text-center">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Duis pharetra varius quam sit amet vulputate.
-                  Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean
-                  sit amet felis
-                  dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum
-                  auctor accumsan.
-                  Aliquam in felis si.
-                  <div class="row">&nbsp;</div>
-                  <button type="button" class="btn btn-block bg-olive" th:text="${object1}">Register
-                    Here
-                  </button>
+          <div class="row" style="margin-top: 5%; margin-bottom: 6%;">
+            <div class="col-lg-1 col-md-1 col-sm-1"></div>
+            <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+              <div class="box box-success box-solid search-box-shadow border-zero">
+                <div class="box-header" style="background-color: #2b7e3e; text-align: center; font-size: 18px;">
+                  FIND YOUR DOCTOR NOW</div>
+                <div class="box-body">
+                  <form role="form" action="/searchdoctor" method="post">
+                    <div class="dropdown">
+                      <select name="speciality" class="form-control selectpicker show-tick"
+                              title="Choose a Speciality" data-style="btn-success">
+                        <optgroup label="Popular Speciality">
+                          <option value="1">Cardiology</option>
+                          <option value="3">Dentistry</option>
+                          <option value="4">Dermatology (e.g. Skin)</option>
+                          <option value="9">Gastroenterology</option>
+                          <option value="10">Gynecology & Obstetrics</option>
+                          <option value="19">Orthopaedics (e.g. Fractures, Bones etc.)</option>
+                          <option value="14">Medicine</option>
+                          <option value="7">E.N.T</option>
+                          <option value="8">Eye</option>
+                          <option value="20">Paediatrics (Child)</option>
+                        </optgroup>
+                        <optgroup label="All Speciality">
+                          <option th:each="speciality : ${specialityList}"
+                                  th:text="${speciality.description}" th:value="${speciality.id}">
+                          </option>
+                        </optgroup>
+                      </select>
+                    </div>
+                    <div class="row">&nbsp;</div>
+                    <div class="form-group input-group">
+                      <div class="input-group-addon border-green">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input id="datepicker" name="date" type="text"
+                             class="form-control border-green pull-right datepicker"/>
+                    </div>
+                    <div class="form-group input-group">
+                      <span class="input-group-addon border-green" id="sizing-addon1">Search near</span>
+                      <input id="placesearch" class="form-control border-green" name="place"
+                             aria-describedby="sizing-addon1">
+                    </div>
+                    <div id="show_advanced" class="pull-right">
+                      <a onclick="showAdvancedOptions()" style="background-color: #e6e7e9; color: darkgreen; padding: 3px;">
+                        More Filters</a></div>
+                    <div id="hide_advanced" class="hidden pull-right">
+                      <a onclick="hideAdvancedOptions()" style="background-color: #e6e7e9; color: darkgreen; padding: 3px;">
+                        Hide Extra Filters</a></div>
+                    <br>
+                    <br>
+                    <div id="hospitalList" class="dropdown hidden">
+                      <select name="hospital" class="form-control border-green select-custom1">
+                        <option value="0" selected disabled>Pick A Hospital</option>
+                        <option th:each="hospital : ${hospitalList}"
+                                th:text="${hospital.name}" th:value="${hospital.id}"
+                                style="color: black; background-color: transparent;">One
+                        </option>
+                      </select>
+                      <br>
+                    </div>
+                    <input id="userLat" name="userLat" value="" hidden>
+                    <input id="userLng" name="userLng" value="" hidden>
+                    <button type="submit" class="btn btn-block" style="background-color: #2b7e3e; color: white;">Search</button>
+                    <div class="row">&nbsp;</div>
+                  </form>
                 </div>
               </div>
             </div>
 
-            <div class="col-lg-6 col-sm-12">
+            <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
               <div class="row">&nbsp;</div>
-              <form role="form" action="/searchdoctor" method="post">
-                <div class="dropdown">
-                  <select name="speciality" class="form-control select-custom1">
-                    <option value="0" selected disabled>Pick A Speciality</option>
-                    <option th:each="speciality : ${specialityList}"
-                            th:text="${speciality.description}" th:value="${speciality.id}"
-                            style="color: black; background-color: transparent;">One
-                    </option>
-                  </select>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="form-group input-group">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input id="datepicker" name="date" type="text"
-                         class="form-control pull-right datepicker"/>
-                </div>
-                <div class="form-group input-group">
-                  <span class="input-group-addon" id="sizing-addon1">Search near</span>
-                  <input id="placesearch" class="form-control" name="place"
-                         aria-describedby="sizing-addon1">
-                </div>
-                <div id="show_advanced">
-                  <a onclick="showAdvancedOptions()">Show Advanced options ...</a></div>
-                <div id="hide_advanced" class="hidden">
-                  <a onclick="hideAdvancedOptions()">Hide Advanced options ...</a></div>
-                <br>
-                <div id="hospitalList" class="dropdown hidden">
-                  <select name="hospital" class="form-control select-custom1">
-                    <option value="0" selected disabled>Pick A Hospital</option>
-                    <option th:each="hospital : ${hospitalList}"
-                            th:text="${hospital.name}" th:value="${hospital.id}"
-                            style="color: black; background-color: transparent;">One
-                    </option>
-                  </select>
-                  <br>
-                </div>
-                <input id="userLat" name="userLat" value="" hidden>
-                <input id="userLng" name="userLng" value="" hidden>
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                <div class="row">&nbsp;</div>
-              </form>
+                            <span style="font-size: 40px; color: white"><strong>GET APPOINTMENTS OF THE
+                              BEST DOCTORS AROUND YOU</strong></span>
+              <div class="row">&nbsp;</div>
+              <div class="row">&nbsp;</div>
+              <div class="badge bg-green-gradient" style="font-size: 40px;"><i class="fa fa-search"></i></div>
+              <div class="badge bg-green-gradient" style="font-size: 40px;"><i class="fa fa-mobile"></i></div>
+              <p style="color: white"><span style="font-size: 23px;">or call our hotline 01717111111</span> (10am to 10pm)</p>
+
             </div>
 
           </div>
@@ -147,12 +171,19 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-      Anything you want
+
+    <div class="row">
+      <div class="col-lg-2 col-sm-2 text-right">
+        <img src="custom/logo.png" width="50px" height="20px" style="margin-right: 20px;">
+      </div>
+      <div class="col-lg-10 col-sm-10">
+        <a style="color: #f0f1d6" href="#">Frequently Asked Questions</a> |
+        <a style="color: #f0f1d6" href="#">About DoctorKoi</a> |
+        Copyright &copy; 2016 <strong>DoctorKoi</strong> All rights reserved |
+        <a style="color: #f0f1d6" href="#">Privacy Policy</a> |
+        <a style="color: #f0f1d6" href="#">Terms and Use</a>
+      </div>
     </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
   </footer>
 
 </div><!-- ./wrapper -->
@@ -168,6 +199,8 @@
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"
         th:src="@{resources/dist/js/app.min.js}"></script>
+<!--Bootstrap select-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"></script>
 <!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{resources/plugins/datepicker/bootstrap-datepicker.js}"></script>

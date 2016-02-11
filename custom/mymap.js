@@ -14,11 +14,25 @@ var markers = [];
 
 function initMap() {
 
-    map = new google.maps.Map(document.getElementById('map-container'), {
-        zoom: 14,
-        center: home,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
+    if($('#map-container').is(':visible')){
+        map = new google.maps.Map(document.getElementById('map-container'), {
+            zoom: 14,
+            center: home,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+    }
+    else if($('#map-container2').is(':visible')){
+        map = new google.maps.Map(document.getElementById('map-container2'), {
+            zoom: 14,
+            center: home,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+    }
+    //map = new google.maps.Map(document.getElementById('map-container'), {
+    //    zoom: 14,
+    //    center: home,
+    //    mapTypeId: google.maps.MapTypeId.ROADMAP
+    //});
 
     if (navigator.geolocation) {
         browserSupportFlag = true;
