@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{resources/custom/favicon.png}" sizes="64x64" />
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
+          th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
+    <!--Font Family-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
+</head>
+<body style="padding-top: 80px;">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="content-wrapper">
+
+    <section class="content">
+        <!-- Your Page Content Here -->
+        <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <!--<div class="row">&nbsp;</div>-->
+        <!--<div class="row">&nbsp;</div>-->
+
+        <div class="row">
+            <div class="col-lg-12 hidden-md hidden-sm hidden-xs">
+                <form role="form" action="/searchdoctor" method="post">
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <select id="speciality" name="speciality" class="form-control select-custom1 border-green" data-style="btn-success"
+                                title="Choose a Speciality" th:attr="data-speciality=${selectedSpeciality}">
+                            <optgroup label="Popular Speciality">
+                                <option value="1">Cardiology</option>
+                                <option value="3">Dentistry</option>
+                                <option value="4">Dermatology (e.g. Skin)</option>
+                                <option value="9">Gastroenterology</option>
+                                <option value="10">Gynecology & Obstetrics</option>
+                                <option value="19">Orthopaedics (e.g. Fractures, Bones etc.)</option>
+                                <option value="14">Medicine</option>
+                                <option value="7">E.N.T</option>
+                                <option value="8">Eye</option>
+                                <option value="20">Paediatrics (Child)</option>
+                            </optgroup>
+                            <optgroup label="All Speciality">
+                                <option th:each="speciality : ${specialityList}"
+                                        th:text="${speciality.description}" th:value="${speciality.id}">
+                                </option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <div class="form-group input-group">
+                            <div class="input-group-addon border-green">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input id="datepicker" name="date" class="form-control pull-right datepicker border-green"
+                                   th:attr="data-day=${selectedDay},
+                                   data-month=${selectedMonth}, data-year=${selectedYear}"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <div class="form-group input-group">
+                            <span class="input-group-addon border-green" id="sizing-addon">Search near</span>
+                            <input id="placesearch" name="place" class="form-control border-green" aria-describedby="sizing-addon1"
+                                   th:attr="data-place=${selectedPlace}"/>
+                        </div>
+                    </div>
+                    <div id="hospitalList" class="col-lg-2 col-md-2 col-sm-2 dropdown">
+                        <select id="hospital" name="hospital" class="form-control select-custom1 border-green"
+                                th:attr="data-hospital=${selectedHospital}">
+                            <option value="0" selected disabled>Pick A Hospital</option>
+                            <option th:each="hospital : ${hospitalList}"
+                                    th:text="${hospital.name}" th:value="${hospital.id}"
+                                    style="color: black; background-color: transparent;">One
+                            </option>
+                        </select>
+                    </div>
+                    <input id="userLat" name="userLat" value="" hidden>
+                    <input id="userLng" name="userLng" value="" hidden>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <button type="submit" class="btn btn-success btn-block">Search Again</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <div class="box box-success">
+                    <div class="box-header bg-green">
+                        <h3 class="box-title "><i class="fa fa-fw fa-stethoscope"></i><strong> Pick Your
+                            Doctor</strong></h3>
+                    </div>
+
+                    <div class="box-body table-responsive no-padding">
+
+                        <table id="datatable" class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody th:remove="all-but-first">
+
+                            <tr class="clickable-row" th:each="doctor : ${doctorList}">
+                                <td class="search-result-box border-zero" data-href="/doctorprofile/"
+                                    th:attr="data-user=${doctor.id}">
+
+                                    <div class="info-box  box-shadow-zero custom-margin-top-bottom">
+                                                <span class="info-box-icon image">
+                                                    <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
+                                                         th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                                                </span>
+
+                                        <div class="info-box-content">
+                                            <div class="col-lg-9 col-md-9">
+                                                    <span class="info-box-text doctor-name" style="font-size: 16px;"
+                                                          th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
+                                                        <strong>Doctor's Name10</strong>
+                                                    </span>
+                                                <p class="specialty margin-zero" style="font-size: 12px;" th:utext="${doctor.specialityText}">
+                                                    <strong>Speciality : </strong>Neurology
+                                                </p>
+                                                <p class="designation margin-zero" th:text="${doctor.designation}" style="font-size: 12px;">
+                                                    Degrees & Bla Blahs
+                                                </p>
+                                                <p class="margin-zero hospital" th:text="${doctor.hospitalName}"
+                                                   style="font-size: 12px;">
+                                                    <strong>Hospital</strong>
+                                                </p>
+                                                    <span class="week" style="font-size: 12px;">
+                                                        <i class="fa fa-calendar"></i>
+                                                        <span th:if="${doctor.detailedAvailability.sun}"
+                                                              class="weekday-active">Su</span>
+                                                        <span th:unless="${doctor.detailedAvailability.sun}"
+                                                              class="weekday-inactive">Su</span>
+                                                        <span th:if="${doctor.detailedAvailability.mon}"
+                                                              class="weekday-active">M</span>
+                                                        <span th:unless="${doctor.detailedAvailability.mon}"
+                                                              class="weekday-inactive">M</span>
+                                                        <span th:if="${doctor.detailedAvailability.tue}"
+                                                              class="weekday-active">Tu</span>
+                                                        <span th:unless="${doctor.detailedAvailability.tue}"
+                                                              class="weekday-inactive">Tu</span>
+                                                        <span th:if="${doctor.detailedAvailability.wed}"
+                                                              class="weekday-active">W</span>
+                                                        <span th:unless="${doctor.detailedAvailability.wed}"
+                                                              class="weekday-inactive">W</span>
+                                                        <span th:if="${doctor.detailedAvailability.thu}"
+                                                              class="weekday-active">Th</span>
+                                                        <span th:unless="${doctor.detailedAvailability.thu}"
+                                                              class="weekday-inactive">Th</span>
+                                                        <span th:if="${doctor.detailedAvailability.fri}"
+                                                              class="weekday-active">F</span>
+                                                        <span th:unless="${doctor.detailedAvailability.fri}"
+                                                              class="weekday-inactive">F</span>
+                                                        <span th:if="${doctor.detailedAvailability.sat}"
+                                                              class="weekday-active">Sa</span>
+                                                        <span th:unless="${doctor.detailedAvailability.sat}"
+                                                              class="weekday-inactive">Sa</span>
+                                                    </span>
+                                                    <span  class="info-box-text time">
+                                                        <i class="fa fa-clock-o"></i>
+                                                        <span th:text="${doctor.detailedAvailability.start_end}"
+                                                              style="font-size: 12px; color: #3b9349">
+                                                            3.00 PM - 9.00 PM
+                                                        </span>
+                                                    </span>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3">
+                                                <th:block th:switch="${doctor.rankValue}">
+                                                    <div th:case="3">
+                                                        <span class="star-icon full three">☆☆☆☆☆</span>
+                                                    </div>
+                                                    <div th:case="4">
+                                                        <span class="star-icon full four">☆☆☆☆☆</span>
+                                                    </div>
+                                                    <div th:case="5">
+                                                        <span class="star-icon full five">☆☆☆☆☆</span>
+                                                    </div>
+                                                </th:block>
+                                                <p class="text-success"
+                                                   th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">
+                                                </p>
+                                                <button type="button" class="btn btn-success btn-sm modal-button"
+                                                        data-toggle="modal" data-target="#bookModal"
+                                                        th:attr="data-doctor=${doctor.id},
+                                                             data-availability=${doctor.detailedAvailability.start_end}">
+                                                    <strong> Book Now</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="clickable-row" th:each="doctor : ${doctorList}">
+                                <td class="search-result-box border-zero" data-href="/doctorprofile/"
+                                    th:attr="data-user=${doctor.id}">
+
+                                    <div class="info-box  box-shadow-zero custom-margin-top-bottom">
+                                                <span class="info-box-icon">
+                                                    <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
+                                                         th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                                                </span>
+
+                                        <div class="info-box-content">
+                                            <div class="col-lg-9 col-md-9">
+                                                        <span class="info-box-text" style="font-size: 16px;">
+                                                            <a th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
+                                                                <strong>Doctor's Name10</strong>
+                                                            </a>
+                                                        </span>
+                                                        <span class="info-box-text" style="font-size: 12px;" th:utext="${doctor.specialityText}">
+                                                            <strong>Speciality : </strong>Neurology
+                                                        </span>
+                                                        <span th:text="${doctor.designation}">
+                                                            Degrees & Bla Blahs
+                                                        </span>
+                                                        <span class="info-box-text text-info" style="font-size: 15px;"
+                                                              th:utext="'<strong>'+${doctor.hospitalName}+'<strong>'">
+                                                            <strong>Hospital</strong>
+                                                        </span>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3">
+                                                <th:block th:switch="${doctor.rankValue}">
+                                                    <div th:case="3">
+                                                        <span class="star-icon full three">☆☆☆☆☆</span>
+                                                    </div>
+                                                    <div th:case="4">
+                                                        <span class="star-icon full four">☆☆☆☆☆</span>
+                                                    </div>
+                                                    <div th:case="5">
+                                                        <span class="star-icon full five">☆☆☆☆☆</span>
+                                                    </div>
+                                                </th:block>
+                                                <p
+                                                        th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">
+                                                </p>
+                                                <button type="button" class="btn btn-success btn-sm modal-button"
+                                                        data-toggle="modal" data-target="#bookModal"
+                                                        th:attr="data-doctor=${doctor.id},
+                                                             data-availability=${doctor.start_end},
+                                                             data-doctorname=${doctor.name},
+                                                             data-hospitalname=${doctor.hospitalName}">
+                                                    <strong> Book Online</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="clickable-row" th:each="doctor : ${doctorList}">
+                                <td class="search-result-box border-zero" data-href="/doctorprofile/"
+                                    th:attr="data-user=${doctor.id}">
+
+                                    <div class="info-box  box-shadow-zero custom-margin-top-bottom">
+                                                <span class="info-box-icon">
+                                                    <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
+                                                         th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                                                </span>
+
+                                        <div class="info-box-content">
+                                            <div class="col-lg-9 col-md-9">
+                                                        <span class="info-box-text" style="font-size: 16px;">
+                                                            <a th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
+                                                                <strong>Doctor's Name10</strong>
+                                                            </a>
+                                                        </span>
+                                                        <span class="info-box-text" style="font-size: 12px;" th:utext="${doctor.specialityText}">
+                                                            <strong>Speciality : </strong>Neurology
+                                                        </span>
+                                                        <span th:text="${doctor.designation}">
+                                                            Degrees & Bla Blahs
+                                                        </span>
+                                                        <span class="info-box-text text-info" style="font-size: 15px;"
+                                                              th:utext="'<strong>'+${doctor.hospitalName}+'<strong>'">
+                                                            <strong>Hospital</strong>
+                                                        </span>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3">
+                                                <th:block th:switch="${doctor.rankValue}">
+                                                    <div th:case="3">
+                                                        <span class="star-icon full three">☆☆☆☆☆</span>
+                                                    </div>
+                                                    <div th:case="4">
+                                                        <span class="star-icon full four">☆☆☆☆☆</span>
+                                                    </div>
+                                                    <div th:case="5">
+                                                        <span class="star-icon full five">☆☆☆☆☆</span>
+                                                    </div>
+                                                </th:block>
+                                                <p class="text-success"
+                                                   th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">
+                                                </p>
+                                                <button type="button" class="btn btn-success btn-sm modal-button"
+                                                        data-toggle="modal" data-target="#bookModal"
+                                                        th:attr="data-doctor=${doctor.id},
+                                                             data-availability=${doctor.start_end},
+                                                             data-doctorname=${doctor.name},
+                                                             data-hospitalname=${doctor.hospitalName}">
+                                                    <strong> Book Online</strong>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+                <div data-spy="affix" data-offset-top="120" style="width: 100%">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Nearest Doctors</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="maps" id="map-container"></div>
+                        </div>
+                    </div>
+                    <div class="row">&nbsp;</div>
+                </div>
+            </div>
+            <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Nearest Doctors</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="maps" id="map-container2"></div>
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+            </div>
+        </div>
+        <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+    </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
+<!-- jQuery 2.1.4 -->
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"
+        th:src="@{/resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bootstrap/js/bootstrap.min.js"
+        th:src="@{/resources/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

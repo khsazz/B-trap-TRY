@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Doctor Koi</title>
-
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{resources/custom/favicon.png}" sizes="64x64" />
+    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{/resources/custom/favicon.png}" sizes="64x64" />
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
           th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
@@ -38,51 +36,42 @@
           th:href="@{/resources/custom/style.css}"/>
     <link rel="stylesheet" href="dist/css/skins/skin-green.min.css"
           th:href="@{/resources/dist/css/skins/skin-green.min.css}"/>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-
 </head>
 
-<body class="skin-green layout-top-nav">
+<body class="skin-green layout-top-nav" style="padding-top: 80px;">
 <div class="wrapper">
 
     <!-- Main Header -->
-    <header class="main-header">
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-fixed-top navbarshadow" style="background-color: #ffffff">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="/home" class="navbar-brand">
-                        <img src="custom/logo_color.png" class="img-responsive"
-                             th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
-                    </a>
-                </div>
-                <div class="navbar-custom-menu" style="text-align: right">
-                    <p style="color: #43a260">
-                        <i class="fa fa-phone"></i>
-                        01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>
-                    <p style="color: #a7a8a7">
-                        Are you a doctor? List your practice here
-                        <button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>
-                </div>
+    <nav class="navbar navbar-fixed-top navbarshadow">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/home" class="navbar-brand">
+                    <img src="custom/logo_color.png" class="img-responsive"
+                         th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
+                </a>
             </div>
-        </nav>
-    </header>
+            <div class="navbar-custom-menu" style="text-align: right">
+                <p style="color: #43a260">
+                    <i class="fa fa-phone"></i>
+                    01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>
+                <p style="color: #a7a8a7">
+                    Are you a doctor? List your practice here
+                    <button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <!--<div class="row">&nbsp;</div>-->
-        <!--<div class="row">&nbsp;</div>-->
-        <!--<div class="row">&nbsp;</div>-->
-
-        <!-- Main content -->
         <section class="content" style="padding: 0;">
 
             <!-- Your Page Content Here -->
             <div class="div-green">
                 <div class="container">
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+                    <div class="row">&nbsp;</div>
+
                     <div class="row" style="margin-top: 5%; margin-bottom: 6%;">
                         <div class="col-lg-1 col-md-1 col-sm-1"></div>
                         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
@@ -127,14 +116,10 @@
                                                    aria-describedby="sizing-addon1">
                                         </div>
                                         <div id="show_advanced" class="pull-right">
-                                            <a onclick="showAdvancedOptions()"
-                                               style="background-color: #e6e7e9; color: darkgreen; padding: 3px;
-                                               cursor: pointer;">
+                                            <a onclick="showAdvancedOptions()" class="more-option">
                                                 More Options</a></div>
                                         <div id="hide_advanced" class="hidden pull-right">
-                                            <a onclick="hideAdvancedOptions()"
-                                               style="background-color: #e6e7e9; color: darkgreen; padding: 3px;
-                                               cursor: pointer;">
+                                            <a onclick="hideAdvancedOptions()" class="more-option">
                                                 Hide Extra Options</a></div>
                                         <br>
                                         <br>
@@ -170,43 +155,40 @@
                             <div class="row">&nbsp;</div>
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: center;">
-                                    <img src="custom/icon1.png" th:src="@{resources/custom/icon1.png}" height="90px" width="90px">
+                                    <img src="custom/icon1.png" th:src="@{resources/custom/icon1.png}" class="img-responsive">
                                     <p style="font-size: 14px; color: white">SEARCH BY SPECIALTY/HOSPITAL</p>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                     <div class="row">&nbsp;</div>
-                                    <img src="custom/arrow.png" th:src="@{resources/custom/arrow.png}" height="50px" width="50px">
+                                    <img src="custom/arrow.png" th:src="@{resources/custom/arrow.png}" class="img-responsive">
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: center;">
-                                    <img src="custom/icon2.png" th:src="@{resources/custom/icon2.png}" height="90px" width="90px">
+                                    <img src="custom/icon2.png" th:src="@{resources/custom/icon2.png}" class="img-responsive">
                                     <p style="font-size: 14px; color: white">BOOK DOCTOR</p>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
                                     <div class="row">&nbsp;</div>
-                                    <img src="custom/arrow.png" th:src="@{resources/custom/arrow.png}" height="50px" width="50px">
+                                    <img src="custom/arrow.png" th:src="@{resources/custom/arrow.png}" class="img-responsive">
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: center;">
-                                    <img src="custom/icon3.png" th:src="@{resources/custom/icon3.png}" height="90px" width="90px">
+                                    <img src="custom/icon3.png" th:src="@{resources/custom/icon3.png}" class="img-responsive">
                                     <p style="font-size: 14px; color: white">GET CONFIRMATION</p>
                                 </div>
                             </div>
                             <p style="color: white"><span style="font-size: 23px;">or call our hotline 01717111111</span> (10am to 10pm)</p>
-
                         </div>
 
                     </div>
                 </div>
             </div>
-        </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
-
+        </section>
+    </div>
 
     <!-- Main Footer -->
     <footer class="main-footer">
-
         <div class="row">
             <div class="col-lg-2 col-sm-2 text-right">
-                <img src="custom/logo_bnw.png" th:src="@{resources/custom/logo_bnw.png}"
+                <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}"
                      class="img-responsive" width="30%" style="margin-right: 20px;">
             </div>
             <div class="col-lg-10 col-sm-10" style="padding-top: 20px;">
@@ -219,24 +201,23 @@
         </div>
     </footer>
 
-</div><!-- ./wrapper -->
+</div>
 
 <!-- REQUIRED JS SCRIPTS -->
-
 <!-- jQuery 2.1.4 -->
 <script src="plugins/jQuery/jQuery-2.1.4.min.js"
-        th:src="@{resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
+        th:src="@{/resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="bootstrap/js/bootstrap.min.js"
-        th:src="@{resources/bootstrap/js/bootstrap.min.js}"></script>
+        th:src="@{/resources/bootstrap/js/bootstrap.min.js}"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"
-        th:src="@{resources/dist/js/app.min.js}"></script>
+        th:src="@{/resources/dist/js/app.min.js}"></script>
 <!--Bootstrap select-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"></script>
 <!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
-        th:src="@{resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
+        th:src="@{/resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
 <!-- Datepicker -->
 <script>
     $(document).ready(function () {
@@ -252,9 +233,9 @@
 </script>
 <!--For auto complete place-->
 <script src="custom/jquery.easy-autocomplete.min.js"
-        th:src="@{resources/custom/jquery.easy-autocomplete.min.js}"></script>
+        th:src="@{/resources/custom/jquery.easy-autocomplete.min.js}"></script>
 <script src="custom/predefined_areas.js"
-        th:src="@{resources/custom/predefined_areas.js}"></script>
+        th:src="@{/resources/custom/predefined_areas.js}"></script>
 <!--Show advanced search options-->
 <script>
     function showAdvancedOptions(){

@@ -9,7 +9,7 @@
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{resources/custom/favicon.png}" sizes="64x64" />
+    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{/resources/custom/favicon.png}" sizes="64x64" />
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
           th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
@@ -25,40 +25,38 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="custom/style.css"
           th:href="@{/resources/custom/style.css}"/>
-    <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css"
-          th:href="@{/resources/dist/css/skins/skin-blue.min.css}"/>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-
+    <link rel="stylesheet" href="dist/css/skins/skin-green.min.css"
+          th:href="@{/resources/dist/css/skins/skin-green.min.css}"/>
 </head>
 
-<body class="skin-blue layout-top-nav">
+<body class="skin-green layout-top-nav" style="padding-top: 80px;">
 <div class="wrapper">
 
     <!-- Main Header -->
-    <header class="main-header">
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-fixed-top navbarshadow" style="background-color: #ffffff">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="/admin/dashboard" class="navbar-brand">
-                        <img src="custom/logo_color.png" class="img-responsive"
-                             th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
-                    </a>
-                </div>
+    <nav class="navbar navbar-fixed-top navbarshadow">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/admin/dashboard" class="navbar-brand">
+                    <img src="custom/logo_color.png" class="img-responsive"
+                         th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
+                </a>
             </div>
-        </nav>
-    </header>
+            <!--<div class="navbar-custom-menu" style="text-align: right">-->
+                <!--<p style="color: #43a260">-->
+                    <!--<i class="fa fa-phone"></i>-->
+                    <!--01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>-->
+                <!--<p style="color: #a7a8a7">-->
+                    <!--Are you a doctor? List your practice here-->
+                    <!--<button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>-->
+            <!--</div>-->
+        </div>
+    </nav>
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="row">&nbsp;</div>
-        <div class="row">&nbsp;</div>
-        <div class="row">&nbsp;</div>
+        <!--<div class="row">&nbsp;</div>-->
+        <!--<div class="row">&nbsp;</div>-->
 
-        <!-- Main content -->
         <section class="content" style="padding: 0;">
 
             <!-- Your Page Content Here -->
@@ -129,13 +127,11 @@
                     <div class="col-lg-3 col-md-3 col-sm-2 col-xs-2"></div>
                 </div>
             </div>
-        </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
-
+        </section>
+    </div>
 
     <!-- Main Footer -->
     <footer class="main-footer">
-
         <div class="row">
             <div class="col-lg-2 col-sm-2 text-right">
                 <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}"
@@ -150,19 +146,17 @@
             </div>
         </div>
     </footer>
-
-</div><!-- ./wrapper -->
+</div>
 
 <!-- REQUIRED JS SCRIPTS -->
-
 <!-- jQuery 2.1.4 -->
 <script src="plugins/jQuery/jQuery-2.1.4.min.js"
-        th:src="@{resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
+        th:src="@{/resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="bootstrap/js/bootstrap.min.js"
-        th:src="@{resources/bootstrap/js/bootstrap.min.js}"></script>
+        th:src="@{/resources/bootstrap/js/bootstrap.min.js}"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"
-        th:src="@{resources/dist/js/app.min.js}"></script>
+        th:src="@{/resources/dist/js/app.min.js}"></script>
 </body>
 </html>

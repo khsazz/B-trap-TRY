@@ -2,30 +2,28 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-/*todo: remove this*/
-.div-img {
- 	background: url("background.jpg") no-repeat center;
- 	background-size: 100% 100%;
- 	height: 100%;
-}
-
-.div-green {
-	background-color: #43a247;
-	min-height: 100px;
-}
-
 .navbar-brand{
-	height: 70px;
 	padding-top: 0;
 }
 
+.iamadoctor-button {
+	background-color: white;
+	border: 2px solid green !important;
+	color: green;
+}
+
 .navbarshadow {
-	position: relative;
+	position: fixed;
 	-moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
 	-webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 	box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 	padding: 10px;
 	background: white;
+}
+
+.div-green {
+	background-color: #43a247;
+	min-height: 100px;
 }
 
 .search-box-shadow {
@@ -36,46 +34,27 @@ body {
 	background: white;
 }
 
+.more-option{
+	background-color: #e6e7e9;
+	color: darkgreen;
+	padding: 3px;
+	cursor: pointer;
+}
+
 .main-footer {
 	background: #349043;
 	color: #f0f1d6;
 }
 
-.vertical-align-center {
-	display: flex;
-	align-items: center;
-}
-
-.nav-custom{
-	margin-top: 10px;
-	min-height: 50px;
-	font-size: 40px;
-	text-align: left;
-}
-
-/*todo: remove this*/
-.panel-transparent {
-        background: none;
-        border: none;
-}
-
-/*todo: remove this*/
-.panel-transparent .panel-body{
-        background: rgba(46, 51, 56, 0.1)!important;
-}
-
-.maps{
-    width: 100%;
-    min-height: 300px;
-}
-
-#head1{
-	max-height: 30px;	
-	min-height: 30px;
-}
-
 .search-result-box:hover{
 	background-color: #0073B7;
+}
+
+.box-shadow-zero {
+	min-height: 115px;
+	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
 .custom-margin-top-bottom{
@@ -99,27 +78,11 @@ body {
 	border: 1px solid #66bc6b !important;
 }
 
-.iamadoctor-button {
-	background-color: white;
-	border: 2px solid green !important;
-	color: green;
-}
-
 .affix {
 	top: 90px;
 	min-width: 100% !important;
 }
 
-/*.affix .box {*/
-	/*width: 90%;*/
-/*}*/
-
-/*.affix + .container-fluid {*/
-	/*padding: 7px;*/
-	/*width: 90%;*/
-/*}*/
-
-/*star icon*/
 .star-icon {
 	color: #ddd;
 	font-size: 2em;
@@ -174,13 +137,8 @@ body {
 	padding: 2px;
 	color: #bcbcbc;
 }
-/* or if you want no repeat just stretch 
-background:  url("pathtoimage/image.png") no-repeat center center fixed; 
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-}*/
-.navbar-brand {
-	min-height: inherit;
+
+.maps{
+	width: 100%;
+	min-height: 300px;
 }

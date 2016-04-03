@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -8,7 +7,7 @@
     <title>Results</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{resources/custom/favicon.png}" sizes="64x64" />
+    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{/resources/custom/favicon.png}" sizes="64x64" />
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
           th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
@@ -35,69 +34,38 @@
     <link rel="stylesheet" href="custom/easy-autocomplete.themes.min.css"
           th:href="@{/resources/custom/easy-autocomplete.themes.min.css}">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="custom/style.css"
-          th:href="@{/resources/custom/style.css}"/>
     <link rel="stylesheet" href="dist/css/skins/skin-green.min.css"
           th:href="@{/resources/dist/css/skins/skin-green.min.css}"/>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
-    <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
-    <!--<![endif]&ndash;&gt;-->
+    <link rel="stylesheet" href="custom/style.css"
+          th:href="@{/resources/custom/style.css}"/>
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
-<body class="skin-green layout-top-nav">
+
+<body class="skin-green layout-top-nav" style="padding-top: 80px;">
 <div class="wrapper">
 
-    <header class="main-header">
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-fixed-top navbarshadow" style="background-color: #ffffff">
-            <div class="container">
-                <div class="navbar-header">
-                    <a href="/home" class="navbar-brand">
-                        <img src="custom/logo_color.png" class="img-responsive"
-                             th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
-                    </a>
-                </div>
-                <div class="navbar-custom-menu" style="text-align: right">
-                    <p style="color: #43a260">
-                        <i class="fa fa-phone"></i>
-                        01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>
-                    <p style="color: #a7a8a7">
-                        Are you a doctor? List your practice here
-                        <button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>
-                </div>
+    <nav class="navbar navbar-default navbar-fixed-top navbarshadow">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="/home" class="navbar-brand">
+                    <img src="custom/logo_color.png" class="img-responsive"
+                         th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
+                </a>
             </div>
-        </nav>
-    </header>
+            <div class="navbar-custom-menu" style="text-align: right">
+                <p style="color: #43a260">
+                    <i class="fa fa-phone"></i>
+                    01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>
+                <p style="color: #a7a8a7">
+                    Are you a doctor? List your practice here
+                    <button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>
+            </div>
+        </div>
+    </nav>
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
         <section class="content">
-            <!-- Your Page Content Here -->
-            <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
             <!--<div class="row">&nbsp;</div>-->
@@ -415,9 +383,9 @@ desired effect
                     <div class="row">&nbsp;</div>
                 </div>
             </div>
-            <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
-        </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
+
+        </section>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -488,7 +456,6 @@ desired effect
 
     <!-- Main Footer -->
     <footer class="main-footer">
-
         <div class="row">
             <div class="col-lg-2 col-sm-2 text-right">
                 <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}" width="100px" height="40px" style="margin-right: 20px;">
@@ -503,10 +470,9 @@ desired effect
         </div>
     </footer>
 
-</div><!-- ./wrapper -->
+</div>
 
 <!-- REQUIRED JS SCRIPTS -->
-
 <!-- jQuery 2.1.4 -->
 <script src="plugins/jQuery/jQuery-2.1.4.min.js"
         th:src="@{/resources/plugins/jQuery/jQuery-2.1.4.min.js}"></script>
@@ -518,7 +484,6 @@ desired effect
         th:src="@{/resources/dist/js/app.min.js}"></script>
 <!--Bootstrap select-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"></script>
-
 <!-- DataTables -->
 <script src="plugins/datatables/jquery.dataTables.min.js"
         th:src="@{/resources/plugins/datatables/jquery.dataTables.min.js}"></script>
@@ -526,19 +491,15 @@ desired effect
         th:src="@{/resources/plugins/datatables/dataTables.bootstrap.min.js}"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
         $('#datatable').DataTable({
             searching: false,
             ordering: false,
             lengthChange: false,
             dom: 't<"#head1.row"<"col-sm-12"<"pull-right" p>>>'
         });
-
         $('#datatable').DataTable().page.len(5).draw();
-
     });
 </script>
-
 <!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{/resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
@@ -572,7 +533,6 @@ desired effect
 //        $('#timepicker1').timepicker();
     });
 </script>
-
 <!--Search Results Click Function-->
 <script type="text/javascript">
     $(document).ready(function () {
@@ -589,7 +549,6 @@ desired effect
         });
     });
 </script>
-
 <!--For Modal Show Activity-->
 <script>
     $('#bookModal').on('show.bs.modal', function(e) {
@@ -599,42 +558,32 @@ desired effect
             var doctorAvailability = $(e.relatedTarget).data('availability');
             //populate the textbox
             $(e.currentTarget).find('input[name="doctor"]').val(doctorId);
-//            document.getElementById("modalDoctorName").innerHTML = $(e.relatedTarget).data('doctorname');
-//            document.getElementById("modalHospitalName").innerHTML = $(e.relatedTarget).data('hospitalname');
-
             if($(e.relatedTarget).parent().prev().children("span.week")) {
                 var infoParent = $(e.relatedTarget).parent().prev();
-
                 var infoDoctorName = infoParent.children("span.doctor-name");
                 var modalDoctorName = document.getElementById("modalDoctorName");
                 $('#modalDoctorName').empty();
                 infoDoctorName.clone().appendTo(modalDoctorName);
-
                 var infoHospital = infoParent.children("p.hospital");
                 var modalHospital = document.getElementById("modalHospitalName");
                 $('#modalHospitalName').empty();
                 infoHospital.clone().appendTo(modalHospital);
-
                 var infoWeekDay = infoParent.children("span.week");
                 var modalWeekDay = document.getElementById("modalOffDay");
                 $('#modalOffDay').empty();
                 infoWeekDay.clone().appendTo(modalWeekDay);
-
                 var infoTime = infoParent.children("span.time");
                 var modalTime = document.getElementById("modalTime");
                 $('#modalTime').empty();
                 infoTime.clone().appendTo(modalTime);
-
                 var infoSpecialty = infoParent.children("p.specialty");
                 var modalSpecialty = document.getElementById("modalSpecialty");
                 $('#modalSpecialty').empty();
                 infoSpecialty.clone().appendTo(modalSpecialty);
-
                 var infoDesignation = infoParent.children("p.designation");
                 var modalDesignation = document.getElementById("modalDesignation");
                 $('#modalDesignation').empty();
                 infoDesignation.clone().appendTo(modalDesignation);
-
                 var infoImage = $(e.relatedTarget).parent().parent().parent().children("span.image");
                 var modalImage = document.getElementById("modalImage");
                 $('#modalImage').empty();
@@ -643,32 +592,28 @@ desired effect
         }
     });
 </script>
-
 <!--Select the correct value for dropdown -->
 <script>
     $(document).ready(function () {
         $("#speciality").val($("#speciality").data("speciality"));
     });
 </script>
-
 <!--For auto complete place-->
 <script src="custom/jquery.easy-autocomplete.min.js"
-        th:src="@{resources/custom/jquery.easy-autocomplete.min.js}"></script>
+        th:src="@{/resources/custom/jquery.easy-autocomplete.min.js}"></script>
 <script src="custom/predefined_areas.js"
-        th:src="@{resources/custom/predefined_areas.js}"></script>
+        th:src="@{/resources/custom/predefined_areas.js}"></script>
 <script>
     $(document).ready(function () {
         $("#placesearch").val($("#placesearch").data("place"));
         $("#hospital").val($("#hospital").data("hospital"));
     });
 </script>
-
 <!-- Google Maps -->
 <script src="custom/mymap.js"
         th:src="@{/resources/custom/mymap.js}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 <script type="text/javascript" th:inline="javascript">
-
     function placeHospitals() {
         var foundHospitalsList = [[${foundHospital}]];
         for (var a = 0; a < foundHospitalsList.length; a++) {
@@ -683,6 +628,5 @@ desired effect
         $("#userLngInModal").val(lng);
     }
 </script>
-
 </body>
 </html>
