@@ -9,6 +9,7 @@
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{resources/custom/favicon.png}" sizes="64x64" />
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
           th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
@@ -36,7 +37,7 @@
     <link rel="stylesheet" href="custom/style.css"
           th:href="@{/resources/custom/style.css}"/>
     <link rel="stylesheet" href="dist/css/skins/skin-green.min.css"
-          th:href="@{resources/dist/css/skins/skin-green.min.css}"/>
+          th:href="@{/resources/dist/css/skins/skin-green.min.css}"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,7 +53,9 @@
         <nav class="navbar navbar-fixed-top navbarshadow" style="background-color: #ffffff">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/home" class="navbar-brand"><img src="custom/logo.png" width="200px" height="80px">
+                    <a href="/home" class="navbar-brand">
+                        <img src="custom/logo_color.png" class="img-responsive"
+                             th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
                     </a>
                 </div>
                 <div class="navbar-custom-menu" style="text-align: right">
@@ -124,11 +127,15 @@
                                                    aria-describedby="sizing-addon1">
                                         </div>
                                         <div id="show_advanced" class="pull-right">
-                                            <a onclick="showAdvancedOptions()" style="background-color: #e6e7e9; color: darkgreen; padding: 3px;">
-                                                More Filters</a></div>
+                                            <a onclick="showAdvancedOptions()"
+                                               style="background-color: #e6e7e9; color: darkgreen; padding: 3px;
+                                               cursor: pointer;">
+                                                More Options</a></div>
                                         <div id="hide_advanced" class="hidden pull-right">
-                                            <a onclick="hideAdvancedOptions()" style="background-color: #e6e7e9; color: darkgreen; padding: 3px;">
-                                                Hide Extra Filters</a></div>
+                                            <a onclick="hideAdvancedOptions()"
+                                               style="background-color: #e6e7e9; color: darkgreen; padding: 3px;
+                                               cursor: pointer;">
+                                                Hide Extra Options</a></div>
                                         <br>
                                         <br>
                                         <div id="hospitalList" class="dropdown hidden">
@@ -140,6 +147,11 @@
                                                 </option>
                                             </select>
                                             <br>
+                                        </div>
+                                        <div id="doctorName" class="form-group input-group hidden">
+                                            <input class="form-control border-green" name="doctorName" type="text"
+                                                   placeholder="Doctor Name">
+                                            <div><br><br></div>
                                         </div>
                                         <input id="userLat" name="userLat" value="" hidden>
                                         <input id="userLng" name="userLng" value="" hidden>
@@ -156,8 +168,28 @@
                                 BEST DOCTORS AROUND YOU</strong></span>
                             <div class="row">&nbsp;</div>
                             <div class="row">&nbsp;</div>
-                            <div class="badge bg-green-gradient" style="font-size: 40px;"><i class="fa fa-search"></i></div>
-                            <div class="badge bg-green-gradient" style="font-size: 40px;"><i class="fa fa-mobile"></i></div>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: center;">
+                                    <img src="custom/icon1.png" th:src="@{resources/custom/icon1.png}" height="90px" width="90px">
+                                    <p style="font-size: 14px; color: white">SEARCH BY SPECIALTY/HOSPITAL</p>
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                    <div class="row">&nbsp;</div>
+                                    <img src="custom/arrow.png" th:src="@{resources/custom/arrow.png}" height="50px" width="50px">
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: center;">
+                                    <img src="custom/icon2.png" th:src="@{resources/custom/icon2.png}" height="90px" width="90px">
+                                    <p style="font-size: 14px; color: white">BOOK DOCTOR</p>
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                                    <div class="row">&nbsp;</div>
+                                    <img src="custom/arrow.png" th:src="@{resources/custom/arrow.png}" height="50px" width="50px">
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: center;">
+                                    <img src="custom/icon3.png" th:src="@{resources/custom/icon3.png}" height="90px" width="90px">
+                                    <p style="font-size: 14px; color: white">GET CONFIRMATION</p>
+                                </div>
+                            </div>
                             <p style="color: white"><span style="font-size: 23px;">or call our hotline 01717111111</span> (10am to 10pm)</p>
 
                         </div>
@@ -174,9 +206,10 @@
 
         <div class="row">
             <div class="col-lg-2 col-sm-2 text-right">
-                <img src="custom/logo.png" width="50px" height="20px" style="margin-right: 20px;">
+                <img src="custom/logo_bnw.png" th:src="@{resources/custom/logo_bnw.png}"
+                     class="img-responsive" width="30%" style="margin-right: 20px;">
             </div>
-            <div class="col-lg-10 col-sm-10">
+            <div class="col-lg-10 col-sm-10" style="padding-top: 20px;">
                 <a style="color: #f0f1d6" href="#">Frequently Asked Questions</a> |
                 <a style="color: #f0f1d6" href="#">About DoctorKoi</a> |
                 Copyright &copy; 2016 <strong>DoctorKoi</strong> All rights reserved |
@@ -226,11 +259,13 @@
 <script>
     function showAdvancedOptions(){
         $('#hospitalList').toggleClass('hidden show');
+        $('#doctorName').toggleClass('hidden show');
         $('#show_advanced').toggleClass('hidden show');
         $('#hide_advanced').toggleClass('hidden show');
     }
     function hideAdvancedOptions(){
         $('#hospitalList').toggleClass('hidden show');
+        $('#doctorName').toggleClass('hidden show');
         $('#show_advanced').toggleClass('hidden show');
         $('#hide_advanced').toggleClass('hidden show');
     }

@@ -90,6 +90,11 @@ body {
 	border: 0 solid white !important;
 }
 
+.margin-zero{
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
 .border-green{
 	border: 1px solid #66bc6b !important;
 }
@@ -158,6 +163,17 @@ body {
 	}
 }
 
+.weekday-active {
+	border: solid 1px #3b9349;
+	padding: 2px;
+	color: #3b9349;
+}
+
+.weekday-inactive {
+	border: solid 1px #bcbcbc;
+	padding: 2px;
+	color: #bcbcbc;
+}
 /* or if you want no repeat just stretch 
 background:  url("pathtoimage/image.png") no-repeat center center fixed; 
 -webkit-background-size: cover;
@@ -165,4 +181,6 @@ background:  url("pathtoimage/image.png") no-repeat center center fixed;
 -o-background-size: cover;
 background-size: cover;
 }*/
-
+.navbar-brand {
+	min-height: inherit;
+}

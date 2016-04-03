@@ -7,6 +7,7 @@
     <title th:text="${doctor.name}">Doctor - ABCXYZ</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{resources/custom/favicon.png}" sizes="64x64" />
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
           th:href="@{/resources/bootstrap/css/bootstrap.min.css}">
@@ -16,33 +17,42 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="custom/style.css"
-          th:href="@{/resources/custom/style.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css" th:href="@{/resources/dist/css/AdminLTE.min.css}">
     <!-- DatePicker CSS -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
           th:href="@{/resources/plugins/datepicker/datepicker3.css}">
     <!-- Timepicker -->
     <link rel='stylesheet' href="plugins/timepicker/bootstrap-timepicker.min.css"
           th:href="@{/resources/plugins/timepicker/bootstrap-timepicker.min.css}"/>
-
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css" th:href="@{/resources/dist/css/AdminLTE.min.css}">
-    <link rel="stylesheet" href="dist/css/skins/skin-blue-light.min.css"
-          th:href="@{/resources/dist/css/skins/skin-blue-light.min.css}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="custom/style.css"
+          th:href="@{/resources/custom/style.css}">
+    <link rel="stylesheet" href="dist/css/skins/skin-green.min.css"
+          th:href="@{/resources/dist/css/skins/skin-green.min.css}"/>
 
 </head>
-<body class="skin-blue-light layout-top-nav">
+<body class="skin-green layout-top-nav">
 <div class="wrapper">
 
     <!-- Main Header -->
     <header class="main-header">
         <!-- Header Navbar -->
-        <nav class="navbar navbar-fixed-top">
+        <nav class="navbar navbar-fixed-top navbarshadow" style="background-color: #ffffff">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/home" class="navbar-brand  nav-custom"><b>DoctorKoi</b>
+                    <a href="/home" class="navbar-brand"><img src="custom/logo_color.png"
+                                                              th:src="@{/resources/custom/logo_color.png}"
+                                                              width="200px" height="80px">
                     </a>
+                </div>
+                <div class="navbar-custom-menu" style="text-align: right">
+                    <p style="color: #43a260">
+                        <i class="fa fa-phone"></i>
+                        01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>
+                    <p style="color: #a7a8a7">
+                        Are you a doctor? List your practice here
+                        <button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>
                 </div>
             </div>
         </nav>
@@ -56,9 +66,10 @@
             <!-- Your Page Content Here -->
             <div class="row">&nbsp;</div>
             <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>
 
             <div class="row">
-                <div class="col-lg-6 col-sm-12">
+                <div class="col-lg-6 col-sm-12 col-lg-offset-3">
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <img class="profile-user-img img-responsive img-circle" src="dist/img/noimage.jpg"
@@ -117,107 +128,121 @@
                                         text or number
                                     </a>
                                 </li>
+                                <li class="list-group-item">
+                                    <b>Availability</b>
+                                    <a class="pull-right" th:text="'Weekdays '+${availability.start_end}
+                                    +' Except '+${availability.weekDays}">
+                                        text or number
+                                    </a>
+                                </li>
+                                <li>
+                                    <button type="button" class="btn btn-success pull-right" data-toggle="modal"
+                                            data-target="#bookModal">
+                                        <i class="glyphicon glyphicon-modal-window"></i>
+                                        <strong> Book Online</strong>
+                                    </button>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6 col-sm-12">
-                    <br>
-                    <div class="box box-primary box-solid">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">
-                                <i class="glyphicon glyphicon-time"></i>
-                                <strong> Time Schedule</strong>
-                            </h3>
-                            <button type="button" class="btn btn-success pull-right" data-toggle="modal"
-                                    data-target="#bookModal">
-                                <i class="glyphicon glyphicon-modal-window"></i>
-                                <strong> Book Online</strong>
-                            </button>
-                        </div>
-                        <div class="box-body">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue">
-                                        <strong>Saturday </strong>
-                                        <span th:unless="${availability.sat}" class="label label-danger pull-right">
-                                            Not Available
-                                        </span>
-                                        <span th:if="${availability.sat}" class="label label-success pull-right" th:text="${availability.start_end}">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue">
-                                        <strong>Sunday </strong>
-                                        <span th:unless="${availability.sun}" class="label label-danger pull-right">
-                                            Not Available
-                                        </span>
-                                        <span th:if="${availability.sun}" class="label label-success pull-right" th:text="${availability.start_end}">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue">
-                                        <strong>Monday </strong>
-                                        <span th:unless="${availability.mon}" class="label label-danger pull-right">
-                                            Not Available
-                                        </span>
-                                        <span th:if="${availability.mon}" class="label label-success pull-right" th:text="${availability.start_end}">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue">
-                                        <strong>Tuesday </strong>
-                                        <span th:unless="${availability.tue}" class="label label-danger pull-right">
-                                            Not Available
-                                        </span>
-                                        <span th:if="${availability.tue}" class="label label-success pull-right" th:text="${availability.start_end}">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue">
-                                        <strong>Wednesday </strong>
-                                        <span th:unless="${availability.wed}" class="label label-danger pull-right">
-                                            Not Available
-                                        </span>
-                                        <span th:if="${availability.wed}" class="label label-success pull-right" th:text="${availability.start_end}">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue">
-                                        <strong>Thursday </strong>
-                                        <span th:unless="${availability.thu}" class="label label-danger pull-right">
-                                            Not Available
-                                        </span>
-                                        <span th:if="${availability.thu}" class="label label-success pull-right" th:text="${availability.start_end}">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                                <li class="list-group-item">
-                                    <h4 class="text-light-blue">
-                                        <strong>Friday </strong>
-                                        <span th:unless="${availability.fri}" class="label label-danger pull-right">
-                                            Not Available
-                                        </span>
-                                        <span th:if="${availability.fri}" class="label label-success pull-right" th:text="${availability.start_end}">
-                                            10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM
-                                        </span>
-                                    </h4>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <!--<div class="col-lg-6 col-sm-12">-->
+                    <!--<br>-->
+                    <!--<div class="box box-primary box-solid">-->
+                        <!--<div class="box-header with-border">-->
+                            <!--<h3 class="box-title">-->
+                                <!--<i class="glyphicon glyphicon-time"></i>-->
+                                <!--<strong> Time Schedule</strong>-->
+                            <!--</h3>-->
+                            <!--<button type="button" class="btn btn-success pull-right" data-toggle="modal"-->
+                                    <!--data-target="#bookModal">-->
+                                <!--<i class="glyphicon glyphicon-modal-window"></i>-->
+                                <!--<strong> Book Online</strong>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                        <!--<div class="box-body">-->
+                            <!--<ul class="list-group">-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<h4 class="text-light-blue">-->
+                                        <!--<strong>Saturday </strong>-->
+                                        <!--<span th:unless="${availability.sat}" class="label label-danger pull-right">-->
+                                            <!--Not Available-->
+                                        <!--</span>-->
+                                        <!--<span th:if="${availability.sat}" class="label label-success pull-right" th:text="${availability.start_end}">-->
+                                            <!--10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM-->
+                                        <!--</span>-->
+                                    <!--</h4>-->
+                                <!--</li>-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<h4 class="text-light-blue">-->
+                                        <!--<strong>Sunday </strong>-->
+                                        <!--<span th:unless="${availability.sun}" class="label label-danger pull-right">-->
+                                            <!--Not Available-->
+                                        <!--</span>-->
+                                        <!--<span th:if="${availability.sun}" class="label label-success pull-right" th:text="${availability.start_end}">-->
+                                            <!--10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM-->
+                                        <!--</span>-->
+                                    <!--</h4>-->
+                                <!--</li>-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<h4 class="text-light-blue">-->
+                                        <!--<strong>Monday </strong>-->
+                                        <!--<span th:unless="${availability.mon}" class="label label-danger pull-right">-->
+                                            <!--Not Available-->
+                                        <!--</span>-->
+                                        <!--<span th:if="${availability.mon}" class="label label-success pull-right" th:text="${availability.start_end}">-->
+                                            <!--10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM-->
+                                        <!--</span>-->
+                                    <!--</h4>-->
+                                <!--</li>-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<h4 class="text-light-blue">-->
+                                        <!--<strong>Tuesday </strong>-->
+                                        <!--<span th:unless="${availability.tue}" class="label label-danger pull-right">-->
+                                            <!--Not Available-->
+                                        <!--</span>-->
+                                        <!--<span th:if="${availability.tue}" class="label label-success pull-right" th:text="${availability.start_end}">-->
+                                            <!--10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM-->
+                                        <!--</span>-->
+                                    <!--</h4>-->
+                                <!--</li>-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<h4 class="text-light-blue">-->
+                                        <!--<strong>Wednesday </strong>-->
+                                        <!--<span th:unless="${availability.wed}" class="label label-danger pull-right">-->
+                                            <!--Not Available-->
+                                        <!--</span>-->
+                                        <!--<span th:if="${availability.wed}" class="label label-success pull-right" th:text="${availability.start_end}">-->
+                                            <!--10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM-->
+                                        <!--</span>-->
+                                    <!--</h4>-->
+                                <!--</li>-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<h4 class="text-light-blue">-->
+                                        <!--<strong>Thursday </strong>-->
+                                        <!--<span th:unless="${availability.thu}" class="label label-danger pull-right">-->
+                                            <!--Not Available-->
+                                        <!--</span>-->
+                                        <!--<span th:if="${availability.thu}" class="label label-success pull-right" th:text="${availability.start_end}">-->
+                                            <!--10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM-->
+                                        <!--</span>-->
+                                    <!--</h4>-->
+                                <!--</li>-->
+                                <!--<li class="list-group-item">-->
+                                    <!--<h4 class="text-light-blue">-->
+                                        <!--<strong>Friday </strong>-->
+                                        <!--<span th:unless="${availability.fri}" class="label label-danger pull-right">-->
+                                            <!--Not Available-->
+                                        <!--</span>-->
+                                        <!--<span th:if="${availability.fri}" class="label label-success pull-right" th:text="${availability.start_end}">-->
+                                            <!--10 AM-12 PM, 2 PM - 4 PM, 8 PM - 10 PM-->
+                                        <!--</span>-->
+                                    <!--</h4>-->
+                                <!--</li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <!--<div class="box box-warning">-->
                         <!--<div class="box-header with-border">-->
                             <!--<h3 class="box-title">Location</h3>-->
@@ -226,7 +251,8 @@
                             <!--<div class="maps" id="map-container"></div>-->
                         <!--</div>-->
                     <!--</div>-->
-                </div>
+                <!--</div>-->
+                <!---->
             </div>
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
@@ -247,7 +273,7 @@
                         <div class="box-body">
                             <h2 align="center" th:text="${doctor.name}"></h2>
                             <h3 align="center" th:text="${hospital.name}"></h3>
-                            <h4 align="center" th:text="${availability.start_end}"></h4>
+                            <h4 align="center" th:utext="'Weekdays '+${availability.start_end}+' except '+${availability.weekDays}"></h4>
                             <form action="/createbooking" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -264,21 +290,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-offset-3 col-sm-6">
                                         <div class="form-group">
                                             <div class="input-group" style="z-index: 100000 !important;">
                                                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                <input id="datepicker" type="text" name="date"
+                                                <input id="datepickerInModal" type="text" name="date"
                                                        class="form-control pull-right datepicker">
                                             </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="input-group bootstrap-timepicker timepicker">
-                                            <span class="input-group-addon">
-                                                <i class="glyphicon glyphicon-time"></i></span>
-                                            <input id="timepicker1" name="time" type="text" class="form-control input-small">
                                         </div>
                                     </div>
                                 </div>
@@ -306,12 +324,19 @@
 
     <!-- Main Footer -->
     <footer class="main-footer">
-        <!-- To the right -->
-        <div class="pull-right hidden-xs">
-            Anything you want
+
+        <div class="row">
+            <div class="col-lg-2 col-sm-2 text-right">
+                <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}" width="100px" height="40px" style="margin-right: 20px;">
+            </div>
+            <div class="col-lg-10 col-sm-10" style="padding-top: 20px;">
+                <a style="color: #f0f1d6" href="#">Frequently Asked Questions</a> |
+                <a style="color: #f0f1d6" href="#">About DoctorKoi</a> |
+                Copyright &copy; 2016 <strong>DoctorKoi</strong> All rights reserved |
+                <a style="color: #f0f1d6" href="#">Privacy Policy</a> |
+                <a style="color: #f0f1d6" href="#">Terms and Use</a>
+            </div>
         </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
     </footer>
 
 </div><!-- ./wrapper -->
@@ -341,13 +366,13 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $(document).off('.datepicker.data-api');
-        $('#datepicker').datepicker({
+        $('#datepickerInModal').datepicker({
             format: "dd/mm/yyyy",
             todayHighlight: true,
             autoclose: true,
             startDate : new Date()
         });
-        $('#datepicker').datepicker('update', new Date());
+        $('#datepickerInModal').datepicker('update', new Date());
     });
 </script>
 <!-- Custom Google Map -->

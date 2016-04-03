@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Results</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Doctor Koi</title>
+
     <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
     <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{resources/custom/favicon.png}" sizes="64x64" />
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
@@ -18,22 +19,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css"
-          th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
     <!--BootStrap Select-->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css">
     <!-- DatePicker CSS -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
           th:href="@{/resources/plugins/datepicker/datepicker3.css}"/>
-    <link rel='stylesheet' href="plugins/timepicker/bootstrap-timepicker.min.css"
-          th:href="@{/resources/plugins/timepicker/bootstrap-timepicker.min.css}"/>
-    <!--Autocomplete-->
-    <link rel="stylesheet" href="custom/easy-autocomplete.min.css"
-          th:href="@{/resources/custom/easy-autocomplete.min.css}"/>
-    <link rel="stylesheet" href="custom/easy-autocomplete.themes.min.css"
-          th:href="@{/resources/custom/easy-autocomplete.themes.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css"
+          th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="custom/style.css"
           th:href="@{/resources/custom/style.css}"/>
@@ -42,40 +36,19 @@
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <!--<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>-->
-    <!--<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>-->
-    <!--<![endif]&ndash;&gt;-->
+
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="skin-green layout-top-nav">
 <div class="wrapper">
 
+    <!-- Main Header -->
     <header class="main-header">
         <!-- Header Navbar -->
         <nav class="navbar navbar-fixed-top navbarshadow" style="background-color: #ffffff">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/home" class="navbar-brand">
+                    <a href="/admin/dashboard" class="navbar-brand">
                         <img src="custom/logo_color.png" class="img-responsive"
                              th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
                     </a>
@@ -94,59 +67,39 @@ desired effect
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
 
-        <section class="content">
+        <!-- Main content -->
+        <section class="content" style="padding: 0;">
+
             <!-- Your Page Content Here -->
-            <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
-            <div class="row">&nbsp;</div>
-            <div class="row">&nbsp;</div>
-            <!--<div class="row">&nbsp;</div>-->
-            <!--<div class="row">&nbsp;</div>-->
-
             <div class="row">
-                <div class="col-lg-12 hidden-md hidden-sm hidden-xs">
-                    <form role="form" action="/searchdoctor" method="post">
+                <div class="col-lg-12">
+                    <form role="form" action="/admin/search" method="get">
                         <div class="col-lg-3 col-md-3 col-sm-3">
-                            <select id="speciality" name="speciality" class="form-control select-custom1 border-green" data-style="btn-success"
+                            <select id="speciality" name="speciality" class="form-control select-custom1"
                                     title="Choose a Speciality" th:attr="data-speciality=${selectedSpeciality}">
-                                <optgroup label="Popular Speciality">
-                                    <option value="1">Cardiology</option>
-                                    <option value="3">Dentistry</option>
-                                    <option value="4">Dermatology (e.g. Skin)</option>
-                                    <option value="9">Gastroenterology</option>
-                                    <option value="10">Gynecology & Obstetrics</option>
-                                    <option value="19">Orthopaedics (e.g. Fractures, Bones etc.)</option>
-                                    <option value="14">Medicine</option>
-                                    <option value="7">E.N.T</option>
-                                    <option value="8">Eye</option>
-                                    <option value="20">Paediatrics (Child)</option>
-                                </optgroup>
-                                <optgroup label="All Speciality">
-                                    <option th:each="speciality : ${specialityList}"
-                                            th:text="${speciality.description}" th:value="${speciality.id}">
-                                    </option>
-                                </optgroup>
+                                <option value="0" selected disabled>Pick A Specialty</option>
+                                <option th:each="speciality : ${specialityList}"
+                                        th:text="${speciality.description}" th:value="${speciality.id}">
+                                </option>
                             </select>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <div class="form-group input-group">
-                                <div class="input-group-addon border-green">
+                                <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input id="datepicker" name="date" class="form-control pull-right datepicker border-green"
+                                <input id="datepicker" name="date" class="form-control pull-right datepicker"
                                        th:attr="data-day=${selectedDay},
                                    data-month=${selectedMonth}, data-year=${selectedYear}"/>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-3">
-                            <div class="form-group input-group">
-                                <span class="input-group-addon border-green" id="sizing-addon">Search near</span>
-                                <input id="placesearch" name="place" class="form-control border-green" aria-describedby="sizing-addon1"
-                                       th:attr="data-place=${selectedPlace}"/>
-                            </div>
-                        </div>
-                        <div id="hospitalList" class="col-lg-2 col-md-2 col-sm-2 dropdown">
-                            <select id="hospital" name="hospital" class="form-control select-custom1 border-green"
+                        <div id="hospitalList" class="col-lg-3 col-md-3 col-sm-3 dropdown">
+                            <select id="hospital" name="hospital" class="form-control select-custom1"
                                     th:attr="data-hospital=${selectedHospital}">
                                 <option value="0" selected disabled>Pick A Hospital</option>
                                 <option th:each="hospital : ${hospitalList}"
@@ -155,17 +108,15 @@ desired effect
                                 </option>
                             </select>
                         </div>
-                        <input id="userLat" name="userLat" value="" hidden>
-                        <input id="userLng" name="userLng" value="" hidden>
-                        <div class="col-lg-2 col-md-2 col-sm-2">
+                        <div class="col-lg-3 col-md-3 col-sm-3">
                             <button type="submit" class="btn btn-success btn-block">Search Again</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <br>
+
             <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-12">
+                <div class="col-lg-8 col-lg-offset-2">
                     <div class="box box-success">
                         <div class="box-header bg-green">
                             <h3 class="box-title "><i class="fa fa-fw fa-stethoscope"></i><strong> Pick Your
@@ -187,10 +138,10 @@ desired effect
                                         th:attr="data-user=${doctor.id}">
 
                                         <div class="info-box  box-shadow-zero custom-margin-top-bottom">
-                                                <span class="info-box-icon image">
-                                                    <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
-                                                         th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
-                                                </span>
+                                                <!--<span class="info-box-icon image">-->
+                                                    <!--<img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"-->
+                                                         <!--th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">-->
+                                                <!--</span>-->
 
                                             <div class="info-box-content">
                                                 <div class="col-lg-9 col-md-9">
@@ -248,20 +199,20 @@ desired effect
                                                     </span>
                                                 </div>
                                                 <div class="col-lg-3 col-md-3">
-                                                    <th:block th:switch="${doctor.rankValue}">
-                                                        <div th:case="3">
-                                                            <span class="star-icon full three">☆☆☆☆☆</span>
-                                                        </div>
-                                                        <div th:case="4">
-                                                            <span class="star-icon full four">☆☆☆☆☆</span>
-                                                        </div>
-                                                        <div th:case="5">
-                                                            <span class="star-icon full five">☆☆☆☆☆</span>
-                                                        </div>
-                                                    </th:block>
-                                                    <p class="text-success"
-                                                       th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">
-                                                    </p>
+                                                    <!--<th:block th:switch="${doctor.rankValue}">-->
+                                                        <!--<div th:case="3">-->
+                                                            <!--<span class="star-icon full three">☆☆☆☆☆</span>-->
+                                                        <!--</div>-->
+                                                        <!--<div th:case="4">-->
+                                                            <!--<span class="star-icon full four">☆☆☆☆☆</span>-->
+                                                        <!--</div>-->
+                                                        <!--<div th:case="5">-->
+                                                            <!--<span class="star-icon full five">☆☆☆☆☆</span>-->
+                                                        <!--</div>-->
+                                                    <!--</th:block>-->
+                                                    <!--<p class="text-success"-->
+                                                       <!--th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">-->
+                                                    <!--</p>-->
                                                     <button type="button" class="btn btn-success btn-sm modal-button"
                                                             data-toggle="modal" data-target="#bookModal"
                                                             th:attr="data-doctor=${doctor.id},
@@ -273,149 +224,13 @@ desired effect
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="clickable-row" th:each="doctor : ${doctorList}">
-                                    <td class="search-result-box border-zero" data-href="/doctorprofile/"
-                                        th:attr="data-user=${doctor.id}">
-
-                                        <div class="info-box  box-shadow-zero custom-margin-top-bottom">
-                                                <span class="info-box-icon">
-                                                    <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
-                                                         th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
-                                                </span>
-
-                                            <div class="info-box-content">
-                                                <div class="col-lg-9 col-md-9">
-                                                        <span class="info-box-text" style="font-size: 16px;">
-                                                            <a th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
-                                                                <strong>Doctor's Name10</strong>
-                                                            </a>
-                                                        </span>
-                                                        <span class="info-box-text" style="font-size: 12px;" th:utext="${doctor.specialityText}">
-                                                            <strong>Speciality : </strong>Neurology
-                                                        </span>
-                                                        <span th:text="${doctor.designation}">
-                                                            Degrees & Bla Blahs
-                                                        </span>
-                                                        <span class="info-box-text text-info" style="font-size: 15px;"
-                                                              th:utext="'<strong>'+${doctor.hospitalName}+'<strong>'">
-                                                            <strong>Hospital</strong>
-                                                        </span>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3">
-                                                    <th:block th:switch="${doctor.rankValue}">
-                                                        <div th:case="3">
-                                                            <span class="star-icon full three">☆☆☆☆☆</span>
-                                                        </div>
-                                                        <div th:case="4">
-                                                            <span class="star-icon full four">☆☆☆☆☆</span>
-                                                        </div>
-                                                        <div th:case="5">
-                                                            <span class="star-icon full five">☆☆☆☆☆</span>
-                                                        </div>
-                                                    </th:block>
-                                                    <p
-                                                            th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">
-                                                    </p>
-                                                    <button type="button" class="btn btn-success btn-sm modal-button"
-                                                            data-toggle="modal" data-target="#bookModal"
-                                                            th:attr="data-doctor=${doctor.id},
-                                                             data-availability=${doctor.start_end},
-                                                             data-doctorname=${doctor.name},
-                                                             data-hospitalname=${doctor.hospitalName}">
-                                                        <strong> Book Online</strong>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="clickable-row" th:each="doctor : ${doctorList}">
-                                    <td class="search-result-box border-zero" data-href="/doctorprofile/"
-                                        th:attr="data-user=${doctor.id}">
-
-                                        <div class="info-box  box-shadow-zero custom-margin-top-bottom">
-                                                <span class="info-box-icon">
-                                                    <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
-                                                         th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
-                                                </span>
-
-                                            <div class="info-box-content">
-                                                <div class="col-lg-9 col-md-9">
-                                                        <span class="info-box-text" style="font-size: 16px;">
-                                                            <a th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
-                                                                <strong>Doctor's Name10</strong>
-                                                            </a>
-                                                        </span>
-                                                        <span class="info-box-text" style="font-size: 12px;" th:utext="${doctor.specialityText}">
-                                                            <strong>Speciality : </strong>Neurology
-                                                        </span>
-                                                        <span th:text="${doctor.designation}">
-                                                            Degrees & Bla Blahs
-                                                        </span>
-                                                        <span class="info-box-text text-info" style="font-size: 15px;"
-                                                              th:utext="'<strong>'+${doctor.hospitalName}+'<strong>'">
-                                                            <strong>Hospital</strong>
-                                                        </span>
-                                                </div>
-                                                <div class="col-lg-3 col-md-3">
-                                                    <th:block th:switch="${doctor.rankValue}">
-                                                        <div th:case="3">
-                                                            <span class="star-icon full three">☆☆☆☆☆</span>
-                                                        </div>
-                                                        <div th:case="4">
-                                                            <span class="star-icon full four">☆☆☆☆☆</span>
-                                                        </div>
-                                                        <div th:case="5">
-                                                            <span class="star-icon full five">☆☆☆☆☆</span>
-                                                        </div>
-                                                    </th:block>
-                                                    <p class="text-success"
-                                                       th:utext=" 'Within ~ '+ ${doctor.distance} + ' km'">
-                                                    </p>
-                                                    <button type="button" class="btn btn-success btn-sm modal-button"
-                                                            data-toggle="modal" data-target="#bookModal"
-                                                            th:attr="data-doctor=${doctor.id},
-                                                             data-availability=${doctor.start_end},
-                                                             data-doctorname=${doctor.name},
-                                                             data-hospitalname=${doctor.hospitalName}">
-                                                        <strong> Book Online</strong>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
-                    <div data-spy="affix" data-offset-top="120" style="width: 100%">
-                        <div class="box box-success">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Nearest Doctors</h3>
-                            </div>
-                            <div class="box-body">
-                                <div class="maps" id="map-container"></div>
-                            </div>
-                        </div>
-                        <div class="row">&nbsp;</div>
-                    </div>
-                </div>
-                <div class="hidden-lg hidden-md col-sm-12 col-xs-12">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Nearest Doctors</h3>
-                        </div>
-                        <div class="box-body">
-                            <div class="maps" id="map-container2"></div>
-                        </div>
-                    </div>
-                    <div class="row">&nbsp;</div>
-                </div>
             </div>
-            <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
@@ -444,7 +259,7 @@ desired effect
                                     <h4 id="modalTime"></h4>
                                 </div>
                             </div>
-                            <form action="/createbooking" method="post" class="form-horizontal" role="form">
+                            <form action="/admin/createBooking" method="post" class="form-horizontal" role="form">
                                 <div class="form-group">
                                     <label class="control-label col-sm-4 color-green" for="patient_name">BOOKING NAME</label>
                                     <div class="col-sm-6">
@@ -476,8 +291,6 @@ desired effect
                                             style="background-color: #434243">CANCEL</button>
                                 </div>
                                 <input id="doctor" name="doctor" value="" hidden>
-                                <input id="userLatInModal" name="userLat" value="" hidden>
-                                <input id="userLngInModal" name="userLng" value="" hidden>
                             </form>
                         </div>
                     </div>
@@ -491,7 +304,8 @@ desired effect
 
         <div class="row">
             <div class="col-lg-2 col-sm-2 text-right">
-                <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}" width="100px" height="40px" style="margin-right: 20px;">
+                <img src="custom/logo_bnw.png" th:src="@{resources/custom/logo_bnw.png}"
+                     class="img-responsive" width="30%" style="margin-right: 20px;">
             </div>
             <div class="col-lg-10 col-sm-10" style="padding-top: 20px;">
                 <a style="color: #f0f1d6" href="#">Frequently Asked Questions</a> |
@@ -534,7 +348,7 @@ desired effect
             dom: 't<"#head1.row"<"col-sm-12"<"pull-right" p>>>'
         });
 
-        $('#datatable').DataTable().page.len(5).draw();
+        $('#datatable').DataTable().page.len(10).draw();
 
     });
 </script>
@@ -542,8 +356,7 @@ desired effect
 <!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{/resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
-<script src="plugins/timepicker/bootstrap-timepicker.min.js"
-        th:src="@{/resources/plugins/timepicker/bootstrap-timepicker.min.js}"></script>
+
 <script>
     $(document).ready(function () {
         $(document).off('.datepicker.data-api');
@@ -573,23 +386,6 @@ desired effect
     });
 </script>
 
-<!--Search Results Click Function-->
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(document).on('click', 'tr', function () {
-            if ($(this).children("td.border-zero").data("user")) {
-                var href = $(this).children("td.border-zero").data("href");
-                var user = $(this).children("td.border-zero").data("user");
-                var profileUrl = href + '' + user;
-                window.location.href = profileUrl;
-            }
-        });
-        $(document).on('click', '.modal-button', function (e) {
-            e.stopPropagation();
-        });
-    });
-</script>
-
 <!--For Modal Show Activity-->
 <script>
     $('#bookModal').on('show.bs.modal', function(e) {
@@ -599,8 +395,6 @@ desired effect
             var doctorAvailability = $(e.relatedTarget).data('availability');
             //populate the textbox
             $(e.currentTarget).find('input[name="doctor"]').val(doctorId);
-//            document.getElementById("modalDoctorName").innerHTML = $(e.relatedTarget).data('doctorname');
-//            document.getElementById("modalHospitalName").innerHTML = $(e.relatedTarget).data('hospitalname');
 
             if($(e.relatedTarget).parent().prev().children("span.week")) {
                 var infoParent = $(e.relatedTarget).parent().prev();
@@ -648,41 +442,25 @@ desired effect
 <script>
     $(document).ready(function () {
         $("#speciality").val($("#speciality").data("speciality"));
-    });
-</script>
-
-<!--For auto complete place-->
-<script src="custom/jquery.easy-autocomplete.min.js"
-        th:src="@{resources/custom/jquery.easy-autocomplete.min.js}"></script>
-<script src="custom/predefined_areas.js"
-        th:src="@{resources/custom/predefined_areas.js}"></script>
-<script>
-    $(document).ready(function () {
-        $("#placesearch").val($("#placesearch").data("place"));
         $("#hospital").val($("#hospital").data("hospital"));
     });
 </script>
 
-<!-- Google Maps -->
-<script src="custom/mymap.js"
-        th:src="@{/resources/custom/mymap.js}"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
-<script type="text/javascript" th:inline="javascript">
-
-    function placeHospitals() {
-        var foundHospitalsList = [[${foundHospital}]];
-        for (var a = 0; a < foundHospitalsList.length; a++) {
-            placeMarkerAtHospital(foundHospitalsList[a]);
-        }
-        fitAllMarkers();
-    }
-    function setUserLocation(lat, lng){
-        $("#userLat").val(lat);
-        $("#userLatInModal").val(lat);
-        $("#userLng").val(lng);
-        $("#userLngInModal").val(lng);
-    }
+<!--Search Results Click Function-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on('click', 'tr', function () {
+            if ($(this).children("td.border-zero").data("user")) {
+                var href = $(this).children("td.border-zero").data("href");
+                var user = $(this).children("td.border-zero").data("user");
+                var profileUrl = href + '' + user;
+                window.location.href = profileUrl;
+            }
+        });
+        $(document).on('click', '.modal-button', function (e) {
+            e.stopPropagation();
+        });
+    });
 </script>
-
 </body>
 </html>
