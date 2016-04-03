@@ -102,8 +102,8 @@
                                         22 Jan, 2016 4.00 PM</td>
                                 </tr>
                                 <tr>
-                                    <td th:text="${appointment.status}">Status</td>
-                                    <td>Pending</td>
+                                    <td>Status</td>
+                                    <td th:text="${appointment.status}">Pending</td>
                                 </tr>
                                 <tr>
                                     <td>Doctor</td>
@@ -145,8 +145,8 @@
                         </div>
                         <div class="form-group input-group radio-inline">
                             <span>Send SMS  </span>
-                            <label class="radio-inline"><input type="radio" name="sms">Yes</label>
-                            <label class="radio-inline"><input type="radio" name="sms" checked>No</label>
+                            <label class="radio-inline"><input type="radio" name="sms" value="yes">Yes</label>
+                            <label class="radio-inline"><input type="radio" name="sms" value="no" checked>No</label>
                         </div>
                         <br>
                         <input type="text" name="appointmentID" value="" th:value="${appointment.id}" hidden>

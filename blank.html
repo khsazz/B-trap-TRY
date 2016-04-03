@@ -9,6 +9,7 @@
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <link rel="icon" type="image/png" href="custom/favicon.png" th:href="@{resources/custom/favicon.png}" sizes="64x64" />
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"
           th:href="@{/resources/bootstrap/css/bootstrap.min.css}"/>
@@ -35,14 +36,23 @@
 <body class="skin-green layout-top-nav">
 <div class="wrapper">
 
-    <!-- Main Header -->
     <header class="main-header">
         <!-- Header Navbar -->
-        <nav class="navbar navbar-fixed-top">
+        <nav class="navbar navbar-fixed-top navbarshadow" style="background-color: #ffffff">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="/home" class="navbar-brand  nav-custom"><b> Doctor Koi</b>
+                    <a href="/home" class="navbar-brand">
+                        <img src="custom/logo_color.png" class="img-responsive"
+                             th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>
                     </a>
+                </div>
+                <div class="navbar-custom-menu" style="text-align: right">
+                    <p style="color: #43a260">
+                        <i class="fa fa-phone"></i>
+                        01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>
+                    <p style="color: #a7a8a7">
+                        Are you a doctor? List your practice here
+                        <button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>
                 </div>
             </div>
         </nav>
@@ -63,15 +73,21 @@
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
 
-
     <!-- Main Footer -->
     <footer class="main-footer">
-        <!-- To the right -->
-        <div class="pull-right hidden-xs">
-            Anything you want
+
+        <div class="row">
+            <div class="col-lg-2 col-sm-2 text-right">
+                <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}" width="100px" height="40px" style="margin-right: 20px;">
+            </div>
+            <div class="col-lg-10 col-sm-10" style="padding-top: 20px;">
+                <a style="color: #f0f1d6" href="#">Frequently Asked Questions</a> |
+                <a style="color: #f0f1d6" href="#">About DoctorKoi</a> |
+                Copyright &copy; 2016 <strong>DoctorKoi</strong> All rights reserved |
+                <a style="color: #f0f1d6" href="#">Privacy Policy</a> |
+                <a style="color: #f0f1d6" href="#">Terms and Use</a>
+            </div>
         </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
     </footer>
 
 </div><!-- ./wrapper -->
