@@ -131,13 +131,9 @@
     </div>
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+    <footer th:replace="blank :: footer" class="main-footer">
         <div class="row">
-            <div class="col-lg-2 col-sm-2 text-right">
-                <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}"
-                     class="img-responsive" width="30%" style="margin-right: 20px;">
-            </div>
-            <div class="col-lg-10 col-sm-10" style="padding-top: 20px;">
+            <div class="col-lg-12 col-sm-12" style="padding-top: 20px; text-align: center">
                 <a style="color: #f0f1d6" href="#">Frequently Asked Questions</a> |
                 <a style="color: #f0f1d6" href="#">About DoctorKoi</a> |
                 Copyright &copy; 2016 <strong>DoctorKoi</strong> All rights reserved |

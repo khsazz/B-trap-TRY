@@ -7,10 +7,15 @@ var initialLocation;
 var home = {lat: 23.8, lng: 90.4};
 var browserSupportFlag = new Boolean();
 var geoCoder = null;
+var mapApiLoaded = false;
 //var geoCoderInitialized = false;
 
 var markers = [];
 //var locations = ["banani, dhaka", "gulshan, dhaka", "dhanmondi, dhaka"];
+
+function mapApiLoadedCallback() {
+    mapApiLoaded = true;
+}
 
 function initMap() {
 
@@ -68,10 +73,10 @@ function initProfileMap() {
         browserSupportFlag = true;
         navigator.geolocation.getCurrentPosition(function (position) {
             initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            setUserLocation(position.coords.latitude, position.coords.longitude);
             //map.setCenter(initialLocation);
             setCurrentPlaceMarker(initialLocation, "You are here!");
             //initGeocoder();
+            setUserLocation(position.coords.latitude, position.coords.longitude);
             placeHospitals();
         }, function () {
             handleNoGeolocation(browserSupportFlag);

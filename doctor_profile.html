@@ -36,7 +36,7 @@
 <div class="wrapper">
 
     <!-- Main Header -->
-    <nav class="navbar navbar-fixed-top navbarshadow">
+    <nav class="navbar navbar-fixed-top navbarshadow" th:replace="blank :: header">
         <div class="container">
             <div class="navbar-header">
                 <a href="/home" class="navbar-brand">
@@ -46,8 +46,8 @@
             </div>
             <div class="navbar-custom-menu" style="text-align: right">
                 <p style="color: #43a260">
-                    <i class="fa fa-phone"></i>
-                    01711-111222    <button class="btn btn-xs btn-success">Sign IN</button></p>
+                    <i class="fa fa-phone"></i>01980-807030, 01980-807040
+                    <button class="btn btn-xs btn-success">Sign IN</button></p>
                 <p style="color: #a7a8a7">
                     Are you a doctor? List your practice here
                     <button class="btn btn-sm iamadoctor-button"> <strong>I'M A DOCTOR</strong> </button></p>
@@ -62,93 +62,201 @@
             <div class="row">&nbsp;</div>
 
             <div class="row">
-                <div class="col-lg-6 col-sm-12 col-lg-offset-3">
-                    <div class="box box-primary">
-                        <div class="box-body box-profile">
-                            <img class="profile-user-img img-responsive img-circle" src="dist/img/noimage.jpg"
-                                 th:src="@{/resources/dist/img/noimage.jpg}" alt="User profile picture">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 search-box-shadow" style="padding: 20px;">
+                    <br>
+                    <div class="row">
+                        <div class="info-box  doctor-panel">
+                            <span class="info-box-icon image doctor-panel-image">
+                                <img class="img img-responsive" src="dist/img/noimage.jpg" alt="User Avatar"
+                                     th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                            </span>
+                            <div class="info-box-content">
+                                <p style="font-size: 22px;" th:utext="'<strong>'+${doctor.name}+'</strong>'">
+                                    <strong>PROF. DR. FM SIDDIQI</strong>
+                                </p>
+                                <p style="font-size: 16px; margin-bottom: 0;" th:utext="${doctor.degrees}">
+                                    <strong>MBBS, FRCPS, MD</strong>
+                                </p>
+                                <p style="font-size: 16px; margin-bottom: 0;" th:utext="${doctor.designation}">
+                                    ASSISTANT PROFESSOR (CARDIOLOGY), DHAKA MEDICAL COLLEGE
+                                </p>
+                                <p style="font-size: 16px; margin-bottom: 0;"
+                                   th:utext="'Specialized in <strong>'+${speciality.description}+'</strong>'">
+                                    SPECIALITY IN <strong>CARDIOLOGY</strong>
+                                </p>
+                                <th:block th:switch="${doctor.rankValue}">
+                                    <div th:case="3">
+                                        <span class="star-icon full three">☆☆☆☆☆</span>
+                                    </div>
+                                    <div th:case="4">
+                                        <span class="star-icon full four">☆☆☆☆☆</span>
+                                    </div>
+                                    <div th:case="5">
+                                        <span class="star-icon full five">☆☆☆☆☆</span>
+                                    </div>
+                                </th:block>
+                                <button type="button" class="btn btn-success btn-sm modal-button"
+                                        data-toggle="modal" data-target="#bookModal">
+                                    <strong> Book Now</strong>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-                            <h3 class="profile-username text-center"
-                                th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
-                                <strong>My name is KHAN</strong>
-                            </h3>
-
-                            <p class="text-muted text-center" th:text="${doctor.degrees}">
-                                I have a lot of degrees
-                            </p>
-
-                            <p class="text-muted text-center font-16" th:text="${doctor.designation}">
-                                I have a lot of degrees
-                            </p>
-                            <p class="text-muted text-center font-16">
-                                <div style="text-align: center">
-                                    <th:block th:switch="${doctor.rankValue}">
-                                        <div th:case="3">
-                                            <span class="star-icon full three" style="font-size: 30px;">☆☆☆☆☆</span>
-                                        </div>
-                                        <div th:case="4">
-                                            <span class="star-icon full four" style="font-size: 30px;">☆☆☆☆☆</span>
-                                        </div>
-                                        <div th:case="5">
-                                            <span class="star-icon full five" style="font-size: 30px;">☆☆☆☆☆</span>
-                                        </div>
-                                    </th:block>
-                                </div>
-                            </p>
-
-                            <ul class="list-group list-group-unbordered">
-                                <li class="list-group-item">
-                                    <b>SPECIALITY</b>
-                                    <a class="pull-right" th:text="${speciality.description}">
-                                        text or number
-                                    </a>
+                    <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#informationTab" aria-controls="informationTab"
+                                       role="tab" data-toggle="tab">INFORMATION</a>
                                 </li>
-                                <li class="list-group-item">
-                                    <b>HOSPITAL</b>
-                                    <a class="pull-right" th:text="${hospital.name}">
-                                        text or number
-                                    </a>
+                                <li role="presentation">
+                                    <a href="#mapTab" aria-controls="mapTab" role="tab" data-toggle="tab">MAP</a>
                                 </li>
-                                <li class="list-group-item">
-                                    <b>LOCATION</b>
-                                    <a class="pull-right" th:text="${hospital.location}">
-                                        text or number
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>VISITING COST</b>
-                                    <a class="pull-right" th:text="'BDT '+${doctor.cost}">
-                                        text or number
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Availability</b>
-                                    <a class="pull-right" th:text="'Weekdays '+${availability.start_end}
-                                    +' Except '+${availability.weekDays}">
-                                        text or number
-                                    </a>
-                                </li>
-                                <li>
-                                    <button type="button" class="btn btn-success pull-right" data-toggle="modal"
-                                            data-target="#bookModal">
-                                        <i class="glyphicon glyphicon-modal-window"></i>
-                                        <strong> Book Online</strong>
-                                    </button>
+                                <li role="presentation">
+                                    <a href="#feedbackTab" aria-controls="feedbackTab" role="tab" data-toggle="tab">
+                                        FEEDBACK</a>
                                 </li>
                             </ul>
+
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="informationTab">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <p style="font-size: 16px;">
+                                                <i class="fa fa-building clr-grn size-l"></i>
+                                                <span><strong>  CHAMBER</strong></span>
+                                            </p>
+                                            <p style="font-size: 14px;">
+                                                <i class="fa fa-map-marker size-l"></i>
+                                                <span th:text="${hospital.name}"> Shamorita Hospital, 41/A Panthapath Road, Dhanmondi, Dhaka - 1225</span>
+                                            </p>
+                                            <p style="font-size: 14px;">
+                                                <i class="fa fa-calendar size-l"></i>
+                                                <span th:if="${availability.sun}"
+                                                      class="weekday-active">Su</span>
+                                                <span th:unless="${availability.sun}"
+                                                      class="weekday-inactive">Su</span>
+                                                <span th:if="${availability.mon}"
+                                                      class="weekday-active">M</span>
+                                                <span th:unless="${availability.mon}"
+                                                      class="weekday-inactive">M</span>
+                                                <span th:if="${availability.tue}"
+                                                      class="weekday-active">Tu</span>
+                                                <span th:unless="${availability.tue}"
+                                                      class="weekday-inactive">Tu</span>
+                                                <span th:if="${availability.wed}"
+                                                      class="weekday-active">W</span>
+                                                <span th:unless="${availability.wed}"
+                                                      class="weekday-inactive">W</span>
+                                                <span th:if="${availability.thu}"
+                                                      class="weekday-active">Th</span>
+                                                <span th:unless="${availability.thu}"
+                                                      class="weekday-inactive">Th</span>
+                                                <span th:if="${availability.fri}"
+                                                      class="weekday-active">F</span>
+                                                <span th:unless="${availability.fri}"
+                                                      class="weekday-inactive">F</span>
+                                                <span th:if="${availability.sat}"
+                                                      class="weekday-active">Sa</span>
+                                                <span th:unless="${availability.sat}"
+                                                      class="weekday-inactive">Sa</span>
+                                            </p>
+                                            <p style="font-size: 14px;">
+                                                <i class="fa fa-clock-o size-l"></i>
+                                                <span th:text="${availability.start_end}"
+                                                      style="color: green;"> 3.00 PM - 9.00 PM
+                                                </span>
+                                            </p>
+                                            <p style="font-size: 14px;">
+                                                <i class="fa fa-money size-l"></i>
+                                                <span th:text="${availability.start_end}"
+                                                      style="color: green;"> 1000 BDT
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div>
+                                                <h4><strong>
+                                                    <i class="fa fa-stethoscope clr-grn size-xl">
+                                                    </i> SPECIALIZATION</strong></h4>
+                                                <ul class="blue-bullet">
+                                                    <li><span>Not Available</span></li>
+                                                </ul>
+                                            </div>
+                                            <hr>
+                                            <div>
+                                                <h4><strong>
+                                                    <i class="fa fa-graduation-cap clr-grn size-xl">
+                                                    </i> EDUCATION</strong></h4>
+                                                <ul class="blue-bullet">
+                                                    <li><span>Not Available</span></li>
+                                                </ul>
+                                            </div>
+                                            <hr>
+                                            <div>
+                                                <h4><strong>
+                                                    <i class="fa fa-group clr-grn size-xl">
+                                                    </i> MEMBERSHIP</strong></h4>
+                                                <ul class="blue-bullet">
+                                                    <li><span>Not Available</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div>
+                                                <h4><strong>
+                                                    <i class="fa fa-medkit clr-grn size-xl">
+                                                    </i> SERVICES</strong></h4>
+                                                <ul class="blue-bullet">
+                                                    <li><span>Not Available</span></li>
+                                                </ul>
+                                            </div>
+                                            <hr>
+                                            <div>
+                                                <h4><strong>
+                                                    <i class="fa fa-tags clr-grn size-xl">
+                                                    </i> EXPERIENCE</strong></h4>
+                                                <ul class="blue-bullet">
+                                                    <li><span>Not Available</span></li>
+                                                </ul>
+                                            </div>
+                                            <hr>
+                                            <div>
+                                                <h4><strong>
+                                                    <i class="fa fa-bookmark clr-grn size-xl">
+                                                    </i> TRAININGS & CONFERENCES</strong></h4>
+                                                <ul class="blue-bullet">
+                                                    <li><span>Not Available</span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="mapTab">
+                                    <div class="box box-success">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Location</h3>
+                                        </div>
+                                        <div class="box-body">
+                                            <div class="maps" id="map-container"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="feedbackTab">
+                                    No FEEDBACK Available right now</div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-                    <!--<div class="box box-warning">-->
-                        <!--<div class="box-header with-border">-->
-                            <!--<h3 class="box-title">Location</h3>-->
-                        <!--</div>-->
-                        <!--<div class="box-body">-->
-                            <!--<div class="maps" id="map-container"></div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!---->
+                <div class="col-lg-1"></div>
             </div>
         </section>
     </div>
@@ -214,13 +322,9 @@
     </div>
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+    <footer th:replace="blank :: footer" class="main-footer">
         <div class="row">
-            <div class="col-lg-2 col-sm-2 text-right">
-                <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}"
-                     class="img-responsive" width="30%" style="margin-right: 20px;">
-            </div>
-            <div class="col-lg-10 col-sm-10" style="padding-top: 20px;">
+            <div class="col-lg-12 col-sm-12" style="padding-top: 20px; text-align: center">
                 <a style="color: #f0f1d6" href="#">Frequently Asked Questions</a> |
                 <a style="color: #f0f1d6" href="#">About DoctorKoi</a> |
                 Copyright &copy; 2016 <strong>DoctorKoi</strong> All rights reserved |
@@ -269,19 +373,43 @@
 <!-- Custom Google Map -->
 <script src="custom/mymap.js"
         th:src="@{/resources/custom/mymap.js}"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?callback=getUserLocation"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=mapApiLoadedCallback"></script>
 <!-- geocode try -->
-<script type="text/javascript" th:inline="javascript">
-
+<script th:inline="javascript">
     function placeHospitals() {
         var foundHospital = [[${hospital}]];
         placeMarkerAtHospital(foundHospital);
         fitAllMarkers();
     }
+</script>
+<!--<script>-->
+    <!--function placeHospitals() {-->
+        <!--var foundHospital = [[${hospital}]];-->
+        <!--placeMarkerAtHospital(foundHospital);-->
+        <!--fitAllMarkers();-->
+    <!--}-->
+<!--</script>-->
+<script>
     function setUserLocation(lat, lng){
         $("#userLat").val(lat);
         $("#userLng").val(lng);
     }
+</script>
+<!--Tab Activity-->
+<script>
+    var mapInitialized = false;
+    $(document).ready(function () {
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = $(e.target).attr("href");
+            if(target == '#mapTab') {
+                if(!mapInitialized && mapApiLoaded) {
+                    initProfileMap();
+//                    console.log('map activated');
+                    mapInitialized =true;
+                }
+            }
+        })
+    });
 </script>
 </body>
 </html>

@@ -43,7 +43,7 @@
 <body class="skin-green layout-top-nav" style="padding-top: 80px;">
 <div class="wrapper">
 
-    <nav class="navbar navbar-default navbar-fixed-top navbarshadow">
+    <nav class="navbar navbar-default navbar-fixed-top navbarshadow" th:replace="blank :: header">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a href="/home" class="navbar-brand">
@@ -172,8 +172,8 @@
                                                     <p class="designation margin-zero" th:text="${doctor.designation}" style="font-size: 12px;">
                                                         Degrees & Bla Blahs
                                                     </p>
-                                                    <p class="margin-zero hospital" th:text="${doctor.hospitalName}"
-                                                       style="font-size: 12px;">
+                                                    <p class="margin-zero hospital" th:utext=" '<i class=\'fa fa-map-marker\'>' + '</i> ' +${doctor.hospitalName}"
+                                                       style="font-size: 12px;"><i class="fa fa-map-marker"></i>
                                                         <strong>Hospital</strong>
                                                     </p>
                                                     <span class="week" style="font-size: 12px;">
@@ -455,12 +455,9 @@
     </div>
 
     <!-- Main Footer -->
-    <footer class="main-footer">
+    <footer th:replace="blank :: footer" class="main-footer">
         <div class="row">
-            <div class="col-lg-2 col-sm-2 text-right">
-                <img src="custom/logo_bnw.png" th:src="@{/resources/custom/logo_bnw.png}" width="100px" height="40px" style="margin-right: 20px;">
-            </div>
-            <div class="col-lg-10 col-sm-10" style="padding-top: 20px;">
+            <div class="col-lg-12 col-sm-12" style="padding-top: 20px; text-align: center">
                 <a style="color: #f0f1d6" href="#">Frequently Asked Questions</a> |
                 <a style="color: #f0f1d6" href="#">About DoctorKoi</a> |
                 Copyright &copy; 2016 <strong>DoctorKoi</strong> All rights reserved |
