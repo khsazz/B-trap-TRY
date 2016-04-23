@@ -52,5 +52,8 @@ var options2 = {
 };
 $(document).ready(function () {
     $("#placesearch").easyAutocomplete(options);
-    $("#doctorName").easyAutocomplete(options2);
 });
+
+function initDoctorNameSearch () {
+    $("#doctorName").easyAutocomplete(options2);
+}
