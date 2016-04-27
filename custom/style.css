@@ -3,6 +3,16 @@ body {
 	font-family: 'Helvetica', Helvetica, Arial, sans-serif;
 }
 
+.div-img {
+	background: url("background.jpg");
+	/*background-size: contain;*/
+	/*background-position: center;*/
+	background-repeat: repeat-y;
+	background-size:100%;
+	background-position:top;
+	/*height: 100%;*/
+}
+
 .navbar-brand{
 	padding-top: 0;
 }
