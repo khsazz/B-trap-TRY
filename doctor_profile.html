@@ -57,85 +57,86 @@
 
     <div class="content-wrapper">
         <section class="content">
-            <div class="row">&nbsp;</div>
-            <div class="row">&nbsp;</div>
-            <div class="row">&nbsp;</div>
+            <div class="container">
+                <div class="row">&nbsp;</div>
+                <div class="row">&nbsp;</div>
+                <!--<div class="row">&nbsp;</div>-->
 
-            <div class="row">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-10 search-box-shadow" style="padding: 20px;">
-                    <br>
-                    <div class="row">
-                        <div class="info-box  doctor-panel">
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-10 search-box-shadow" style="padding: 20px;">
+                        <br>
+                        <div class="row">
+                            <div class="info-box  doctor-panel">
                             <span class="info-box-icon image doctor-panel-image">
                                 <img class="img img-responsive" src="dist/img/noimage.jpg" alt="User Avatar"
                                      th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
                             </span>
-                            <div class="info-box-content">
-                                <p style="font-size: 22px;" th:utext="'<strong>'+${doctor.name}+'</strong>'">
-                                    <strong>PROF. DR. FM SIDDIQI</strong>
-                                </p>
-                                <p style="font-size: 16px; margin-bottom: 0;" th:utext="${doctor.degrees}">
-                                    <strong>MBBS, FRCPS, MD</strong>
-                                </p>
-                                <p style="font-size: 16px; margin-bottom: 0;" th:utext="${doctor.designation}">
-                                    ASSISTANT PROFESSOR (CARDIOLOGY), DHAKA MEDICAL COLLEGE
-                                </p>
-                                <p style="font-size: 16px; margin-bottom: 0;"
-                                   th:utext="'Specialized in <strong>'+${speciality.description}+'</strong>'">
-                                    SPECIALITY IN <strong>CARDIOLOGY</strong>
-                                </p>
-                                <th:block th:switch="${doctor.rankValue}">
-                                    <div th:case="3">
-                                        <span class="star-icon full three">☆☆☆☆☆</span>
-                                    </div>
-                                    <div th:case="4">
-                                        <span class="star-icon full four">☆☆☆☆☆</span>
-                                    </div>
-                                    <div th:case="5">
-                                        <span class="star-icon full five">☆☆☆☆☆</span>
-                                    </div>
-                                </th:block>
-                                <button type="button" class="btn btn-success btn-sm modal-button"
-                                        data-toggle="modal" data-target="#bookModal">
-                                    <strong> Book Now</strong>
-                                </button>
+                                <div class="info-box-content">
+                                    <p style="font-size: 22px;" th:utext="'<strong>'+${doctor.name}+'</strong>'">
+                                        <strong>PROF. DR. FM SIDDIQI</strong>
+                                    </p>
+                                    <p style="font-size: 16px; margin-bottom: 0;" th:utext="${doctor.degrees}">
+                                        <strong>MBBS, FRCPS, MD</strong>
+                                    </p>
+                                    <p style="font-size: 16px; margin-bottom: 0;" th:utext="${doctor.designation}">
+                                        ASSISTANT PROFESSOR (CARDIOLOGY), DHAKA MEDICAL COLLEGE
+                                    </p>
+                                    <p style="font-size: 16px; margin-bottom: 0;"
+                                       th:utext="'Specialized in <strong>'+${speciality.description}+'</strong>'">
+                                        SPECIALITY IN <strong>CARDIOLOGY</strong>
+                                    </p>
+                                    <th:block th:switch="${doctor.rankValue}">
+                                        <div th:case="3">
+                                            <span class="star-icon full three">☆☆☆☆☆</span>
+                                        </div>
+                                        <div th:case="4">
+                                            <span class="star-icon full four">☆☆☆☆☆</span>
+                                        </div>
+                                        <div th:case="5">
+                                            <span class="star-icon full five">☆☆☆☆☆</span>
+                                        </div>
+                                    </th:block>
+                                    <button type="button" class="btn btn-success btn-sm modal-button"
+                                            data-toggle="modal" data-target="#bookModal">
+                                        <strong> Book Now</strong>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-lg-10 col-lg-offset-1">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs profile-tab" role="tablist">
-                                <li role="presentation" class="active">
-                                    <a href="#informationTab" aria-controls="informationTab"
-                                       role="tab" data-toggle="tab">INFORMATION</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#mapTab" aria-controls="mapTab" role="tab" data-toggle="tab">MAP</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#feedbackTab" aria-controls="feedbackTab" role="tab" data-toggle="tab">
-                                        FEEDBACK</a>
-                                </li>
-                            </ul>
+                        <div class="row">
+                            <div class="col-lg-10 col-lg-offset-1">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#informationTab" aria-controls="informationTab"
+                                           role="tab" data-toggle="tab">INFORMATION</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#mapTab" aria-controls="mapTab" role="tab" data-toggle="tab">MAP</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#feedbackTab" aria-controls="feedbackTab" role="tab" data-toggle="tab">
+                                            FEEDBACK</a>
+                                    </li>
+                                </ul>
 
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade in active" id="informationTab">
-                                    <br>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <p style="font-size: 16px;">
-                                                <i class="fa fa-building clr-grn size-l"></i>
-                                                <span><strong>  CHAMBER</strong></span>
-                                            </p>
-                                            <p style="font-size: 14px;">
-                                                <i class="fa fa-map-marker size-l"></i>
-                                                <span th:text="${hospital.name}"> Shamorita Hospital, 41/A Panthapath Road, Dhanmondi, Dhaka - 1225</span>
-                                            </p>
-                                            <p style="font-size: 14px;">
-                                                <i class="fa fa-calendar size-l"></i>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="informationTab">
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <p style="font-size: 16px;">
+                                                    <i class="fa fa-building clr-grn size-l"></i>
+                                                    <span><strong>  CHAMBER</strong></span>
+                                                </p>
+                                                <p style="font-size: 14px;">
+                                                    <i class="fa fa-map-marker size-l"></i>
+                                                    <span th:text="${hospital.name}"> Shamorita Hospital, 41/A Panthapath Road, Dhanmondi, Dhaka - 1225</span>
+                                                </p>
+                                                <p style="font-size: 14px;">
+                                                    <i class="fa fa-calendar size-l"></i>
                                                 <span th:if="${availability.sun}"
                                                       class="weekday-active">Su</span>
                                                 <span th:unless="${availability.sun}"
@@ -164,155 +165,216 @@
                                                       class="weekday-active">Sa</span>
                                                 <span th:unless="${availability.sat}"
                                                       class="weekday-inactive">Sa</span>
-                                            </p>
-                                            <p style="font-size: 14px;">
-                                                <i class="fa fa-clock-o size-l"></i>
+                                                </p>
+                                                <p style="font-size: 14px;">
+                                                    <i class="fa fa-clock-o size-l"></i>
                                                 <span th:text="${availability.start_end}"
                                                       style="color: green;"> 3.00 PM - 9.00 PM
                                                 </span>
-                                            </p>
-                                            <p style="font-size: 14px;">
-                                                <i class="fa fa-money size-l"></i>
-                                                <span th:text="${availability.start_end}"
+                                                </p>
+                                                <p style="font-size: 14px;">
+                                                    <i class="fa fa-money size-l"></i>
+                                                <span th:utext="${doctor.cost}+' BDT'"
                                                       style="color: green;"> 1000 BDT
                                                 </span>
-                                            </p>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div th:if="${doctor.infos.hasEnoughSpecialization}">
+                                                    <h4><strong>
+                                                        <i class="fa fa-stethoscope clr-grn size-xl">
+                                                        </i> SPECIALIZATION</strong></h4>
+                                                    <ul class="blue-bullet">
+                                                        <li th:each="spec : ${doctor.infos.specializations}">
+                                                            <span th:text="${spec}">Not Available</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <hr th:if="${doctor.infos.hasEnoughSpecialization}">
+                                                <div th:if="${doctor.infos.hasEnoughEducation}">
+                                                    <h4><strong>
+                                                        <i class="fa fa-graduation-cap clr-grn size-xl">
+                                                        </i> EDUCATION</strong></h4>
+                                                    <ul class="blue-bullet">
+                                                        <li th:each="spec : ${doctor.infos.educations}">
+                                                            <span th:text="${spec}">Not Available</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <hr th:if="${doctor.infos.hasEnoughEducation}">
+                                                <div th:if="${doctor.infos.hasEnoughMembership}">
+                                                    <h4><strong>
+                                                        <i class="fa fa-group clr-grn size-xl">
+                                                        </i> MEMBERSHIP</strong></h4>
+                                                    <ul class="blue-bullet">
+                                                        <li th:each="spec : ${doctor.infos.memberships}">
+                                                            <span th:text="${spec}">Not Available</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div th:if="${doctor.infos.hasEnoughServices}">
+                                                    <h4><strong>
+                                                        <i class="fa fa-medkit clr-grn size-xl">
+                                                        </i> SERVICES</strong></h4>
+                                                    <ul class="blue-bullet">
+                                                        <li th:each="spec : ${doctor.infos.services}">
+                                                            <span th:text="${spec}">Not Available</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <hr th:if="${doctor.infos.hasEnoughServices}">
+                                                <div th:if="${doctor.infos.hasEnoughExperience}">
+                                                    <h4><strong>
+                                                        <i class="fa fa-tags clr-grn size-xl">
+                                                        </i> EXPERIENCE</strong></h4>
+                                                    <ul class="blue-bullet">
+                                                        <li th:each="spec : ${doctor.infos.experiences}">
+                                                            <span th:text="${spec}">Not Available</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <hr th:if="${doctor.infos.hasEnoughExperience}">
+                                                <div th:if="${doctor.infos.hasEnoughTrainning}">
+                                                    <h4><strong>
+                                                        <i class="fa fa-bookmark clr-grn size-xl">
+                                                        </i> TRAININGS & CONFERENCES</strong></h4>
+                                                    <ul class="blue-bullet">
+                                                        <li th:each="spec : ${doctor.infos.trainnings}">
+                                                            <span th:text="${spec}">Not Available</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div>
-                                                <h4><strong>
-                                                    <i class="fa fa-stethoscope clr-grn size-xl">
-                                                    </i> SPECIALIZATION</strong></h4>
-                                                <ul class="blue-bullet">
-                                                    <li><span>Not Available</span></li>
-                                                </ul>
+                                    <div role="tabpanel" class="tab-pane fade" id="mapTab">
+                                        <div class="box box-success profile-map">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Location</h3>
                                             </div>
-                                            <hr>
-                                            <div>
-                                                <h4><strong>
-                                                    <i class="fa fa-graduation-cap clr-grn size-xl">
-                                                    </i> EDUCATION</strong></h4>
-                                                <ul class="blue-bullet">
-                                                    <li><span>Not Available</span></li>
-                                                </ul>
-                                            </div>
-                                            <hr>
-                                            <div>
-                                                <h4><strong>
-                                                    <i class="fa fa-group clr-grn size-xl">
-                                                    </i> MEMBERSHIP</strong></h4>
-                                                <ul class="blue-bullet">
-                                                    <li><span>Not Available</span></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div>
-                                                <h4><strong>
-                                                    <i class="fa fa-medkit clr-grn size-xl">
-                                                    </i> SERVICES</strong></h4>
-                                                <ul class="blue-bullet">
-                                                    <li><span>Not Available</span></li>
-                                                </ul>
-                                            </div>
-                                            <hr>
-                                            <div>
-                                                <h4><strong>
-                                                    <i class="fa fa-tags clr-grn size-xl">
-                                                    </i> EXPERIENCE</strong></h4>
-                                                <ul class="blue-bullet">
-                                                    <li><span>Not Available</span></li>
-                                                </ul>
-                                            </div>
-                                            <hr>
-                                            <div>
-                                                <h4><strong>
-                                                    <i class="fa fa-bookmark clr-grn size-xl">
-                                                    </i> TRAININGS & CONFERENCES</strong></h4>
-                                                <ul class="blue-bullet">
-                                                    <li><span>Not Available</span></li>
-                                                </ul>
+                                            <div class="box-body">
+                                                <div class="maps" id="map-container"></div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="feedbackTab">
+                                        No FEEDBACK Available right now</div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade" id="mapTab">
-                                    <div class="box box-success">
-                                        <div class="box-header with-border">
-                                            <h3 class="box-title">Location</h3>
-                                        </div>
-                                        <div class="box-body">
-                                            <div class="maps" id="map-container"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="feedbackTab">
-                                    No FEEDBACK Available right now</div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
+                    <div class="col-lg-1"></div>
                 </div>
-                <div class="col-lg-1"></div>
             </div>
         </section>
     </div>
 
-    <!-- Modal -->
     <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body" style="padding: 0">
-                    <div class="box box-info box-solid" style="border: 0">
+                    <div class="box box-success box-solid" style="border: 0">
                         <div class="box-header with-border">
                             <h3 class="box-title">
-                                <i class="glyphicon glyphicon-hand-right"></i>
-                                <strong> Make Your Appoinment</strong>
+                                <strong style="text-align: center;">BOOK YOUR APPOINTMENT</strong>
                             </h3>
                         </div>
 
                         <div class="box-body">
-                            <h2 align="center" th:text="${doctor.name}"></h2>
-                            <h3 align="center" th:text="${hospital.name}"></h3>
-                            <h4 align="center" th:utext="'Weekdays '+${availability.start_end}+' except '+${availability.weekDays}"></h4>
-                            <form action="/createbooking" method="post">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon" id="sizing-addon1">Booking Name</span>
-                                            <input type="text" class="form-control" placeholder="Enter your name"
-                                                   aria-describedby="sizing-addon1" name="patient_name" required/>
-                                        </div>
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon" id="sizing-addon2">Mobile Number</span>
-                                            <input type="number" class="form-control" placeholder="Mobile No"
-                                                   aria-describedby="sizing-addon2" name="patient_mobile" required/>
-                                        </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <span class="info-box-icon image doctor-panel-image">
+                                        <img class="img img-responsive" src="dist/img/noimage.jpg" alt="User Avatar"
+                                            th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                                    </span>
+                                </div>
+                                <div class="col-lg-8">
+                                    <h3 class="text-primary"
+                                        th:utext=" '<strong>'+${doctor.name}+'</strong>' ">
+                                    </h3>
+                                    <h5 style="margin-top: -5px; margin-bottom: 4px;" th:text="${doctor.designation}"></h5>
+                                    <h4 style="margin-top: 2px; margin-bottom: 8px;">
+                                        <i class="fa fa-map-marker"></i><span th:text="${hospital.name}"></span>
+                                    </h4>
+                                    <span style="margin-top: 2px; margin-bottom: 4px;">
+                                        <i class="fa fa-calendar"></i>
+                                        <span th:if="${availability.sun}"
+                                              class="weekday-active">Su</span>
+                                        <span th:unless="${availability.sun}"
+                                              class="weekday-inactive">Su</span>
+                                        <span th:if="${availability.mon}"
+                                              class="weekday-active">M</span>
+                                        <span th:unless="${availability.mon}"
+                                              class="weekday-inactive">M</span>
+                                        <span th:if="${availability.tue}"
+                                              class="weekday-active">Tu</span>
+                                        <span th:unless="${availability.tue}"
+                                              class="weekday-inactive">Tu</span>
+                                        <span th:if="${availability.wed}"
+                                              class="weekday-active">W</span>
+                                        <span th:unless="${availability.wed}"
+                                              class="weekday-inactive">W</span>
+                                        <span th:if="${availability.thu}"
+                                              class="weekday-active">Th</span>
+                                        <span th:unless="${availability.thu}"
+                                              class="weekday-inactive">Th</span>
+                                        <span th:if="${availability.fri}"
+                                              class="weekday-active">F</span>
+                                        <span th:unless="${availability.fri}"
+                                              class="weekday-inactive">F</span>
+                                        <span th:if="${availability.sat}"
+                                              class="weekday-active">Sa</span>
+                                        <span th:unless="${availability.sat}"
+                                              class="weekday-inactive">Sa</span>
+                                    </span>
+                                    <span class="info-box-text" style="margin-top: 5px; margin-bottom: 4px;">
+                                        <i class="fa fa-clock-o"></i>
+                                        <span th:text="${availability.start_end}" style="font-size: 14px; color: #3b9349">
+                                            3.00 PM - 9.00 PM
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <form action="/createbooking" method="post" class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4 color-green" for="patient_name">BOOKING NAME</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control border-green" placeholder="Enter your name"
+                                               name="patient_name" id="patient_name" required/>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-sm-offset-3 col-sm-6">
-                                        <div class="form-group">
-                                            <div class="input-group" style="z-index: 100000 !important;">
-                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                                <input id="datepickerInModal" type="text" name="date"
-                                                       class="form-control pull-right datepicker">
-                                            </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4 color-green" for="patient_mobile">CONTACT NUMBER</label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control border-green" placeholder="Mobile No"
+                                               name="patient_mobile" id="patient_mobile" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4 color-green" for="datepickerInModal">APPOINTMENT DATE</label>
+                                    <div class="col-sm-6">
+                                        <div class="input-group border-green" style="z-index: 100000 !important;">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input id="datepickerInModal" type="text" name="date"
+                                                   class="form-control pull-right datepicker">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">&nbsp;</div>
                                 <div class="row" align="center">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="glyphicon glyphicon-upload"></i> Book an Appoinment</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">BOOK NOW</button>
+                                    <button type="button" class="btn btn-danger border-zero" data-dismiss="modal"
+                                            style="background-color: #434243">CANCEL</button>
                                 </div>
-                                <input id="doctor" name="doctor" value="" th:value="${doctor.id}" hidden>
-                                <input id="userLat" name="userLat" value="" hidden>
-                                <input id="userLng" name="userLng" value="" hidden>
+                                <input id="doctor" name="doctor" th:value="${doctor.id}" hidden>
+                                <input id="userLatInModal" name="userLat" value="" hidden>
+                                <input id="userLngInModal" name="userLng" value="" hidden>
                             </form>
                         </div>
                     </div>
@@ -382,17 +444,11 @@
         fitAllMarkers();
     }
 </script>
-<!--<script>-->
-    <!--function placeHospitals() {-->
-        <!--var foundHospital = [[${hospital}]];-->
-        <!--placeMarkerAtHospital(foundHospital);-->
-        <!--fitAllMarkers();-->
-    <!--}-->
-<!--</script>-->
 <script>
     function setUserLocation(lat, lng){
-        $("#userLat").val(lat);
-        $("#userLng").val(lng);
+//        console.log(lat);
+        $("#userLatInModal").val(lat);
+        $("#userLngInModal").val(lng);
     }
 </script>
 <!--Tab Activity-->

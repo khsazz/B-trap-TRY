@@ -3,9 +3,16 @@
  */
 
 var options = {
-    data: ["Mirpur", "Dhanmondi", "Gulshan", "Green Road", "Uttara", "Moghbazar"],
+    data: ["Mirpur", "Dhanmondi", "Gulshan", "Green Road", "Uttara", "Moghbazar", "Hajaribagh", "Lalmatia", "Zigatola",
+            "Elephant Road", "Hatirpool", "Kalabagan", "Panthapath", "Shahbag", "Sukrabad", "Framgate", "Agargaon",
+            "Kallyanpur", "Pallabi", "Shamoly", "Banani", "Baridhara", "Bashundhara", "Dhaka Cantonment", "Gulshan 2",
+            "Mohakhali", "Nakhalpara", "Tejgaon", "Badda", "Banasree", "Bashabo", "Eskaton Road", "Fakirapool",
+            "Farmgate", "Gandaria", "Gopibagh", "Jatrabari", "Jurain", "Kamalapur", "Kakrail", "Khilgaon", "Khilkhet",
+            "Lalbagh", "Malibagh", "Motijheel", "New Eskaton", "Purana Paltan", "Ramna", "Rampura", "Shahjadpur",
+            "Shanir Akhra", "Tikatuli", "Shiddeshwari"],
     theme: "blue-light",
     list: {
+        maxNumberOfElements: 5,
         match: {
             enabled: true
         },
@@ -21,7 +28,7 @@ var options = {
             callback: function() {}
         }
     },
-    requestDelay: 300,
+    requestDelay: 250,
     placeholder: "My Location"
 };
 var options2 = {
@@ -32,6 +39,7 @@ var options2 = {
     getValue: "name",
     theme: "blue-light",
     list: {
+        maxNumberOfElements: 5,
         match: {
             enabled: true
         }
@@ -48,7 +56,7 @@ var options2 = {
         //}
     },
     requestDelay: 400,
-    placeholder: "Search Doctor Name"
+    placeholder: "Search By Doctor Name"
 };
 $(document).ready(function () {
     $("#placesearch").easyAutocomplete(options);
