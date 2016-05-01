@@ -22,7 +22,7 @@
           th:href="@{/resources/dist/css/AdminLTE.min.css}"/>
     <!--BootStrap Select-->
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css"/>
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/css/bootstrap-select.min.css">
     <!-- DatePicker CSS -->
     <link rel="stylesheet" href="plugins/datepicker/datepicker3.css"
           th:href="@{/resources/plugins/datepicker/datepicker3.css}"/>
@@ -78,7 +78,7 @@
                         <div class="col-lg-12 col-xs-12 center-aligned">
                             <p style="font-size: 40px; color: white"><strong>আপনার Doctor's Appointment এর</strong></p>
                             <p style="font-size: 40px; color: white"><strong>দায়িত্ব এখন আমাদের</strong></p>
-                            <p style="font-size: 20px; color: white">BOOKINGS ARE ALWAYS FREE !!!</p>
+                            <p style="font-size: 20px; color: white">BOOKINGS ARE ALWAYS FREE</p>
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@
                         <div class="col-lg-12 col-xs-12 center-aligned">
 
                             <ul class="nav nav-tabs search-tab" role="tablist">
-                                <li role="presentation" class="active first-child">
+                                <li role="presentation" class="active">
                                     <a href="#informationTab" aria-controls="informationTab"
                                        role="tab" data-toggle="tab"><strong>Speciality</strong></a>
                                 </li>
@@ -181,10 +181,9 @@
                                         <div class="col-lg-12">
                                             <form class="form-inline" role="form" action="/searchdoctor" method="post">
                                                 <div class="form-group">
-                                                    <!--<div class="dropdown">-->
-                                                        <select name="speciality" class="selectpicker show-tick dropdown"
-                                                                title="Choose a Speciality" data-style="btn-success"
-                                                                data-size="7" data-width="200px">
+                                                    <div class="dropdown">
+                                                        <select name="speciality" class="form-control selectpicker show-tick"
+                                                                title="Choose a Speciality" data-style="btn-success">
                                                             <optgroup label="Popular Speciality">
                                                                 <option value="1">Cardiology</option>
                                                                 <option value="3">Dentistry</option>
@@ -203,7 +202,7 @@
                                                                 </option>
                                                             </optgroup>
                                                         </select>
-                                                    <!--</div>-->
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="input-group">
@@ -298,14 +297,7 @@
 <script src="dist/js/app.min.js"
         th:src="@{/resources/dist/js/app.min.js}"></script>
 <!--Bootstrap select-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-<script>
-    $('.selectpicker').selectpicker({
-        size: 7,
-        width: 'auto',
-        dropupAuto: false
-    });
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.4/js/bootstrap-select.min.js"></script>
 <!-- Datepicker -->
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{/resources/plugins/datepicker/bootstrap-datepicker.js}"></script>

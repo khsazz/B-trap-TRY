@@ -161,8 +161,10 @@
 
                                             <div class="info-box  box-shadow-zero custom-margin-top-bottom">
                                                 <span class="info-box-icon image">
-                                                    <img class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
+                                                    <img th:unless="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
                                                          th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                                                    <img th:if="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
+                                                         th:src="@{/resources/profile_pictures/{img}.jpg(img=${doctor.id})}">
                                                 </span>
 
                                                 <div class="info-box-content">

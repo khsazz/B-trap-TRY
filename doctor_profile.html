@@ -59,7 +59,7 @@
         <section class="content">
             <div class="container">
                 <div class="row">&nbsp;</div>
-                <div class="row">&nbsp;</div>
+                <!--<div class="row">&nbsp;</div>-->
                 <!--<div class="row">&nbsp;</div>-->
 
                 <div class="row">
@@ -69,8 +69,10 @@
                         <div class="row">
                             <div class="info-box  doctor-panel">
                             <span class="info-box-icon image doctor-panel-image">
-                                <img class="img img-responsive" src="dist/img/noimage.jpg" alt="User Avatar"
+                                <img th:unless="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
                                      th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                                <img th:if="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
+                                     th:src="@{/resources/profile_pictures/{img}.jpg(img=${doctor.id})}">
                             </span>
                                 <div class="info-box-content">
                                     <p style="font-size: 22px;" th:utext="'<strong>'+${doctor.name}+'</strong>'">
@@ -290,8 +292,10 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <span class="info-box-icon image doctor-panel-image">
-                                        <img class="img img-responsive" src="dist/img/noimage.jpg" alt="User Avatar"
-                                            th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                                        <img th:unless="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
+                                             th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
+                                        <img th:if="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
+                                             th:src="@{/resources/profile_pictures/{img}.jpg(img=${doctor.id})}">
                                     </span>
                                 </div>
                                 <div class="col-lg-8">
@@ -372,9 +376,9 @@
                                     <button type="button" class="btn btn-danger border-zero" data-dismiss="modal"
                                             style="background-color: #434243">CANCEL</button>
                                 </div>
-                                <input id="doctor" name="doctor" th:value="${doctor.id}" hidden>
-                                <input id="userLatInModal" name="userLat" value="" hidden>
-                                <input id="userLngInModal" name="userLng" value="" hidden>
+                                <input id="doctor" name="doctor" th:value="${doctor.id}" hidden/>
+                                <input id="userLatInModal" name="userLat" value="" hidden/>
+                                <input id="userLngInModal" name="userLng" value="" hidden/>
                             </form>
                         </div>
                     </div>

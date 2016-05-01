@@ -272,7 +272,7 @@ body {
 .doctor-panel-image {
 	margin: 5px 20px 15px 15px;
 	width: 150px;
-	height: 150px;
+	height: auto;
 }
 
 .profile-tab>li>a {
@@ -293,7 +293,7 @@ body {
 }
 
 .clr-grn{
-	color: green;
+	color: #24b06a;
 }
 
 .size-l{

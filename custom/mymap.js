@@ -15,6 +15,19 @@ var markers = [];
 
 function mapApiLoadedCallback() {
     mapApiLoaded = true;
+    if (navigator.geolocation) {
+        browserSupportFlag = true;
+        navigator.geolocation.getCurrentPosition(function (position) {
+            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            setUserLocation(position.coords.latitude, position.coords.longitude);
+        }, function () {
+            //handleNoGeolocation(browserSupportFlag);
+        });
+    }else {
+        browserSupportFlag = false;
+        handleNoGeolocation(browserSupportFlag);
+    }
+
 }
 
 function initMap() {
@@ -69,24 +82,14 @@ function initProfileMap() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    if (navigator.geolocation) {
-        browserSupportFlag = true;
-        navigator.geolocation.getCurrentPosition(function (position) {
-            initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            //map.setCenter(initialLocation);
-            setCurrentPlaceMarker(initialLocation, "You are here!");
-            //initGeocoder();
-            setUserLocation(position.coords.latitude, position.coords.longitude);
-            placeHospitals();
-        }, function () {
-            handleNoGeolocation(browserSupportFlag);
-            setCurrentPlaceMarker(home, "You are here!");
-        });
+    if (browserSupportFlag && initialLocation) {
+        setCurrentPlaceMarker(initialLocation, "You are here!");
+        placeHospitals();
     }
     // Browser doesn't support Geolocation
     else {
-        browserSupportFlag = false;
-        handleNoGeolocation(browserSupportFlag);
+        //handleNoGeolocation(browserSupportFlag);
+        setCurrentPlaceMarker(home, "You are here!");
     }
 
 }
