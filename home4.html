@@ -43,24 +43,24 @@
 
     <!-- Main Header -->
     <!--<nav class="navbar navbar-fixed-top navbarshadow" th:replace="blank :: header">-->
-        <!--<div class="container">-->
-            <!--<div class="navbar-header">-->
-                <!--<a href="/home" class="navbar-brand">-->
-                    <!--<img src="custom/logo_color.png" class="img-responsive"-->
-                         <!--th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>-->
-                <!--</a>-->
-            <!--</div>-->
-            <!--<div class="navbar-custom-menu" style="text-align: right">-->
-                <!--<p style="color: #43a260">-->
-                    <!--<i class="fa fa-phone"></i>01980-807030, 01980-807040-->
-                    <!--<button class="btn btn-xs btn-success">Sign IN</button></p>-->
-                <!--<p style="color: #a7a8a7">-->
-                    <!--Are you a doctor? List your practice here-->
-                    <!--<button class="btn btn-sm iamadoctor-button">-->
-                        <!--<strong>I'M A DOCTOR</strong></button>-->
-                <!--</p>-->
-            <!--</div>-->
-        <!--</div>-->
+    <!--<div class="container">-->
+    <!--<div class="navbar-header">-->
+    <!--<a href="/home" class="navbar-brand">-->
+    <!--<img src="custom/logo_color.png" class="img-responsive"-->
+    <!--th:src="@{/resources/custom/logo_color.png}" alt="" width="30%"/>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--<div class="navbar-custom-menu" style="text-align: right">-->
+    <!--<p style="color: #43a260">-->
+    <!--<i class="fa fa-phone"></i>01980-807030, 01980-807040-->
+    <!--<button class="btn btn-xs btn-success">Sign IN</button></p>-->
+    <!--<p style="color: #a7a8a7">-->
+    <!--Are you a doctor? List your practice here-->
+    <!--<button class="btn btn-sm iamadoctor-button">-->
+    <!--<strong>I'M A DOCTOR</strong></button>-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--</div>-->
     <!--</nav>-->
 
     <div class="content-wrapper">
@@ -73,35 +73,58 @@
                     <!--<div class="row">&nbsp;</div>-->
 
                     <div class="row">
-                        <div class="col-lg-3 col-sm-3 col-xs-5">
+                        <div class="col-lg-3 col-sm-4 col-xs-6">
                             <a href="/" class="navbar-brand">
                                 <img src="custom/logo_white.png" class="img-responsive"
                                      th:src="@{/resources/custom/logo_white.png}" alt="" width="85%"/>
                             </a>
                         </div>
                         <!--<div class="col-lg-5 col-sm-6 col-xs-4"></div>-->
-                        <div class="col-lg-9 col-sm-9 col-xs-7">
-                            <br><br>
-                            <p style="color: #f9a232; font-size: 20px;" class="pull-right">
-                                <strong><i class="fa fa-phone"></i> 01980-807030, 01980-807040 | <i class="fa fa-facebook-official" aria-hidden="true"></i></strong>
-                            </p>
+                        <div class="col-lg-9 col-sm-8 col-xs-6">
+                            <br>
+                            <br class="hidden-xs">
+                            <div class="hidden-xs">
+                                <p style="color: #f9a232;" class="pull-right header-phone">
+                                    <strong>
+                                        <i class="fa fa-phone"></i> 01980-807030, 01980-807040 |
+                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                    </strong>
+                                </p>
+                            </div>
+                            <div class="row hidden-lg hidden-md hidden-sm">
+                                <div class="col-lg-5 col-xs-12">
+                                    <p style="color: #f9a232;" class="pull-right header-phone">
+                                        <strong><i class="fa fa-phone"></i> 01980-807030,</strong>
+                                    </p>
+                                </div>
+                                <div class="col-lg-5 col-xs-12">
+                                    <p style="color: #f9a232;" class="pull-right header-phone">
+                                        <strong> 01980-807040</strong>
+                                    </p>
+                                </div>
+                                <div class="col-lg-2 col-xs-12">
+                                    <p style="color: #f9a232;" class="pull-right header-phone">
+                                        <strong><i class="fa fa-facebook-official" aria-hidden="true"></i></strong>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">&nbsp;</div>
-                    <div class="row">&nbsp;</div>
+                    <div class="row hidden-xs">&nbsp;</div>
+                    <div class="row hidden-xs">&nbsp;</div>
                     <div class="row">&nbsp;</div>
                     <!--<div class="row">&nbsp;</div>-->
 
                     <div class="row">
                         <div class="col-lg-12 col-xs-12 center-aligned">
-                            <p style="font-size: 30px; color: white"><strong>আপনার Doctor's Appointment এর</strong></p>
-                            <p style="font-size: 30px; color: white"><strong>দায়িত্ব এখন আমাদের</strong></p>
-                            <p style="font-size: 18px; color: white">BOOKINGS ARE ALWAYS FREE !!!</p>
+                            <p class="value-prop-1"><strong>আপনার Doctor's Appointment এর</strong></p>
+                            <p class="value-prop-1"><strong>দায়িত্ব এখন আমাদের</strong></p>
+                            <p class="value-prop-2">BOOKINGS ARE ALWAYS FREE !!!</p>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-12 col-xs-12 center-aligned">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 center-aligned">
 
                             <ul class="nav nav-tabs search-tab" role="tablist">
                                 <li role="presentation" class="active first-child">
@@ -181,7 +204,7 @@
                                             <form class="form-inline" role="form" action="/searchdoctor" method="post">
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <input id="doctorName" class="form-control border-green" name="doctorName"/>
+                                                        <input id="doctorName" style="min-width : 290px" class="form-control border-green" name="doctorName"/>
                                                     </div>
                                                 </div>
                                                 <input class="userLat" name="userLat" value="" hidden>
@@ -225,7 +248,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="input-group">
-                                                        <select name="hospital" class="form-control border-green select-custom1">
+                                                        <select name="hospital" class="form-control border-green select-custom1" style="min-width : 250px; width: 100%">
                                                             <option value="0" selected disabled>Pick A Hospital</option>
                                                             <option th:each="hospital : ${hospitalList}"
                                                                     th:text="${hospital.name}" th:value="${hospital.id}"
@@ -247,7 +270,7 @@
                         </div>
                     </div>
                     <br><br>
-                    <div class="row">
+                    <div class="row hidden-xs">
                         <div class="col-lg-8 col-lg-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" style="text-align: center;">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -274,17 +297,16 @@
                         </div>
                     </div>
                     <!--<br>-->
-                    <div class="row">
-                        <p style="color: white; text-align: center">
-                            <span style="font-size: 30px;">
-                                <i class="fa fa-phone"></i>
-                                <strong>
-                                    01980-807030, 01980-807040
-                                </strong>
-                            </span> (10am to 6pm)
-                        </p>
+                    <div class="row footer-phone">
+                        <span class="phone-number">
+                            <i class="fa fa-phone"></i>
+                            <strong>
+                                01980-807030, 01980-807040
+                            </strong>
+                        </span>
+                        <br class="hidden-sm hidden-md hidden-lg">
+                        <span>(10am to 6pm)</span>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -320,7 +342,7 @@
 <script>
     $('.selectpicker').selectpicker({
         size: 7,
-        width: 'auto',
+        width: '100%',
         dropupAuto: false
     });
 </script>

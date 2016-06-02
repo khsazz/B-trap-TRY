@@ -68,7 +68,7 @@
                         <br>
                         <div class="row">
                             <div class="info-box  doctor-panel">
-                            <span class="info-box-icon image doctor-panel-image">
+                            <span class="info-box-icon image doctor-panel-image hidden-xs">
                                 <img th:unless="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
                                      th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
                                 <img th:if="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
