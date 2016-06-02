@@ -164,7 +164,7 @@
                                                     <img th:unless="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
                                                          th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
                                                     <img th:if="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
-                                                         th:src="@{/resources/profile_pictures/{img}.jpg(img=${doctor.id})}">
+                                                         th:src="@{/resources/profile_pictures/{img}..jpg(img=${doctor.id})}">
                                                 </span>
 
                                                 <div class="info-box-content">
@@ -509,7 +509,7 @@
 <script src="plugins/datepicker/bootstrap-datepicker.js"
         th:src="@{/resources/plugins/datepicker/bootstrap-datepicker.js}"></script>
 <!--<script src="plugins/timepicker/bootstrap-timepicker.min.js"-->
-        <!--th:src="@{/resources/plugins/timepicker/bootstrap-timepicker.min.js}"></script>-->
+<!--th:src="@{/resources/plugins/timepicker/bootstrap-timepicker.min.js}"></script>-->
 <script>
     $(document).ready(function () {
         $(document).off('.datepicker.data-api');
@@ -616,8 +616,8 @@
 </script>
 <!-- Google Maps -->
 <script src="custom/mymap.js"
-        th:src="@{/resources/custom/mymap.js}"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+        th:src="@{/resources/custom/l.js}"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=mapApiLoadedCallback"></script>
 <script type="text/javascript" th:inline="javascript">
     function placeHospitals() {
         var foundHospitalsList = [[${foundHospital}]];

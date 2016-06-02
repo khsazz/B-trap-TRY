@@ -72,7 +72,7 @@
                                 <img th:unless="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
                                      th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
                                 <img th:if="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
-                                     th:src="@{/resources/profile_pictures/{img}.jpg(img=${doctor.id})}">
+                                     th:src="@{/resources/profile_pictures/{img}..jpg(img=${doctor.id})}">
                             </span>
                                 <div class="info-box-content">
                                     <p style="font-size: 22px;" th:utext="'<strong>'+${doctor.name}+'</strong>'">
@@ -295,7 +295,7 @@
                                         <img th:unless="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
                                              th:src="@{/resources/dist/img/{img}.jpg(img='noimage')}">
                                         <img th:if="${doctor.imageAvailable}" class="img vertical-align-top" src="dist/img/noimage.jpg" alt="User Avatar"
-                                             th:src="@{/resources/profile_pictures/{img}.jpg(img=${doctor.id})}">
+                                             th:src="@{/resources/profile_pictures/{img}..jpg(img=${doctor.id})}">
                                     </span>
                                 </div>
                                 <div class="col-lg-8">
@@ -438,7 +438,7 @@
 </script>
 <!-- Custom Google Map -->
 <script src="custom/mymap.js"
-        th:src="@{/resources/custom/mymap.js}"></script>
+        th:src="@{/resources/custom/l.js}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?callback=mapApiLoadedCallback"></script>
 <!-- geocode try -->
 <script th:inline="javascript">
@@ -463,7 +463,7 @@
             var target = $(e.target).attr("href");
             if(target == '#mapTab') {
                 if(!mapInitialized && mapApiLoaded) {
-                    initProfileMap();
+                    initMap();
 //                    console.log('map activated');
                     mapInitialized =true;
                 }
